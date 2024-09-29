@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "SVN-AVO", sans-serif;
+}
+
+body {
+    margin: 0
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%
+}
+
+ul {
+    list-style-type: none;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(246, 231, 231, 0.29);
+}
+
+nav {
+    width: 100vw;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#main-menu {
+
+    display: flex;
+    justify-content: center;
+    padding: 8px 15px;
+}
+
+nav #main-menu li a {
+    font-size: 14px;
+    text-transform: uppercase;
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 21px 25px;
+}
+
+
+nav #main-menu li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #bb8a08;
+    margin: 0px auto 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+nav #main-menu li a:hover::after {
+    opacity: 1;
+}
+
+nav #main-menu li .submenu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 0;
+    z-index: 1000;
+}
+
+nav #main-menu li .submenu li a {
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+nav #main-menu li .submenu li a:hover {
+    background-color: #444;
+    transform: translateX(10px);
+}
+
+nav #main-menu li:hover .submenu {
+    display: block;
+}
+
+nav img {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    max-height: 100px;
+}
+
+nav.nav-scroll {
+    background-color: black;
+    transition: background-color 0.5s ease;
+}
+
+#toggle-button {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    nav #main-menu {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav #main-menu li a {
+        padding: 10px 0;
+    }
+
+    #toggle-button {
+        padding: 30px 25px;
+        display: flex;
+        color: white;
+        cursor: pointer;
+        justify-content: center;
+    }
+
+    nav {
+        display: none;
+    }
+
+    nav img {
+        display: none;
+    }
+
+    nav #main-menu li .submenu {
+        position: static;
+        padding: 0;
+    }
+
+    nav #main-menu li .submenu li a {
+        padding: 10px 0;
+    }
+
+    nav #main-menu li:hover .submenu {
+        display: none;
+    }
+
+    nav #main-menu li .submenu {
+        display: none;
+    }
+
+    nav #main-menu li.active .submenu {
+        display: block;
+    }
+}
+
+#toggle-button.nav-scroll {
+    background-color: black;
+    transition: background-color 0.5s ease;
+}

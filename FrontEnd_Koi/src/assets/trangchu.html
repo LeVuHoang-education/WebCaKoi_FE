@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/trangchu.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+    <title>Trang chủ</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="js/trangchu.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <div id="toggle-button">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <img alt="Logo SGL" src="image/logo.png">
+            <ul id="main-menu">
+                <li><a href="">Trang Chủ</a></li>
+                <li><a href="">Giới Thiệu</a></li>
+                <li><a href="">Dự Án</a></li>
+                <li class="has-submenu">
+                    <a href="">Dịch Vụ <i class="fa-solid fa-chevron-down"
+                                          style="font-size: 0.75em; margin-left: 5px;"></i></a>
+                    <ul class="submenu">
+                        <li><a href="">Thiết Kế Và Thi Công Kiến Trúc</a></li>
+                        <li><a href="">Thiết Kế Và Thi Công Cảnh Quan</a></li>
+                        <li><a href="">Thiết Kế Và Thi Công Nhà Vườn</a></li>
+                        <li><a href="">Thiết Kế Và Thi Công Sân Vườn</a></li>
+                        <li><a href="">Thiết Kế Và Thi Công Hồ Cá Koi</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Báo Giá</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="slider">
+        <div class="list">
+            <div class="item">
+                <img alt="" src="image/banner-trang-chu-1.jpg">
+                <div class="text-banner">
+                    <h1>KIẾN TẠO CUỘC SỐNG</h1>
+                    <p>Những không gian trở về, chữa lành luôn là điểm cuối cùng của mỗi sự lựa chọn, khi bạn đã vất vả
+                        ngần ấy thời gian. Bây giờ hãy để cho chúng tôi tạo cho bạn một không gian mà bạn mong đợi.</p>
+                    <button>Chi tiết</button>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="" src="image/banner-trang-chu-2.jpg">
+                <div class="text-banner">
+                    <h1>DESIGN & BUILD</h1>
+                    <p>Chúng tôi tạo ra những khu vườn chỉnh chu từ thiết kế đến thi công, các khu vườn triệu đô, thể
+                        hiện được vị thế và đẳng cấp của chủ đầu tư. Nhưng trên hết hiệu quả và kiến tạo nơi chốn luôn
+                        được đặt lên hàng đầu.</p>
+                    <button>Chi tiết</button>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="" src="image/banner-trang-chu-3.jpg">
+                <div class="text-banner">
+                    <h1>THIẾT KẾ <br> KIẾN TRÚC CẢNH QUAN</h1>
+                    <p>Chúng tôi tự hào là những người thiết kế kiến trúc cảnh quan và xây dựng các giải pháp sáng tạo
+                        để giúp mọi người thực hiện tầm nhìn của họ và biến chúng thành hiện thực. Thú vị đấy chứ?</p>
+                    <button>Chi tiết</button>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="text-content">
+            <h3>"Tôi luôn ám ảnh việc biến những công trình cảnh quan thành những tác phẩm nghệ thuật, phản ánh sự thành
+                công và phong cách sống của khách hàng."</h3>
+        </div>
+        <div class="author">
+            <img alt="Chữ ký" src="image/tran-trieu-vy-avatar%20(1).png">
+            <div id="text-author">
+                <h3>Trần Triệu Vỹ</h3>
+                <p>Founder & CEO</p>
+            </div>
+        </div>
+    </div>
+    <div class="about-company">
+        <div class="about-image">
+            <img alt="About Company" src="image/lang-thong-dong-masterplan.jpg">
+        </div>
+        <div class="about-content">
+            <span>[ ABOUT COMPANY ]</span>
+            <h2>SGL Vietnam</h2>
+            <div>
+                <p>Chúng tôi hoạt động trong lĩnh vực tư vấn thiết kế kiến trúc, thiết kế cảnh quan,...</p> <BR>
+                <ul>
+                    <li>Thiết kế kiến trúc biệt thự, nhà vườn,...</li>
+                    <li>Tư vấn quy hoạch và thiết kế cảnh quan</li>
+                    <li>Quản lý dự án, giám sát thi công kiến trúc, cảnh quan</li>
+                    <li>Thi công công trình kiến trúc, cảnh quan, sân vườn biệt thự cao cấp</li>
+                </ul>
+                <BR>
+                <p>Với nhiều năm kinh nghiệm về thiết kế và thi công cảnh quan & kiến trúc đặc biệt là thiết kế nhà
+                    vườn, thiết kế sân vườn biệt thự, thiết kế vườn phong cách Nhật, thiết kế hồ cá Koi,… chúng tôi đã
+                    thiết kế, thi công kiến trúc và cảnh quan cho nhiều dự án lớn trên khắp cả nước.</p>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="our-services">
+        <span>[ Our Services ]</span>
+        <h2>Dịch vụ chúng tôi cung cấp</h2>
+        <div id="service-list">
+            <div class="service-item">
+                <div class="service-number">1</div>
+                <div class="service-name">Thiết kế thi công cảnh quan</div>
+            </div>
+            <div class="service-item">
+                <div class="service-number">2</div>
+                <div class="service-name">Thiết kế thi công nhà vườn</div>
+            </div>
+            <div class="service-item">
+                <div class="service-number">3</div>
+                <div class="service-name">Thiết kế thi công sân vườn</div>
+            </div>
+            <div class="service-item">
+                <div class="service-number">4</div>
+                <div class="service-name">Thiết kế thi công hồ cá koi</div>
+            </div>
+        </div>
+    </div>
+    <div id="our-project">
+        <div>
+            <span>[ OUR PROJECT ]</span>
+            <h2>Dự án nổi bật</h2>
+        </div>
+        <div>
+            <button>Chi Tiết</button>
+        </div>
+    </div>
+    <div id="project-grid">
+        <div class="project-item">
+            <img alt="Project 1" src="image/pj1.png">
+            <div class="overlay-text">VIEN LE JARDIN</div>
+        </div>
+        <div class="project-item">
+            <img alt="Project 2" src="image/pj2.jpg">
+            <div class="overlay-text">ONSEN GÒ VẤP</div>
+        </div>
+        <div class="project-item">
+            <img alt="Project 3" src="image/pj3.jpg">
+            <div class="overlay-text">DAKNONG FARMSTAY</div>
+        </div>
+        <div class="project-item">
+            <img alt="Project 4" src="image/pj4.jpg">
+            <div class="overlay-text">NHÀ MẪU LÀNG THONG DONG</div>
+            <
+        </div>
+        <div class="project-item">
+            <img alt="Project 5" src="image/pj5.jpg">
+            <div class="overlay-text">PENTHOUSE OPAL TOWER</div>
+        </div>
+        <div class="project-item">
+            <img alt="Project 6" src="image/pj6.jpg">
+            <div class="overlay-text">Vườn Tự Tại – Thiết kế khu tổ hợp chuyên đề Thiền tại Tp.Hồ Chí Minh</div>
+        </div>
+        <div class="item-7 project-item">
+            <img alt="Project 7" src="image/pj7.jpg">
+            <div class="overlay-text">The Retreat Garden – Vườn Nhật Bản</div>
+        </div>
+    </div>
+    <div id="our-process">
+        <div id="process-title">
+            <span>[ OUR PROCESS ]</span>
+            <br>
+            <h2>Quy trình thực hiện dự án</h2>
+        </div>
+    </div>
+    <div id="process">
+        <div id="process-list">
+            <div class="process-item">
+                <img alt="Process 1" src="image/1.png">
+                <h3>Lập Nhiệm vụ và Báo giá</h3>
+                <p>Bao gồm: NVTK & moodboard - Tiến độ dự kiến - Báo giá & hợp đồng thiết kế</p>
+            </div>
+            <div class="process-item">
+                <img alt="Process 2" src="image/2.png">
+                <h3>Lập hồ sơ thiết kế ý tưởng</h3>
+                <p>Bao gồm: Hình ảnh diễn họa 2D & 3D - Thuyết minh, spec - Mô hình mô phỏng</p>
+            </div>
+            <div class="process-item">
+                <img alt="Process 3" src="image/3.png">
+                <h3>Lập hồ sơ thiết kế cơ sở đến thi công</h3>
+                <p>Bao gồm hồ sơ thiết kế cơ sở và hồ sơ thiết kế thi công</p>
+            </div>
+            <div class="process-item">
+                <img alt="Process 4" src="image/4.png">
+                <h3>Lập báo giá thi công</h3>
+                <p>Bao gồm các công tác: BOQ, Khái toán, Dự toán theo định mức nhà nước... Báo giá và hợp đồng</p>
+            </div>
+            <div class="process-item">
+                <img alt="Process 5" src="image/5.png">
+                <h3>Tổ chức thi công từ thô đến hoàn thiện</h3>
+                <p>Tổ chức thi công hoặc quản lý, điều phối và giám sát dự án</p>
+            </div>
+            <div class="process-item">
+                <img alt="Process 6" src="image/6.png">
+                <h3>Nghiệm thu, bàn giao và bảo dưỡng</h3>
+                <p>Nghiệm thu bàn giao, bảo hành, bảo dưỡng và lập hồ sơ hoàn công/p>
+            </div>
+        </div>
+        <div id="experience">
+            <div class="experience-item">
+                <h2>70+</h2>
+                <p>DỰ ÁN</p>
+            </div>
+            <div class="experience-item">
+                <h2>10+</h2>
+                <p>NĂM KINH NGHIỆM</p>
+            </div>
+            <div class="experience-item">
+                <h2>50+</h2>
+                <p>KHÁCH HÀNG</p>
+            </div>
+            <div class="experience-item">
+                <h2>2</h2>
+                <p>VĂN PHÒNG</p>
+            </div>
+        </div>
+    </div>
+    <div id="contentlh">
+        <div class="text-content">
+            <h2>Liên hệ với chúng tôi!</h2>
+            <p>Mọi sự hài lòng của bạn là niềm kiêu hãnh của chúng tôi!</p>
+        </div>
+        <button>Nhận tư vấn</button>
+    </div>
+    <div id="our-skill">
+        <div id="skill-content">
+            <div>
+                <span>[ our skills ]</span>
+                <h2>Giá trị cốt lõi</h2>
+            </div>
+            <div>
+                <p>Chúng tôi không ngừng phát triển, học hỏi và cải tiến và các đối tác của chúng tôi cũng không ngừng
+                    tăng lên.</p>
+                <br>
+                <ul>
+                    <li>Hồ sơ, tiêu chuẩn và quy trình chuyên nghiệp</li>
+                    <li>Đội ngũ nhiều kinh nghiệm, không outsource</li>
+                    <li>Tư vấn toàn diện, không chỉ là giá trị thiết kế</li>
+                </ul>
+            </div>
+        </div>
+        <div id="skill-img">
+            <img alt="our skills" src="image/banner-front-page.jpg">
+        </div>
+
+    </div>
+    <div id="our-blog">
+        <div id="blog-title">
+            <div>
+                <span>[ OUR BLOG ]</span>
+                <h2>Tin tức kiến trúc cảnh quan</h2>
+            </div>
+            <div>
+                <button>Chi Tiết</button>
+            </div>
+        </div>
+        <div id="blog-grid">
+            <div class="blog-item">
+                <a href="#"><img alt="Blog 1" src="image/blog1.jpg"></a>
+                <a href="#">Kiến trúc Art Deco: Lịch sử phát triển & các công trình đặc sắc</a>
+            </div>
+            <div class="blog-item">
+                <a href="#"><img alt="Blog 2" src="image/blog2.jpg"></a>
+                <a href="#">Hướng dẫn trồng và chăm sóc hoa hồng trong chậu đúng kỹ thuật</a>
+            </div>
+            <div class="blog-item">
+                <a href="#"><img alt="Blog 3" src="image/blog3.jpg"></a>
+                <a href="#">#6 thiết kế tiểu cảnh trong nhà đẹp được ưa chuộng nhất 2024</a>
+            </div>
+            <div class="blog-item">
+                <a href="#"><img alt="Blog 4" src="image/blog4.jpg"></a>
+                <a href="#">TOP 10 mẫu thiết kế biệt thự nghỉ dưỡng lộng lẫy, xa hoa</a>
+            </div>
+            <div class="blog-item">
+                <a href="#"><img alt="Blog 5" src="image/blog5.jpg"></a>
+                <a href="#">Top mẫu đèn sân vườn đẹp, được ưa chuộng nhất 2024</a>
+            </div>
+            <div class="blog-item">
+                <a href="#"><img alt="Blog 6" src="image/blog6.jpg"></a>
+                <a href="#">Khám phá top những quán cafe sân vườn đẹp tại Sài Gòn</a>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="width:100%">
+                <img alt="logo" height="100" src="image/logo-footer-1.png" width="260">
+                <h3> Công ty TNHH Kiến trúc Cảnh quan SGL</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Studio: 57 đường Vành Đai Tây, An Khánh, Tp. Thủ Đức, Tp. HCM
+                </p>
+                <p><i class="fas fa-map-marker-alt"></i> Văn phòng: Số A-12a-1 Tầng 12a, Block A, Tòa nhà Centana Thủ
+                    Thiêm, 36 Mai Chí Thọ, P.An Phú, TP.Thủ Đức, TP.HCM</p>
+                <p><i class="fas fa-map-marker-alt"></i> Xưởng gỗ: Đường Vĩnh Phú 14, Vĩnh Phú, Thuận An, Bình Dương</p>
+                <p><i class="fas fa-phone"></i> Điện thoại: 0903 957 033</p>
+                <p><i class="fas fa-fax"></i> Số Fax: 0964 3899</p>
+                <p><i class="fas fa-envelope"></i> Email: info@sgl.com.vn</p>
+                <p><i class="fas fa-id-card"></i> Mã số doanh nghiệp: 0316287084 cấp ngày 26/05/2020 tại Sở Kế hoạch và
+                    Đầu tư Thành phố Hồ Chí Minh</p>
+                <ul class="social-icons">
+                    <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Dịch Vụ</h3>
+                <ul class="list">
+                    <li><a href=""><i class="fas fa-caret-right"></i> Thiết kế & thi công kiến trúc</a></li>
+                    <li><a href=""><i class="fas fa-caret-right"></i> Thiết kế biệt thự nhà vườn</a></li>
+                    <li><a href=""><i class="fas fa-caret-right"></i> Thiết kế & thi công cảnh quan</a></li>
+                    <li><a href=""><i class="fas fa-caret-right"></i> Thiết kế & thi công sân vườn biệt thự</a></li>
+                    <li><a href=""><i class="fas fa-caret-right"></i> Thiết kế & thi công hồ cá KOI</a></li>
+                    <li><a href=""><i class="fas fa-caret-right"></i> Thiết kế & thi công vườn tường đứng cây xanh</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Yêu Cầu Báo Giá</h3>
+                <h3>Hotline: 0903 957 033</h3>
+                <button>Gửi yêu cầu báo giá</button>
+                <p>Chứng chỉ Năng lực Hoạt động Xây dựng Cấp III. Số: HCM-00046954, cấp ngày 19/10/2020 tại Sở Kế hoạch
+                    và Đầu tư thành phố Hồ Chí Minh.</p>
+                <br><a href="http://online.gov.vn/Home/WebDetails/75802" rel="nofollow" target="_blank">
+                <img alt="SGL - đã thông báo bộ công thương" class="attachment-full size-full wp-image-6804 entered lazyloaded"
+                     data-lazy-src="https://sgl.com.vn/wp-content/uploads/2020/02/sgl-da-thong-bao-bo-cong-thuong.webp"
+                     data-ll-status="loaded"
+                     height="68"
+                     src="https://sgl.com.vn/wp-content/uploads/2020/02/sgl-da-thong-bao-bo-cong-thuong.webp"
+                     width="180">
+                <noscript><img alt="SGL - đã thông báo bộ công thương" class="attachment-full size-full wp-image-6804"
+                               height="68"
+                               src="https://sgl.com.vn/wp-content/uploads/2020/02/sgl-da-thong-bao-bo-cong-thuong.webp" width="180"/>
+                </noscript>
+            </a>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2024 Team B - JAVA . All rights reserved</p>
+        </div>
+    </footer>
+
+
+</div>
+</body>
+</html>
