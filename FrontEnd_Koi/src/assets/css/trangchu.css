@@ -1,14 +1,4 @@
-@font-face {
-    font-family: 'SVN-Avo';
 
-url('../font/SVN-Avo.woff2') format('woff2'),
-url('../font/SVN-Avo.woff') format('woff'),
-url('../font/SVN-Avo.ttf') format('truetype'),
-url('../font/SVN-Avo.svg#SVN-Avo') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
 
 body {
     font-family: 'SVN-Avo', sans-serif;
