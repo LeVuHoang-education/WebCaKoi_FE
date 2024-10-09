@@ -92,3 +92,7 @@
 .project-category {
     color: #6b7280;
 }
+a {
+    text-decoration: none;
+    color: inherit;
+}
