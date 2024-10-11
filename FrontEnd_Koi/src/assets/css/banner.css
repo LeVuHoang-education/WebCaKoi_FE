@@ -1,0 +1,59 @@
+.hero {
+    position: relative;
+    background-color: #1a202c;
+    color: white;
+    padding: 20rem 0;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://sgl.com.vn/wp-content/uploads/2023/10/bg-2-gv-kt-chuan-fix-mobile-1920-1280.jpg');
+    background-position: center;
+    opacity: 0.5;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.breadcrumbs ul {
+    display: flex;
+    list-style-type: none;
+    font-size: 0.875rem;
+}
+
+.breadcrumbs li {
+    margin-right: 0.5rem;
+}
+
+.breadcrumbs a {
+    color: white;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
