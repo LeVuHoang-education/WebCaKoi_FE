@@ -129,6 +129,8 @@ const projects = [
     },
 ];
 
+
+
 export default function ProjectDetail() {
     const { projectName } = useParams();
     const project = projects.find(p => p.name.toLowerCase().replace(/ /g, '-') === projectName);
@@ -145,14 +147,13 @@ export default function ProjectDetail() {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}>
-                <div className="overlay"></div>
-                <div className="content">
+                <div className="content-banner">
                     <h1 className="title">{project.name}</h1>
                     <div className="breadcrumbs">
                         <ul>
-                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/Trangchu"> Trang chủ</a></li>
                             <li>&raquo;</li>
-                            <li>Dự Án</li>
+                            <li><a href="/Project">Dự Án</a></li>
                             <li>&raquo;</li>
                             <li>{project.name}</li>
                         </ul>
@@ -163,7 +164,7 @@ export default function ProjectDetail() {
                 <div className="project-description">
                     <h2>{project.name}</h2>
                     <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam magni, vitae! Alias architecto dolor dolore eos id nam nostrum placeat, reprehenderit sequi similique. Animi asperiores cumque dolores et possimus rerum saepe! Ab architecto corporis cupiditate doloremque error expedita facere in iste itaque iusto laboriosam maxime modi molestias, natus neque nihil nostrum numquam, officiis optio pariatur quae quasi quisquam ratione sunt tempore vel vitae! Aliquid commodi delectus dicta dolorem, ea earum eveniet excepturi incidunt ipsum itaque laborum magni maiores, minus provident quas quisquam quos saepe sit tempore voluptate! Aut deleniti dolores, esse eveniet fugit in laboriosam magnam minima nihil non omnis quas reprehenderit repudiandae soluta tempora tempore ullam voluptatibus. Beatae esse iure labore! Alias aperiam aspernatur assumenda cum dicta, eius eos eveniet, excepturi illum incidunt ipsum itaque nam nobis optio quis repellendus sint tempora unde. Deleniti earum iste nostrum nulla praesentium quas quidem ullam vero. Architecto at commodi consectetur molestias reiciendis vel. Dolorem eaque expedita explicabo maxime modi odit perferendis quasi tempora. Aliquam, animi distinctio ex minima quasi recusandae voluptas? Debitis eaque incidunt ipsam laudantium libero, maiores non odit placeat quaerat, quisquam quo rem repellendus sint tempora totam vero voluptate? Adipisci officia tempore vel voluptatum. Ab eum impedit recusandae ullam voluptas.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam magni, vitae! Alias architecto dolor dolore eos id nam nostrum placeat, reprehenderit sequi similique. Animi asperiores cumque dolores et possimus rerum saepe! Ab architecto corporis cupiditate doloremque error expedita facere in iste itaque iusto laboriosam maxime modi molestias, natus neque nihil nostrum numquam, officiis optio pariatur quae quasi quisquam ratione sunt tempore vel vitae! Aliquid commodi delectus dicta dolorem, ea earum eveniet excepturi incidunt ipsum itaque laborum magni maiores, minus provident quas quisquam quos saepe sit tempore voluptate! Aut deleniti dolores, esse eveniet fugit in laboriosam magnam minima nihil non omnis quas reprehenderit repudiandae soluta tempora tempore ullam voluptatibus. Beatae esse iure labore! Alias aperiam aspernatur assumenda cum dicta, eius eos eveniet, excepturi illum incidunt ipsum itaque nam nobis optio quis repellendus sint tempora unde. Deleniti earum iste nostrum nulla praesentium quas quidem ullam vero. Architecto at commodi consectetur molestias reiciendis vel. Dolorem eaque expedita explicabo maxime modi odit perferendis quasi tempora. Aliquam, animi distinctio ex minima quasi recusandae voluptas? Debitis eaque incidunt ipsam laudantium libero, maiores non odit placeat quaerat, quisquam quo rem repellendus sint tempora totam vero voluptate? Adipisci officia tempore vel voluptatum. Ab eum impedit recusandae ullam voluptas.
                     </p>
                 </div>
                 <div className="project-details">
@@ -210,4 +211,3 @@ export default function ProjectDetail() {
         </div>
     );
 }
-

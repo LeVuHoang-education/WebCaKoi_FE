@@ -8,6 +8,9 @@ import UserManage from "./pages/admin/UserManage.jsx";
 import OrdersManage from "./pages/admin/OrdersManage.jsx";
 import Header from "./components/header.jsx";
 import Footer from "./components/footer.jsx";
+import ProjectPage from "./pages/Duan/ProjectPage.jsx";
+import ProjectDetail from "./pages/Duan/ProjectDetail.jsx";
+
 
 
 function App() {
@@ -15,13 +18,16 @@ function App() {
         <div className="App">
         <Router>
             <Routes>
-                    <Route path="/"  element={
-                        <>
-                        <Header/>
-                        <Trangchu/>
-                        <Footer/>
-                        </>
-                    } />
+                <Route path="/"  element={
+                    <Trangchu />
+                } />
+                <Route path="/Trangchu" element={
+                    <Trangchu />
+                } />
+                <Route path="/Project" element={
+                    <ProjectPage/>
+                } />
+                <Route path="/project/:projectName" element={<ProjectDetail />} />
 
                     <Route path="Admin/dashboard" element={
                         <AdminLayout>

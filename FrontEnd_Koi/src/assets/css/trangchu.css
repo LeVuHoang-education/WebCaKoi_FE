@@ -1,10 +1,9 @@
-@font-face
-{
-
-src: url('../font/SVN-Avo.woff2') format('woff2'),
-url('../font/SVN-Avo.woff') format('woff'),
-url('../font/SVN-Avo.ttf') format('truetype'),
-url('../font/SVN-Avo.svg#SVN-Avo') format('svg');
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('../font/SVN-Avo.woff2') format('woff2'),
+    url('../font/SVN-Avo.woff') format('woff'),
+    url('../font/SVN-Avo.ttf') format('truetype'),
+    url('../font/SVN-Avo.svg#SVN-Avo') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -15,7 +14,7 @@ body {
     font-family: 'SVN-Avo', sans-serif;
 }
 
-span {
+#wrapper span {
     font-family: "Josefin Sans", sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -26,28 +25,25 @@ span {
     letter-spacing: .5px;
 }
 
-h2 {
+#wrapper h2 {
     font-size: 40px;
     font-weight: bold;
     padding-bottom: 20px;
 }
 
-/*button {*/
-/*    font-size: 20px;*/
-/*    font-weight: 700;*/
-/*    margin: 10px;*/
-/*    padding: 10px 20px;*/
-/*    border: none;*/
-/*    background-color: #333;*/
-/*    color: white;*/
-/*    cursor: pointer;*/
-/*}*/
-
-body {
-
+#wrapper button {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
 }
 
-button:hover {
+
+#wrapper button:hover {
     color: black;
     background-color: white;
 }
@@ -149,7 +145,7 @@ button:hover {
 }
 
 
-.content {
+.content-trangchu {
     background-image: url("../image/6226861.jpg");
     text-align: center;
     display: flex;
@@ -158,10 +154,10 @@ button:hover {
     margin: 0 auto;
 }
 
-.content .text-content {
+.content-trangchu .text-content {
     font-size: 1.4vw;
     color: white;
-    width: 50%;
+    width: 60%;
     padding-left: 150px;
     text-align: right;
 }
@@ -171,7 +167,7 @@ button:hover {
     display: flex;
     align-items: center;
     margin-top: 30px;
-    width: 40%;
+    width: 30%;
 }
 
 .author img {

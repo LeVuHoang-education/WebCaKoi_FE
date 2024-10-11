@@ -1,4 +1,4 @@
-.container {
+.projectlist-container {
     display: flex;
     flex-direction: column;
     max-width: 1200px;
@@ -95,4 +95,7 @@
 a {
     text-decoration: none;
     color: inherit;
+}
+.content-banner{
+    padding-left:200px;
 }
