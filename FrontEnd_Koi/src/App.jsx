@@ -1,32 +1,46 @@
-import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import './App.css'
+import AdminLayout from "./pages/admin/AdminLayout.jsx";
+import Dashboard from "./pages/admin/Dashboard.jsx";
+import Trangchu from "./pages/Trangchu/Trangchu.jsx";
+import UserManage from "./pages/admin/UserManage.jsx";
+import OrdersManage from "./pages/admin/OrdersManage.jsx";
 import Header from "./components/header.jsx";
 import Footer from "./components/footer.jsx";
-import TrangChu from "./pages/Trangchu/Trangchu.jsx";
+
 
 function App() {
   return (
         <div className="App">
-            {/* code thanh navbar*/}
+        <Router>
+            <Routes>
+                    <Route path="/"  element={
+                        <Trangchu />
+                    } />
 
+                    <Route path="Admin/dashboard" element={
+                        <AdminLayout>
+                             <Dashboard />
+                        </AdminLayout>
+                    } />
 
+                    <Route path="Admin/user" element={
+                        <AdminLayout>
+                            <UserManage />
+                        </AdminLayout>
+                    } />
 
-            {/*<Routes>*/}
-            {/*        <Route path="/"  element={<Homepages />} />*/}
-            {/*        <Route path="/admin" element={<Admin />} />*/}
-            {/*        <Route path="Dashboard" element={<Dashboard />} />*/}
-            {/*        <Route path="ProjectManage" element={<ProjectManage />} />*/}
-            {/*        <Route path="SampleProjects" element={<SampleProjects />} />*/}
-            {/*        <Route path="ServiceManage" element={<ServiceManage />} />*/}
-            {/*        <Route path="UserManage" element={<UserManage />} />*/}
-
-            {/*</Routes>*/}
+                    <Route path="Admin/orders" element={
+                        <AdminLayout>
+                            <OrdersManage />
+                        </AdminLayout>
+                    } />
+            </Routes>
+        </Router>
             <Header/>
             <TrangChu/>
             <Footer/>
-
-
         </div>
   )
 }
