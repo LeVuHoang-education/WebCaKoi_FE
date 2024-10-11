@@ -149,7 +149,7 @@ button:hover {
 
 
 .content {
-    background-color: rgba(0, 0, 0, 0.88);
+    background-image: url("../image/6226861.jpg");
     text-align: center;
     display: flex;
     align-items: center;
@@ -498,11 +498,35 @@ button:hover {
     font-weight: bold;
     font-size: 18px;
 }
+#contentlh{
+    background-image: url("../image/6226861.jpg");
+    color:white;
+
+}
 
 
 @media screen and (max-width: 768px) {
-    .slider {
-        height: 400px;
+    .text-banner {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        border-radius: 5px;
+    }
+
+    .text-banner h1 {
+        font-size: 6vw;
+        font-weight: 700;
+        margin: 10px;
+    }
+
+    .text-banner p {
+        font-size: 2.5vw;
+        font-weight: 500;
+        padding: 5px 5px;
+        line-height: 1.6; /* Adjust this value to increase line spacing */
     }
 
     .service-item {
