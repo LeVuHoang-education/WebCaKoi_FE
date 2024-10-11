@@ -24,10 +24,13 @@ import blog3 from '../../assets/image/blog3.jpg';
 import blog4 from '../../assets/image/blog4.jpg';
 import blog5 from '../../assets/image/blog5.jpg';
 import blog6 from '../../assets/image/blog6.jpg';
+import Header from "../../components/header.jsx";
+import Footer from "../../components/footer.jsx";
 
 
 const Trangchu = () => {
     return (
+        <div> <Header/>
         <div id="wrapper">
             <div className="slider">
                 <div className="list">
@@ -348,6 +351,8 @@ const Trangchu = () => {
                     </div>
                 </div>
             </div>
+        </div>
+            <Footer/>
         </div>
     );
 };

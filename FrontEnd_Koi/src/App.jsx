@@ -13,7 +13,6 @@ import Footer from "./components/footer.jsx";
 function App() {
   return (
         <div className="App">
-
         <Router>
             <Routes>
                     <Route path="/"  element={
@@ -39,6 +38,9 @@ function App() {
                     } />
             </Routes>
         </Router>
+            <Header/>
+            <TrangChu/>
+            <Footer/>
         </div>
   )
 }
