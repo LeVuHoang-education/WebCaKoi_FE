@@ -1,8 +1,7 @@
-import React, {useEffect,useState } from 'react';
+import  {useState } from 'react';
 import VisitorsAnalytics from "../../components/admin/ChartBoard";
 import ChartComponent from "../../components/admin/ReneuveChart";
 import {Link} from "react-router-dom";
-import Button from "bootstrap/js/src/button.js";
 
 const Dashboard = () => {
 

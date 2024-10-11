@@ -1,26 +1,30 @@
-import carousel from "bootstrap/js/src/carousel.js";
-
 const API_BASE_URL = 'http://localhost:3000/orders';
 
-export const getOrders = async () =>
+export const fetchOrders = async () =>
 {
     try {
-    const response =  await fetch(API_BASE_URL);
-    if(!response.ok) throw new Error(response.statusText);
-    return await response.json();
+    const response =  await fetch(`${API_BASE_URL}`);
+    if(!response.ok) {
+        throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    return data;
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 }
 
-export const getOrdersById = async (id) => {
+export const fetchOrdersById = async (id) => {
     try {
         const response = await fetch(`${API_BASE_URL}/${id}`);
-        if(!response.ok) throw new Error(response.statusText);
-        return await response.json();
+        if(!response.ok) {
+            throw new Error(response.statusText);
+        }
+        const data = await response.json();
+        return data;
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 }
@@ -33,12 +37,14 @@ export const addOrder = async (newOrder) => {
             headers: {
             'Content-Type': 'application/json',
         },
-            body: JSON.stringify({newOrder})
+            body: JSON.stringify(newOrder)
         });
-        if(!response.ok) throw new Error(response.statusText);
+        if(!response.ok) {
+            throw new Error(response.statusText);
+        }
         return await response.json();
     }catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 }
@@ -52,10 +58,12 @@ export const updateOrder = async (id, newOrder) => {
             },
             body: JSON.stringify({newOrder})
         });
-        if(!response.ok) throw new Error(response.statusText);
+        if(!response.ok) {
+            throw new Error(response.statusText);
+        }
         return await response.json();
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 }
@@ -64,18 +72,21 @@ export const deleteOrder = async (id) => {
     try {
         const response = await fetch(`${API_BASE_URL}/${id}`,{
             method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
         });
-        if(response.status === 204) {
+        if(response.status === 204 ||response.status === 200) {
             console.log('Order deleted successfully');
             return true;
         } else if(response.status === 404) {
-            console.log('Order is not found');
+            console.error('Order is not found');
             return false;
         } else {
             throw new Error('Error deleting order');
         }
     }catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 }

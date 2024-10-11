@@ -16,7 +16,11 @@ function App() {
         <Router>
             <Routes>
                     <Route path="/"  element={
-                        <Trangchu />
+                        <>
+                        <Header/>
+                        <Trangchu/>
+                        <Footer/>
+                        </>
                     } />
 
                     <Route path="Admin/dashboard" element={
@@ -36,11 +40,10 @@ function App() {
                             <OrdersManage />
                         </AdminLayout>
                     } />
+
             </Routes>
         </Router>
-            <Header/>
-            <TrangChu/>
-            <Footer/>
+
         </div>
   )
 }
