@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import React from "react";
 import AdminSidebar from "../../components/admin/AdminSidebar.jsx";
 import AdminNavbar from "../../components/admin/AdminNavbar.jsx";
 

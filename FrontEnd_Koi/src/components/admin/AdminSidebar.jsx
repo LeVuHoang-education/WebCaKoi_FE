@@ -20,7 +20,7 @@ const AdminSidebar = () => {
                             <Link to="/Admin/User" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">User</Link>
                         </li>
                         <li className="my-4 text-xl">
-                            <Link to="/Admin/Dashboard" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Order</Link>
+                            <Link to="/Admin/Orders" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Order</Link>
                         </li>
                         <li className="my-4 text-xl">
                             <Link to="/Admin/Dashboard" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Rating -
