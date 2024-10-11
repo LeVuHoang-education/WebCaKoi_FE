@@ -1,0 +1,53 @@
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%; /* Adjust to fill grid space */
+  text-align: left; /* Align content to left */
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* Make the image cover the container */
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-content h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.card-content p {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card-content small {
+  color: #888;
+}
