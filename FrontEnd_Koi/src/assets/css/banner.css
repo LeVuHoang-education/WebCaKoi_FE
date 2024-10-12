@@ -5,17 +5,7 @@
     padding: 20rem 0;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://sgl.com.vn/wp-content/uploads/2023/10/bg-2-gv-kt-chuan-fix-mobile-1920-1280.jpg');
-    background-position: center;
-    opacity: 0.5;
-}
+
 
 .overlay {
     position: absolute;

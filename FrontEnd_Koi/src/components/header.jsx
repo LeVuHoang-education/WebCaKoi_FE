@@ -11,7 +11,7 @@ const Header = () => {
                 <ul id="main-menu">
                     <li><a href="#">Trang Chủ</a></li>
                     <li><a href="#">Giới Thiệu</a></li>
-                    <li><a href="#">Dự Án</a></li>
+                    <li><a href="/project">Dự Án</a></li>
                     <li className="has-submenu">
                         <a href="#">
                             Dịch Vụ

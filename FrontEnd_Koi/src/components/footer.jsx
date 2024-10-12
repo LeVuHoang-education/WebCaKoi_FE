@@ -3,7 +3,7 @@ import logo from '../assets/image/logo-footer-1.png'
 const Footer = () => {
     return (
         <footer>
-            <div className="container">
+            <div className="container-footer">
                 <div className="footer-content"  >
                     <img alt="logo" height="100" src={logo}width="260"/>
                     <h3> Công ty TNHH Kiến trúc Cảnh quan SGL</h3>
@@ -50,13 +50,7 @@ const Footer = () => {
                         hoạch
                         và Đầu tư thành phố Hồ Chí Minh.</p>
                     <br/><a href="http://online.gov.vn/Home/WebDetails/75802" rel="nofollow" target="_blank">
-                    <img alt="SGL - đã thông báo bộ công thương"
-                         className="attachment-full size-full wp-image-6804 entered lazyloaded"
-                         data-lazy-src="https://sgl.com.vn/wp-content/uploads/2020/02/sgl-da-thong-bao-bo-cong-thuong.webp"
-                         data-ll-status="loaded"
-                         height="68"
-                         src="https://sgl.com.vn/wp-content/uploads/2020/02/sgl-da-thong-bao-bo-cong-thuong.webp"
-                         width="180"/>
+
                     <noscript><img alt="SGL - đã thông báo bộ công thương"
                                    className="attachment-full size-full wp-image-6804"
                                    height="68"

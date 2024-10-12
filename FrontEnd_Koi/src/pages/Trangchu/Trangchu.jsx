@@ -84,7 +84,7 @@ const Trangchu = () => {
                     <li/>
                 </ul>
             </div>
-            <div className="content">
+            <div className="content-trangchu">
                 <div className="text-content">
                     <h3>
                         Tôi luôn ám ảnh việc biến những công trình cảnh quan thành những tác

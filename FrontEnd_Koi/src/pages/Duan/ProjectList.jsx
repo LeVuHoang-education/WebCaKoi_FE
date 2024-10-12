@@ -59,8 +59,7 @@ export default function ProjectList() {
         <div>
             <div className="hero"
                  style={{backgroundImage: "url('https://sgl.com.vn/wp-content/uploads/2023/10/bg-2-gv-kt-chuan-fix-mobile-1920-1280.jpg')"}}>
-                <div className="overlay"></div>
-                <div className="content">
+                <div className="content-banner">
                     <h1 className="title">Dự Án</h1>
                     <div className="breadcrumbs">
                         <ul>
@@ -71,7 +70,7 @@ export default function ProjectList() {
                     </div>
                 </div>
             </div>
-            <div className="container">
+            <div className="projectlist-container">
                 <div className="filters">
                     <button onClick={() => setFilter('All')}
                             className={`filter-button ${filter === 'All' ? 'active' : ''}`}>
