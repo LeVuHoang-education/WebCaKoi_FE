@@ -107,30 +107,44 @@ const UserManage = () => {
                                          alt=""/>
                                 </div>
                                 <div className="ml-4">
-                                    <div className="text-sm font-medium w-full text-gray-900">
+                                    <div className="text-sm text-center font-medium w-full text-gray-900">
                                         {user.name}
                                     </div>
                                 </div>
                             </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">{user.phone}</div>
+                            <div className="text-sm text-center text-gray-900">{user.phone}</div>
                         </td>
+
                         <td className="px-6 py-4 whitespace-nowrap">
-                <span
-                    className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    {user.role}
-                </span>
+                            {user.role === "manager" ? (
+                                <span
+                                    className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                </span>
+
+                            ) : (
+                                <span
+                                    className="px-2 inline-flex text-xs text-center leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    {user.role}
+                                </span>
+                            )
+                            }
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
                             {user.email}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
+                        <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                             <button onClick={() => handleResetPassword(user.id)}
                                     className="ml-2 text-red-600 hover:text-red-900">Reset password
                             </button>
-                            <button onClick={() => handleDeleteUser(user.id)}
-                                    className="ml-2 text-red-600 hover:text-red-900">Delete
+
+                            <button
+                                onClick={() => handleDeleteUser(user.id)}
+                                className={`ml-2 hover:text-red-900 ${user.role === "manager" ? "text-gray-400 hover:text-gray-400" : "text-red-600"}`}
+                                disabled={user.role === "manager"}
+                            >
+                                Delete
                             </button>
                         </td>
                     </tr>
@@ -151,8 +165,7 @@ const UserManage = () => {
                     <button
                         key={index}
                         onClick={() => handleChangPages(index + 1)}
-                        className={`px-4 py-2 mx-1 rounded-full ${currentPage === index + 1 ? 'bg-green-700 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                    >
+                        className={`px-4 py-2 mx-1 rounded-full ${currentPage === index + 1 ? 'bg-green-700 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`} >
                         {index + 1}
                     </button>
                 ))}
