@@ -1,35 +1,44 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000/orders';
+const API_BASE_URL = 'http://localhost:3000/Project';
 
-export const fetchOrders = async () =>
-{
+export const getAllProjects = async () => {
     try {
-    const response =  await axios.get(`${API_BASE_URL}`);
-    return response.data;
-    } catch (error) {
+        const response = await axios.get(API_BASE_URL);
+        return response.data;
+    }catch (error) {
         console.error(error);
         throw error;
     }
 }
 
-export const fetchOrdersById = async (id) => {
+export const getProjectById = async (id) => {
     try {
         const response = await axios.get(`${API_BASE_URL}/${id}`);
         return response.data;
-    } catch (error) {
+    }catch(error) {
         console.error(error);
         throw error;
     }
 }
 
-export const addOrder = async (newOrder) => {
+export const updateProject = async (id,newProject) => {
     try {
-        const response = await axios.post(`${API_BASE_URL}`, newOrder , {
+        const response = await axios.put(`${API_BASE_URL}/${id}`, newProject, {
             headers: {
                 'Content-Type': 'application/json',
             },
         });
+        return response.data;
+    }catch (error){
+        console.error(error);
+        throw error;
+    }
+}
+
+export const addProject = async (newProject) => {
+    try {
+        const response = await axios.post(API_BASE_URL, newProject);
         return response.data;
     }catch (error) {
         console.error(error);
@@ -37,23 +46,8 @@ export const addOrder = async (newOrder) => {
     }
 }
 
-export const updateOrder = async (id, newOrder) => {
-    try {
-        const response = await axios.put(`${API_BASE_URL}/${id}`, newOrder , {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        return response.data;
-    }catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
-
-
-export const deleteOrder = async (id) => {
-    try {
+export const deleteProject = async (id) => {
+    try{
         const response = await axios.delete(`${API_BASE_URL}/${id}`,{
             headers: {
                 'Content-Type': 'application/json',
@@ -71,19 +65,5 @@ export const deleteOrder = async (id) => {
             console.error('Error deleting order:', error);
             throw error;
         }
-    }
-}
-
-export const updateStatusOrders = async (id, status) => {
-    try{
-        const response = await axios.patch(`${API_BASE_URL}/${id}`, status , {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        return response.data;
-    }catch (error) {
-        console.error(error);
-        throw error;
     }
 }
