@@ -95,8 +95,8 @@ const OrderDetailModal = ({ isOpen, onRequestClose, order }) => {
 
 
 OrderDetailModal.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    onRequestClose: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool,
+    onRequestClose: PropTypes.func,
     order: PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,

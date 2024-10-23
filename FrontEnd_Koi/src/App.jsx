@@ -1,93 +1,35 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css'
-import AdminLayout from "./pages/admin/AdminLayout.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import Trangchu from "./pages/Trangchu/Trangchu.jsx";
 import UserManage from "./pages/admin/UserManage.jsx";
 import OrdersManage from "./pages/admin/OrdersManage.jsx";
-import Header from "./components/header.jsx";
-import Footer from "./components/footer.jsx";
 import ProjectPage from "./pages/Duan/ProjectPage.jsx";
 import ProjectDetail from "./pages/Duan/ProjectDetail.jsx";
-import PaymentStatus from "./components/admin/SetPaymentStatus.jsx";
-import OrdersStatus from "./components/admin/SetOrdersStatus.jsx";
-import OrderDetail from "./components/admin/OrderDetail.jsx";
-import ProjectManagePages from "./pages/admin/ProjectManage.jsx";
-
-
+import AdminRoute from "./components/admin/AdminRoute.jsx";
+import ProjectManage from "./pages/admin/ProjectManage.jsx";
+import UserRoute from "./components/UserRoute.jsx";
 
 function App() {
-  return (
+    return (
         <div className="App">
-        <Router>
-            <Routes>
-                <Route path="/"  element={
-                    <Trangchu />
-                } />
-                <Route path="/Trangchu" element={
-                    <Trangchu />
-                } />
-                <Route path="/Project" element={
-                    <ProjectPage/>
-                } />
-                <Route path="/project/:projectName" element={<ProjectDetail />} />
+            <Router>
+                <Routes>
+                    {/*Phần route dành cho user*/}
+                    <Route path="/" element={<UserRoute element={Trangchu} />} />
+                    <Route path="/Home" element={<UserRoute element={Trangchu} />} />
+                    <Route path="/Project" element={<UserRoute element={ProjectPage} />}/>
+                    <Route path="/project/:projectName" element={<UserRoute element={ProjectDetail} />} />
 
                     {/*Phần route dành cho admin*/}
-                    <Route path="/Admin/dashboard" element={
-                        <AdminLayout>
-                             <Dashboard />
-                        </AdminLayout>
-                    } />
-
-                    <Route path="/Admin/user" element={
-                        <AdminLayout>
-                            <UserManage />
-                        </AdminLayout>
-                    } />
-
-                    <Route path="/Admin/orders" element={
-                        <AdminLayout>
-                            <OrdersManage />
-                        </AdminLayout>
-                    } />
-
-                    <Route path="/Admin/Projects" element={
-                        <AdminLayout>
-                            <ProjectManagePages/>
-                        </AdminLayout>
-                    }/>
-
-                    <Route path="/Admin/PaymentStatus/:id" element={
-                        <AdminLayout>
-                            <PaymentStatus />
-                        </AdminLayout>
-                    }/>
-
-                    <Route path="/Admin/OrderStatus/:id" element={
-                        <AdminLayout>
-                            <OrdersStatus />
-                        </AdminLayout>
-                    }/>
-
-                    <Route path="/Admin/OrderDetail/:id" element={
-                        <AdminLayout>
-                            <OrderDetail/>
-                        </AdminLayout>
-                    }/>
-
-                    <Route path = "/Admin/ProjectManage" element={
-                        <AdminLayout>
-                            <ProjectManagePages/>
-                        </AdminLayout>
-                    }/>
-
-
-            </Routes>
-        </Router>
-
+                    <Route path="/Admin/dashboard" element={<AdminRoute element={Dashboard} />} />
+                    <Route path="/Admin/user" element={<AdminRoute element={UserManage} />}/>
+                    <Route path="/Admin/orders" element={<AdminRoute element={OrdersManage} />}/>
+                    <Route path="/Admin/ProjectManage" element={<AdminRoute element={ProjectManage} />}/>
+                </Routes>
+            </Router>
         </div>
-  )
+    )
 }
 
 export default App;

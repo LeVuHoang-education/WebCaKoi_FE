@@ -1,4 +1,4 @@
-import React, {useEffect, useState,useRef } from 'react';
+import  {useEffect, useState, useRef} from 'react';
 import Modal from "react-modal";
 import PropTypes from "prop-types";
 import * as Proptypes from "prop-types";
@@ -13,21 +13,21 @@ const ModalProjectDetail = ({isOpen, onRequestClose, project}) => {
     const [error, setError] = useState(null);
     const modalRef = useRef(null);
 
-    useEffect(()=>{
-        if(project && isOpen) {
+    useEffect(() => {
+        if (project && isOpen) {
             const getOrder = async () => {
                 try {
                     const data = await getProjectById(project.id);
                     setDataProject(data);
-                }catch (error) {
+                } catch (error) {
                     setError(error.message);
-                }finally {
+                } finally {
                     setLoading(false);
                 }
             };
             getOrder();
         }
-    },[project,isOpen]);
+    }, [project, isOpen]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -45,10 +45,10 @@ const ModalProjectDetail = ({isOpen, onRequestClose, project}) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen, onRequestClose]);
-    if(loading) return (
+    if (loading) return (
         <div>Loading....</div>
     )
-    if(error) return (
+    if (error) return (
         <div>Error: {error.message}</div>
     )
     if (!project || !dataProject) return null;
@@ -91,19 +91,16 @@ const ModalProjectDetail = ({isOpen, onRequestClose, project}) => {
 
 ModalProjectDetail.propTypes = {
     isOpen: PropTypes.bool.isRequired,
-        onClose
-:
-    PropTypes.func.isRequired,
-    project
-:
-    PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        location: Proptypes.string.isRequired,
-        area: Proptypes.number.isRequired,
-        image_path: PropTypes.string.isRequired,
-        album: Proptypes.arrayOf(Proptypes.string).isRequired,
-        price: Proptypes.number.isRequired,
-    })
+    onRequestClose: PropTypes.func.isRequired,
+    project:
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            location: Proptypes.string.isRequired,
+            area: Proptypes.number.isRequired,
+            image_path: PropTypes.string.isRequired,
+            album: Proptypes.arrayOf(Proptypes.string).isRequired,
+            price: Proptypes.number.isRequired,
+        })
 }
 export default ModalProjectDetail;

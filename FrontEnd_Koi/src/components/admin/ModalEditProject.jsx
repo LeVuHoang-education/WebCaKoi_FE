@@ -6,22 +6,22 @@ import {updateProject} from "../../service/ProjectApi.jsx";
 
 Modal.setAppElement(`#root`)
 const ModalUpdateProject = ({isOpen, onRequestClose, project}) => {
-    if(!project) return null;
+    if (!project) return null;
     const modalRef = useRef(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         const handleClickOutside = (event) => {
-            if(modalRef.current && !modalRef.current.contains(event.target)) {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
                 onRequestClose();
             }
         };
-        if(isOpen) {
+        if (isOpen) {
             document.addEventListener('mousedown', handleClickOutside);
         }
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [isOpen,onRequestClose]);
+    }, [isOpen, onRequestClose]);
 
     const formik = useFormik(
         {
@@ -38,31 +38,32 @@ const ModalUpdateProject = ({isOpen, onRequestClose, project}) => {
             enableReinitialize: true,
             onSubmit: async (values) => {
                 try {
-                    values.album = Array.from(values.album).map(file=>URL.createObjectURL(file));
-                    if(values.image_path instanceof File){
+                    values.album = Array.from(values.album).map(file => URL.createObjectURL(file));
+                    if (values.image_path instanceof File) {
                         values.image_path = URL.createObjectURL(values.image_path);
                     }
                     await updateProject(project.id, values);
                     onRequestClose();
-                }catch (e) {
+                } catch (e) {
                     console.error('Error updating status:', e);
                 }
             },
         });
-    return(
+    return (
         <Modal isOpen={isOpen} onRequestClose={onRequestClose}
                shouldCloseOnOverlayClick={true}
                className={`w-full h-full flex flex-col items-center justify-center`}
                overlayClassName={`fixed inset-0 bg-black bg-opacity-50`}>
-            <div ref={modalRef} className={` bg-[url(/img/406505.jpg)] bg-contain relative w-2/3 h-auto rounded-lg p-6 shadow-2xl text-white opacity-1`}>
+            <div ref={modalRef}
+                 className={` bg-[url(/img/406505.jpg)] bg-contain relative w-2/3 h-auto rounded-lg p-6 shadow-2xl text-white opacity-1`}>
                 <button
                     className="absolute top-4 right-4 text-white focus:outline-none"
                     onClick={onRequestClose}
                 >
                     &#x2715;
                 </button>
-                    <h2 className={`w-full h-auto text-2xl text-center mb-4`}>Update project</h2>
-                    <h3 className={`w-full h-auto text-xl text-left mx-5 mb-4`}>ID: {project.id}</h3>
+                <h2 className={`w-full h-auto text-2xl text-center mb-4`}>Update project</h2>
+                <h3 className={`w-full h-auto text-xl text-left mx-5 mb-4`}>ID: {project.id}</h3>
                 <form onSubmit={formik.handleSubmit} className="space-y-4">
                     <div className={`flex items-center mb-4 flex-col`}>
                         <div className={`flex mb-4 w-full text-white justify-evenly text-left`}>
@@ -79,7 +80,7 @@ const ModalUpdateProject = ({isOpen, onRequestClose, project}) => {
                                 ) : null}
                             </div>
 
-                            <div className={`flex items-center w-1/2 mb-4`}    >
+                            <div className={`flex items-center w-1/2 mb-4`}>
                                 <label htmlFor="category" className={`mb-1 w-1/6`}>Category: </label>
                                 <input
                                     id="category"
@@ -227,8 +228,7 @@ const ModalUpdateProject = ({isOpen, onRequestClose, project}) => {
 
 ModalUpdateProject.propTypes = {
     isOpen: PropTypes.bool.isRequired,
-    onRequestClose:
-    PropTypes.func.isRequired,
+    onRequestClose: PropTypes.func.isRequired,
     project:
         PropTypes.shape({
             id: PropTypes.number.isRequired,

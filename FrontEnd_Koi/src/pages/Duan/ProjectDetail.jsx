@@ -141,7 +141,6 @@ export default function ProjectDetail() {
 
     return (
         <div>
-            <Header/>
             <div className="hero" style={{
                 backgroundImage: `url(${project.image})`,
                 backgroundSize: 'cover',
@@ -206,8 +205,6 @@ export default function ProjectDetail() {
                     ))}
                 </div>
             </div>
-            <Footer/>
-
         </div>
     );
 }
