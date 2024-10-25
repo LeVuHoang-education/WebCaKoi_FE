@@ -24,66 +24,97 @@ import blog3 from '../../assets/image/blog3.jpg';
 import blog4 from '../../assets/image/blog4.jpg';
 import blog5 from '../../assets/image/blog5.jpg';
 import blog6 from '../../assets/image/blog6.jpg';
-import Header from "../../components/header.jsx";
-import Footer from "../../components/footer.jsx";
+import React, { useState, useEffect } from 'react';
+
+
+const Slider = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const slides = [
+        {
+            image: slide1,
+            title: "KIẾN TẠO CUỘC SỐNG",
+            description: "Những không gian trở về, chữa lành luôn là điểm cuối cùng của mỗi sự lựa chọn...",
+            buttonLabel: "Xem dự án",
+            buttonLink: "/Project",
+        },
+        {
+            image: slide2,
+            title: "DESIGN & BUILD",
+            description: "Chúng tôi tạo ra những khu vườn chỉnh chu từ thiết kế đến thi công...",
+            buttonLabel: "Chi tiết",
+            buttonLink: "/Dichvu/1",
+        },
+        {
+            image: slide3,
+            title: "THIẾT KẾ KIẾN TRÚC CẢNH QUAN",
+            description: "Chúng tôi tự hào là những người thiết kế kiến trúc cảnh quan...",
+            buttonLabel: "Chi tiết",
+            buttonLink: "/Dichvu/2",
+        }
+    ];
+
+    // Auto-slide effect
+    useEffect(() => {
+        const slideInterval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+        }, 5000);
+
+        // Clean up interval on component unmount
+        return () => clearInterval(slideInterval);
+    }, [slides.length]);
+
+    // Navigate to the next slide
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    };
+
+    // Navigate to the previous slide
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
+    };
+
+    return (
+        <div className="slider">
+            <div className="list">
+                {slides.map((slide, index) => (
+                    <div
+                        key={index}
+                        className={`item ${index === currentIndex ? "active" : ""}`}
+                        style={{ display: index === currentIndex ? "inline-block" : "none" }}
+                    >
+                        <img alt={`slide-${index + 1}`} src={slide.image} />
+                        <div className="text-banner">
+                            <h1>{slide.title}</h1>
+                            <p>{slide.description}</p>
+                            <button onClick={() => (window.location.href = slide.buttonLink)}>
+                                {slide.buttonLabel}
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div className="buttons">
+                <button id="prev" onClick={prevSlide}>&lt;</button>
+                <button id="next" onClick={nextSlide}>&gt;</button>
+            </div>
+            <ul className="dots">
+                {slides.map((_, index) => (
+                    <li
+                        key={index}
+                        className={index === currentIndex ? "active" : ""}
+                        onClick={() => setCurrentIndex(index)}
+                    />
+                ))}
+            </ul>
+        </div>
+    );
+};
 
 
 const Trangchu = () => {
     return (
-        <div> <Header/>
         <div id="wrapper">
-            <div className="slider">
-                <div className="list">
-                    <div className="item">
-                        <img alt="slide-1" src={slide1}/>
-                        <div className="text-banner">
-                            <h1>KIẾN TẠO CUỘC SỐNG</h1>
-                            <p>
-                                Những không gian trở về, chữa lành luôn là điểm cuối cùng của mỗi sự
-                                lựa chọn, khi bạn đã vất vả ngần ấy thời gian. Bây giờ hãy để cho
-                                chúng tôi tạo cho bạn một không gian mà bạn mong đợi.
-                            </p>
-                            <button>Chi tiết</button>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <img alt="slide2" src={slide2}/>
-                        <div className="text-banner">
-                            <h1>DESIGN &amp; BUILD</h1>
-                            <p>
-                                Chúng tôi tạo ra những khu vườn chỉnh chu từ thiết kế đến thi công,
-                                các khu vườn triệu đô, thể hiện được vị thế và đẳng cấp của chủ đầu
-                                tư. Nhưng trên hết hiệu quả và kiến tạo nơi chốn luôn được đặt lên
-                                hàng đầu.
-                            </p>
-                            <button>Chi tiết</button>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <img alt="" src={slide3}/>
-                        <div className="text-banner">
-                            <h1>
-                                THIẾT KẾ <br/> KIẾN TRÚC CẢNH QUAN
-                            </h1>
-                            <p>
-                                Chúng tôi tự hào là những người thiết kế kiến trúc cảnh quan và xây
-                                dựng các giải pháp sáng tạo để giúp mọi người thực hiện tầm nhìn của
-                                họ và biến chúng thành hiện thực. Thú vị đấy chứ?
-                            </p>
-                            <button>Chi tiết</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="buttons">
-                    <button id="prev">&lt;</button>
-                    <button id="next">&gt;</button>
-                </div>
-                <ul className="dots">
-                    <li className="active"/>
-                    <li/>
-                    <li/>
-                </ul>
-            </div>
+            <Slider />
             <div className="content-trangchu">
                 <div className="text-content">
                     <h3>
@@ -96,8 +127,10 @@ const Trangchu = () => {
 
                     <div id="text-author">
                         <img src={trantrieuvy} alt="Chữ ký" />
-                        <h3>Trần Triệu Vỹ</h3>
-                        <p>Founder & CEO</p>
+                        <div>
+                            <h3>Trần Triệu Vỹ</h3>
+                            <p>Founder & CEO</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -328,7 +361,7 @@ const Trangchu = () => {
                             <img alt="Blog 3" src={blog3}/>
                         </a>
                         <a href="#">
-                            \#6 thiết kế tiểu cảnh trong nhà đẹp được ưa chuộng nhất 2024
+                            #6 thiết kế tiểu cảnh trong nhà đẹp được ưa chuộng nhất 2024
                         </a>
                     </div>
                     <div className="blog-item">
@@ -352,8 +385,7 @@ const Trangchu = () => {
                 </div>
             </div>
         </div>
-            <Footer/>
-        </div>
+
     );
 };
 
