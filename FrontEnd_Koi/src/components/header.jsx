@@ -55,7 +55,9 @@ const Header = () => {
                         </ul>
                     </li>
                     <li><a href="#">Báo Giá</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li>
+                        <Link to={`/Blog`}>Blog</Link>
+                    </li>
                     <li><a href="#">Liên Hệ</a></li>
                     <li className="has-submenu">
                         <a href="#">
