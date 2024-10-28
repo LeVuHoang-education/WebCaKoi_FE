@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./DesignStaffPage.css";
 
 const DesignStaffPage = () => {
@@ -159,7 +159,7 @@ const DesignStaffPage = () => {
                 ))}
               </ul>
             ) : (
-              <p>Chưa có đơn hàng nào. Nhấn "Thêm đơn hàng mới" để bắt đầu.</p>
+              <p>Chưa có đơn hàng nào. Nhấn Thêm đơn hàng mới để bắt đầu.</p>
             )}
 
             {/* Nút thêm đơn hàng mới */}
