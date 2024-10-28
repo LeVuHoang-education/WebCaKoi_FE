@@ -6,6 +6,7 @@ import cakoi2 from "../../assets/image/ca-koi-2.jpg";
 import trantrieuvy from "../../assets/image/tran-trieu-vy-avatar (1).png";
 import phonhcanh from "../../assets/image/phong cảnh.jpg";
 import { size } from "@cloudinary/url-gen/qualifiers/textFit";
+import { Link } from "react-router-dom";
 
 const GioiThieu = () => {
   return (
@@ -331,7 +332,10 @@ const GioiThieu = () => {
             </div>
             <ul className="bapchi__dieukhoang">
               <span className="danhsachtext">Điều khoản sử dụng</span>|
-              <span className="danhsachtext">Chính sách bảo mật</span>|
+              <span className="danhsachtext">
+                <Link to={"/csbm"}>Chính sách bảo mật</Link>
+              </span>
+              |
               <span className="danhsachtext">Chính sách và quy định chung</span>
             </ul>
           </div>

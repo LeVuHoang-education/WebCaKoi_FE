@@ -17,6 +17,7 @@ import DichvuDetail from "./pages/Dichvu/DichvuDetail.jsx";
 import OrderForm from "./pages/Dathang/OrderForm.jsx";
 import GioiThieu from "./pages/gioithieu/gioithieu.jsx";
 import nhanvienthietke from "./pages/nhanvienthietke/DesignStaffPage.jsx";
+import Csbm from "./pages/csbm/csbm.jsx";
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
             path="/nhanvien"
             element={<UserRoute element={nhanvienthietke} />}
           />
+          <Route path="/csbm" element={<UserRoute element={Csbm} />} />
+
           <Route path="/Blog" element={<UserRoute element={BlogPage} />} />
           <Route
             path="/blog/:blogName"
