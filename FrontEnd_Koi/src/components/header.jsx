@@ -44,7 +44,7 @@ const Header = () => {
                         <Link to={`/Project`}>Dự án</Link>
                     </li>
                     <li className="has-submenu">
-                        <a href="#">
+                        <a href="/Dichvu">
                             Dịch Vụ
                             <i
                                 className="fa-solid fa-chevron-down"
@@ -52,15 +52,18 @@ const Header = () => {
                             ></i>
                         </a>
                         <ul className="submenu">
-                            <li><a href="#">Thiết Kế Và Thi Công Kiến Trúc</a></li>
-                            <li><a href="#">Thiết Kế Và Thi Công Cảnh Quan</a></li>
-                            <li><a href="#">Thiết Kế Và Thi Công Nhà Vườn</a></li>
-                            <li><a href="#">Thiết Kế Và Thi Công Sân Vườn</a></li>
-                            <li><a href="#">Thiết Kế Và Thi Công Hồ Cá Koi</a></li>
+                            <li><a href="/dichvu/1">Thiết Kế Và Thi Công Hồ Cá Koi</a></li>
+                            <li><a href="/dichvu/2">Thiết Kế Và Thi Công Cảnh Quan</a></li>
+                            <li><a href="/dichvu/3">Thiết Kế Và Thi Công Nhà Vườn</a></li>
+                            <li><a href="/dichvu/4">Thiết Kế Và Thi Công Sân Vườn</a></li>
+                            <li><a href="/dichvu/5">Thiết Kế Và Thi Công Kiến Trúc</a></li>
+
                         </ul>
                     </li>
                     <li><a href="#">Báo Giá</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li>
+                        <Link to={`/Blog`}>Blog</Link>
+                    </li>
                     <li><a href="#">Liên Hệ</a></li>
                     <li className="has-submenu">
                         <a href="#">
