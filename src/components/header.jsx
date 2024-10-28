@@ -71,7 +71,7 @@ const Header = () => {
             <Link to={`/Blog`}>Blog</Link>
           </li>
           <li>
-            <a href="#">Liên Hệ</a>
+            <Link to={"/nhanvien"}>Liên Hệ</Link>
           </li>
           <li className="has-submenu">
             <a href="#">
