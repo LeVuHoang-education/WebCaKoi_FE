@@ -1,14 +1,18 @@
-import { useEffect, useRef} from 'react'
+import {useEffect, useRef,} from 'react'
 import Modal from 'react-modal'
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import PropTypes from "prop-types";
+import {useNavigate} from "react-router-dom";
+import {Login} from "../../service/Auth.jsx";
+import {jwtDecode} from "jwt-decode";
 
 Modal.setAppElement('#root');
 export const ModalLoginForm = ({isOpen, onRequestClose}) => {
-    if(!isOpen) return null;
+    if (!isOpen) return null;
     const modalRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -30,27 +34,32 @@ export const ModalLoginForm = ({isOpen, onRequestClose}) => {
             password: ''
         },
         validationSchema: Yup.object().shape({
-            email: Yup.string()
-                .required('Email is required'),
-            password: Yup.string()
-                .required('Password is required')
+            email: Yup.string().required('Email is required'),
+            password: Yup.string().required('Password is required')
         }),
         onSubmit: async (values) => {
             try {
-                const response = await axios.post('http://localhost:5000/login', values, {
-                    email: values.email,
-                    password: values.password
-                });
-                const token = response.data.token;
+                const response = await Login(values);
+                const {token, id} = response.data;
                 localStorage.setItem('token', token);
-                console.log('Login succesfully');
+                localStorage.setItem('userId', id);
+                const decodedToken = jwtDecode(token);
+                localStorage.setItem('email', decodedToken.sub);
+                const userRole = decodedToken.role;
+                if (userRole === 'ROLE_USER') {
+                    navigate("/Home");
+                } else if (userRole === 'ROLE_ADMIN') {
+                    navigate("/Admin/Dashboard");
+                } else {
+                    navigate("/");
+                }
                 onRequestClose();
-            } catch(error) {
-                console.log('login faiil: ',error);
+            } catch (error) {
+                console.error('Login failed: ', error);
+                alert(error.message);
             }
-        }
-        ,
-        });
+        },
+    });
     return (
         <Modal isOpen={isOpen} onRequestClose={onRequestClose}
                className={`w-full h-full flex flex-col items-center justify-center`}

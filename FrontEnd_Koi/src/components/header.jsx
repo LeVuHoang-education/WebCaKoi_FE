@@ -22,6 +22,12 @@ const Header = () => {
     const closeSignInModal = () => {
         setIsSignInModalOpen(false);
     }
+    const handleLogout  = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
+
+    const token = localStorage.getItem('token');
     return (
         <header>
             <div id="toggle-button">
@@ -64,15 +70,35 @@ const Header = () => {
                                 style={{fontSize: '0.75em', marginLeft: '5px'}}
                             ></i>
                         </a>
-                        <ul className="submenu">
-                            <li><a href="#" onClick={() => {
-                                openSignInModal()
-                            }}>Đăng nhập</a></li>
-                            <li><a href="#" onClick={() => {
-                                openSignUpModal()
-                            }}>Đăng kí</a></li>
-
-                        </ul>
+                        {!token ? (
+                            <ul className="submenu">
+                                <li><a href="#" onClick={(e) => {
+                                    e.preventDefault()
+                                    openSignInModal()
+                                }}>Đăng nhập</a></li>
+                                <li><a href="#" onClick={(e) => {
+                                    e.preventDefault()
+                                    openSignUpModal()
+                                }}>Đăng kí</a></li>
+                            </ul>
+                        ) : (
+                            <ul className="submenu">
+                                <li>
+                                    <Link to={`/Profile`}>Thông tin cá nhân</Link>
+                                </li>
+                                <li>
+                                    <Link to={`/MyOrders`}>Đơn hàng</Link>
+                                </li>
+                                <li>
+                                    <a href="#" onClick={(e) => {
+                                        e.preventDefault();
+                                        handleLogout()
+                                    }}>
+                                        Đăng xuất
+                                    </a>
+                                </li>
+                            </ul>
+                        )}
                     </li>
                 </ul>
             </nav>

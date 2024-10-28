@@ -9,6 +9,7 @@ import ProjectDetail from "./pages/Duan/ProjectDetail.jsx";
 import AdminRoute from "./components/admin/AdminRoute.jsx";
 import ProjectManage from "./pages/admin/ProjectManage.jsx";
 import UserRoute from "./components/UserRoute.jsx";
+import VerifyOTP from "./pages/Confirm/VerifyOTP.jsx";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/Home" element={<UserRoute element={Trangchu} />} />
                     <Route path="/Project" element={<UserRoute element={ProjectPage} />}/>
                     <Route path="/project/:projectName" element={<UserRoute element={ProjectDetail} />} />
+                    <Route path={"/VerifyOTP"} element={<VerifyOTP />} />
 
                     {/*Phần route dành cho admin*/}
                     <Route path="/Admin/dashboard" element={<AdminRoute element={Dashboard} />} />

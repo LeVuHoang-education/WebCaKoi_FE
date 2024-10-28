@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axiosInstance from "./axiosConfig.jsx";
 
-const API_BASE_URL = 'http://localhost:3000/Project';
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/projects`;
 
 export const getAllProjects = async () => {
     try {
-        const response = await axios.get(API_BASE_URL);
+        const response = await axiosInstance.get(API_BASE_URL);
         return response.data;
     }catch (error) {
         console.error(error);
@@ -14,7 +14,7 @@ export const getAllProjects = async () => {
 
 export const getProjectById = async (id) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/${id}`);
+        const response = await axiosInstance.get(`${API_BASE_URL}/${id}`);
         return response.data;
     }catch(error) {
         console.error(error);
@@ -24,11 +24,7 @@ export const getProjectById = async (id) => {
 
 export const updateProject = async (id,newProject) => {
     try {
-        const response = await axios.put(`${API_BASE_URL}/${id}`, newProject, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        const response = await axiosInstance.put(`${API_BASE_URL}/${id}`, newProject);
         return response.data;
     }catch (error){
         console.error(error);
@@ -38,7 +34,7 @@ export const updateProject = async (id,newProject) => {
 
 export const addProject = async (newProject) => {
     try {
-        const response = await axios.post(API_BASE_URL, newProject);
+        const response = await axiosInstance.post(API_BASE_URL, newProject);
         return response.data;
     }catch (error) {
         console.error(error);
@@ -48,11 +44,7 @@ export const addProject = async (newProject) => {
 
 export const deleteProject = async (id) => {
     try{
-        const response = await axios.delete(`${API_BASE_URL}/${id}`,{
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
+        const response = await axiosInstance.delete(`${API_BASE_URL}/${id}`);
         if(response.status === 204 ||response.status === 200) {
             console.log('Order deleted successfully');
             return true;

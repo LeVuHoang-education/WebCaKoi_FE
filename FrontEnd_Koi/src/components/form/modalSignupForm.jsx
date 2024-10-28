@@ -3,9 +3,12 @@ import Modal from "react-modal";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
+import {Register} from "../../service/Auth.jsx";
+import {useNavigate} from "react-router-dom";
+import {cat} from "@cloudinary/url-gen/qualifiers/focusOn";
 
 Modal.setAppElement('#root');
-
+const API_BASE_URL = 'http://localhost:8080/api/v1/auth/register';
 export const ModalSignupForm = ({isOpen, onRequestClose}) => {
     const modalRef = useRef(null);
 
@@ -26,10 +29,10 @@ export const ModalSignupForm = ({isOpen, onRequestClose}) => {
             document.body.style.overflow = 'auto';
         };
     }, [isOpen, onRequestClose]);
-
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
-            name: '',
+            username: '',
             email: '',
             phone: '',
             password: '',
@@ -48,7 +51,19 @@ export const ModalSignupForm = ({isOpen, onRequestClose}) => {
                 .oneOf([Yup.ref('password'), null], 'Passwords must match')
                 .required('Confirm password is required'),
 
-        })
+        }),
+        onSubmit: async (values) => {
+            try {
+                const response = await Register(values);
+                sessionStorage.setItem('userEmail', values.email);
+                console.log(response.data);
+                navigate("/VerifyOTP");
+                onRequestClose();
+            }catch (error) {
+                console.error('Register failed: ', error);
+                alert(error.message);
+            }
+        }
     })
 
     return (
@@ -161,8 +176,8 @@ export const ModalSignupForm = ({isOpen, onRequestClose}) => {
                             <div className={`flex items-center justify-center border-b border-gray-700 w-2/3`}>
                                 <img src="/img/icons8-password-100.png" className={`w-4 h-4`} alt=""/>
                                 <input
-                                    id="password"
-                                    name="password"
+                                    id="confirmPassword"
+                                    name="confirmPassword"
                                     type="password"
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}

@@ -42,4 +42,18 @@
 .read-the-docs {
   color: #888;
 }
+@keyframes breathe {
+  0% {
+    transform:scale(1.2);
+  }
+  50% {
+    transform:scale(0.5);
+  }
+  100% {
+    transform:scale(1.2);
+  }
+}
 
+.animate-infinite {
+  animation: breathe 3s infinite;
+}

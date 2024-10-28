@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import {useFormik} from 'formik';
 import PropTypes from "prop-types";
-import {updateStatusOrders} from "../../service/OrdersApi.jsx";
+import {patchOrder} from "../../service/OrdersApi.jsx";
 import {useEffect, useRef} from "react";
 
 Modal.setAppElement('#root');
@@ -32,7 +32,7 @@ const UpdateStatus = ({isOpen, onRequestClose, order}) => {
         enableReinitialize: true,
         onSubmit: async (values) => {
             try {
-                await updateStatusOrders(order.id, {status: values.status});
+                await patchOrder(order.id, {status: values.status});
                 onRequestClose();
             } catch (e) {
                 console.error('Error updating status:', e);
