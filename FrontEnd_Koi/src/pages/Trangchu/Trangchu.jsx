@@ -25,9 +25,11 @@ import blog4 from '../../assets/image/blog4.jpg';
 import blog5 from '../../assets/image/blog5.jpg';
 import blog6 from '../../assets/image/blog6.jpg';
 import React, { useState, useEffect } from 'react';
+import {toast} from "react-toastify";
 
 
 const Slider = () => {
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const slides = [
         {
@@ -62,7 +64,13 @@ const Slider = () => {
         // Clean up interval on component unmount
         return () => clearInterval(slideInterval);
     }, [slides.length]);
-
+    useEffect(() => {
+        const message = localStorage.getItem('toastMessage');
+        if (message) {
+            toast.info(message);
+            localStorage.removeItem('toastMessage');
+        }
+    }, []);
     // Navigate to the next slide
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);

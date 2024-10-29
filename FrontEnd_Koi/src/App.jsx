@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css'
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import Trangchu from "./pages/Trangchu/Trangchu.jsx";
@@ -22,6 +23,7 @@ import OrderForm from "./pages/Dathang/OrderForm.jsx";
 function App() {
     return (
         <div className="App">
+            <ToastContainer />
             <Router>
                 <Routes>
                     {/*Phần route dành cho user*/}

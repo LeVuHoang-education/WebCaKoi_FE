@@ -56,7 +56,9 @@ export const ModalSignupForm = ({isOpen, onRequestClose}) => {
             try {
                 const response = await Register(values);
                 sessionStorage.setItem('userEmail', values.email);
-                console.log(response.data);
+                const userId = response.data.split("Id: ")[1].trim();
+                localStorage.setItem("userID", userId);
+                console.log(userId);
                 navigate("/VerifyOTP");
                 onRequestClose();
             }catch (error) {

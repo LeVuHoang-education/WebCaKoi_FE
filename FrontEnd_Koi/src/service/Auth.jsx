@@ -17,16 +17,17 @@ export const Register = async (values) => {
     try {
         const response = await axiosInstance.post(`${BASE_API_URL}/register`, values);
         return response.data;
-    }catch (e){
+    } catch (e) {
         console.error('Register failed: ', e.message);
         throw new Error('Đăng ký không thành công. Vui lòng kiểm tra lại thông tin!');
     }
 }
 
-export const ConfirmAccount = async (userID,otp) => {
+export const ConfirmAccount = async (userID, otp) => {
     try {
-        const response = await axiosInstance.post(`${BASE_API_URL}/confirm/${userID}`, {otp});
-        console.log('Verify OTP successfully');
+        const response = await axiosInstance.post(`${BASE_API_URL}/confirm/${userID}`, {
+            otpCode: otp
+        });
         return response.data;
     } catch (e) {
         console.error('Verify OTP failed: ', e);

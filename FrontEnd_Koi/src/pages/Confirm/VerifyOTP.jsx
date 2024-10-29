@@ -78,14 +78,16 @@ const VerifyOTP = () => {
             console.log('Local Storage:', localStorage);
             console.log('User ID from Local Storage:', localStorage.getItem('userID'));
             const otpCode = otp.join('');
-            const response = await ConfirmAccount(sessionStorage.getItem('userID'), otpCode);
-            if (response.status === "success") {
+            const id = localStorage.getItem('userID');
+            const response = await ConfirmAccount(id,otpCode);
+            if (response.status === 200) {
                 toast.success('OTP xác nhận thành công!');
                 toast.info('Tài khoản của bạn đã được kích hoạt. Đang chuyển hướng về trang chủ...');
+                localStorage.setItem('toastMessage', 'Vui lòng đăng nhập bằng tài khoản vừa tạo.');
                 setTimeout(() => {
-                    window.location.href = '/';
-                    toast.info('Vui lòng đăng nhập bằng tài khoản vừa tạo.');
-                }, 2000);
+                    window.location.href = "/";
+                }, 5000);
+
             } else {
                 toast.error('OTP không chính xác. Vui lòng thử lại.');
             }
