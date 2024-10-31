@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -15,7 +14,6 @@ body {
   background-image: url("../image/anhdautien.png");
 
   color: white;
-  font-family: Poppins;
   background-size: cover;
   padding: 0 0 70px;
 }
@@ -23,6 +21,7 @@ body {
   width: 1325px;
   height: 795px;
 } */
+
 .noidung h1 {
   font-size: 48px;
   box-sizing: border-box;
@@ -92,7 +91,7 @@ span {
 .test {
   margin: 0 auto;
   width: 1200px;
-  padding: 105px 0 86px;
+  padding: 10px 0 86px;
 }
 .test h1 {
   font-size: 42px;
@@ -107,18 +106,20 @@ span {
   flex-wrap: wrap;
   background-image: url("../image/hinhnen.jpg");
 }
+.test1 {
+}
 .card {
-  width: 300px;
-  height: 400px;
+  width: 250px;
+  height: 350px;
   background-color: #242628;
   border-radius: 10px;
   text-align: center;
   color: white;
   overflow: hidden;
-  margin-bottom: 15px;
+  margin: 0 20px;
 }
 
-.outteam img {
+.card__img img {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -131,11 +132,12 @@ span {
   border-radius: 50%;
   overflow: hidden;
   margin: 0px auto;
-  transform: translateY(25px);
+  transform: translateY(20px);
   transition: 0.4s;
 }
-.card__ten {
+.name {
   margin-top: 30px;
+  margin-bottom: 5px;
 }
 .social {
   margin: 25px 0;
@@ -150,7 +152,7 @@ span {
 .social a:hover {
   color: var(--primary-color);
 }
-.card__nghe p {
+.major {
   color: var(--primary-color);
 }
 .card button {
@@ -172,8 +174,10 @@ span {
   border-radius: unset;
   transform: unset;
   border: none;
+
   /* border-radius: 10px; */
 }
+
 /*====================================================phần 3======================================================*/
 
 .phan3__logo {
@@ -181,6 +185,9 @@ span {
   height: 201px;
   text-align: center;
   padding: 10px;
+}
+.phan3__1 {
+  width: 50%;
 }
 .phan3__logo--icon {
   font-size: 40px;

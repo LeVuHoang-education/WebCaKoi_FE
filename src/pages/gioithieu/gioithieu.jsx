@@ -17,9 +17,16 @@ const GioiThieu = () => {
         {/* <img src="./img/ca-koi-1.jpg" alt="cá koi" /> */}
         <div className="noidung">
           <h1>Giới Thiệu</h1>
-          <a href="#">Trang chủ</a>
-          <span>&gt;&gt;</span>
-          <p>Giới Thiệu</p>
+          <div className="test">
+            <a>
+              <Link to={"/Home"}>Trang chủ</Link>
+            </a>
+            <span>&gt;&gt;</span>
+            <a>
+              {" "}
+              <Link to={"/Gioithieu"}>Giới Thiệu</Link>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -94,8 +101,8 @@ const GioiThieu = () => {
                     alt="gái xinh"
                   />
                 </div>
-                <h2>Em Iu</h2>
-                <p>Fullstack Developer</p>
+                <h2 className="name"> Thành Vinh</h2>
+                <p className="major">Fullstack Developer</p>
                 <div className="social">
                   <a href="https://www.facebook.com/" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
@@ -120,8 +127,8 @@ const GioiThieu = () => {
                     alt="gái xinh"
                   />
                 </div>
-                <h2>Em Iu</h2>
-                <p>Fullstack Developer</p>
+                <h2 className="name">Đức Thịnh</h2>
+                <p className="major">Fullstack Developer</p>
                 <div className="social">
                   <a href="https://www.facebook.com/" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
@@ -146,8 +153,8 @@ const GioiThieu = () => {
                     alt="gái xinh"
                   />
                 </div>
-                <h2>Em Iu</h2>
-                <p>Fullstack Developer</p>
+                <h2 className="name">Tiến dũng</h2>
+                <p className="major">Fullstack Developer</p>
                 <div className="social">
                   <a href="https://www.facebook.com/" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
@@ -172,8 +179,8 @@ const GioiThieu = () => {
                     alt="gái xinh"
                   />
                 </div>
-                <h2>Em Iu</h2>
-                <p>Fullstack Developer</p>
+                <h2 className="name">Hữu Đại</h2>
+                <p className="major">Fullstack Developer</p>
                 <div className="social">
                   <a href="https://www.facebook.com/" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
@@ -198,8 +205,8 @@ const GioiThieu = () => {
                     alt="gái xinh"
                   />
                 </div>
-                <h2>Em Iu</h2>
-                <p>Fullstack Developer</p>
+                <h2 className="name">Minh Phúc</h2>
+                <p className="major">Fullstack Developer</p>
                 <div className="social">
                   <a href="https://www.facebook.com/" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
@@ -224,8 +231,8 @@ const GioiThieu = () => {
                     alt="gái xinh"
                   />
                 </div>
-                <h2>Em Iu</h2>
-                <p>Fullstack Developer</p>
+                <h2 className="name">Nguyễn Quí</h2>
+                <p className="major">Fullstack Developer</p>
                 <div className="social">
                   <a href="https://www.facebook.com/" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
@@ -250,8 +257,8 @@ const GioiThieu = () => {
                     alt="gái xinh"
                   />
                 </div>
-                <h2>Em Iu</h2>
-                <p>Fullstack Developer</p>
+                <h2 className="name">Vũ hoàng</h2>
+                <p className="major">Fullstack Developer</p>
                 <div className="social">
                   <a href="https://www.facebook.com/" target="_blank">
                     <i className="fa-brands fa-facebook"></i>
