@@ -1,0 +1,335 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gioithieu_dau {
+  height: 605px;
+
+  background-image: url("../image/anhdautien.png");
+
+  color: white;
+  background-size: cover;
+  padding: 0 0 70px;
+}
+/* .gioithieu_dau img {
+  width: 1325px;
+  height: 795px;
+} */
+
+.noidung h1 {
+  font-size: 48px;
+  box-sizing: border-box;
+  line-height: 30px;
+  font-weight: 700;
+}
+.noidung p {
+  display: inline-block;
+}
+span {
+  font-size: 15px;
+}
+.noidung a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+.noidung {
+  position: relative;
+  top: 250px;
+  left: 100px;
+  display: inline-block;
+}
+
+.gioithieu_us {
+  margin-top: 110px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 110px 0;
+}
+.mota img {
+  width: 500px;
+  margin-right: 50px;
+  height: 700px;
+}
+.chitiet {
+  width: 700px;
+  line-height: 30px;
+  margin-right: 50px;
+}
+.chitiet p {
+  margin-bottom: 20px;
+}
+.chitiet a {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+  border: solid;
+  padding: 15px;
+  border-width: 1px;
+  text-decoration: none;
+  transition: 0.5s;
+  box-shadow: 5px 4px 5px rgb(16, 102, 201);
+  border-radius: 5px;
+}
+.chitiet a:hover {
+  background-color: #fff;
+  color: black;
+  box-shadow: 5px 4px 5px rgb(12, 207, 100);
+  cursor: pointer;
+}
+
+:root {
+  --primary-color: #f2726a;
+}
+.test {
+  margin: 0 auto;
+  width: 1200px;
+  padding: 10px 0 86px;
+}
+.test h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.outteam {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-image: url("../image/hinhnen.jpg");
+}
+.test1 {
+}
+.card {
+  width: 250px;
+  height: 350px;
+  background-color: #242628;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  margin: 0 20px;
+}
+
+.card__img img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+}
+.card__img {
+  width: 120px;
+  height: 120px;
+  border: 4px solid var(--primary-color);
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0px auto;
+  transform: translateY(20px);
+  transition: 0.4s;
+}
+.name {
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+.social {
+  margin: 25px 0;
+}
+.social a {
+  margin: 13px;
+  color: white;
+  font-size: 20px;
+  transition: 0.25s;
+}
+
+.social a:hover {
+  color: var(--primary-color);
+}
+.major {
+  color: var(--primary-color);
+}
+.card button {
+  width: 140px;
+  height: 40px;
+  background-color: #242628;
+  color: #fff;
+  border-radius: 10px;
+  border: 2px solid var(--primary-color);
+  transition: 0.25s;
+}
+.card button:hover {
+  background-color: var(--primary-color);
+}
+
+.card__img:hover {
+  width: 100%;
+  height: 100%;
+  border-radius: unset;
+  transform: unset;
+  border: none;
+
+  /* border-radius: 10px; */
+}
+
+/*====================================================phần 3======================================================*/
+
+.phan3__logo {
+  width: 610px;
+  height: 201px;
+  text-align: center;
+  padding: 10px;
+}
+.phan3__1 {
+  width: 50%;
+}
+.phan3__logo--icon {
+  font-size: 40px;
+}
+.phan3__logo--noidung {
+  width: 100%;
+  height: 72px;
+  padding: 50px 160px 0;
+  font-size: 22px;
+  text-align: center;
+}
+.phan3__loikhuyen {
+  width: 610px;
+  height: 419px;
+  padding: 10px;
+  line-height: 30px;
+}
+.phan3__loikhuyen--1 {
+  margin-bottom: 20px;
+}
+.phan3__loikhuyen--1 p {
+  height: 120px;
+  color: #1a1a1a;
+}
+.phan3__loikhuyen--2 p {
+  height: 60px;
+  color: #1a1a1a;
+}
+.phan3__loikhuyen--ceo {
+  width: 590px;
+  height: 189px;
+  display: flex;
+  padding: 10px 0;
+  align-items: end;
+  gap: 0;
+  color: #1a1a1a;
+}
+.phan3__loikhuyen--hinh {
+  display: inline-block;
+  width: 169px;
+  height: 169px;
+  text-align: left;
+}
+.phan3__loikhuyen--ten strong {
+  color: #1a1a1a;
+  width: 300px;
+  height: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+.phan3__phongcanh img {
+  width: 610px;
+  height: 406px;
+}
+.phan3 .container {
+  display: flex;
+  align-items: center;
+  margin: 0 34px;
+}
+/* ===========================================================phần 4===================================== */
+.baochi {
+  padding: 50px 0 30px;
+}
+.baochi .container {
+  padding: 10px;
+}
+.baochi__tieude {
+  text-align: center;
+  color: #1a1a1a;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 54.6px;
+  height: 55px;
+  margin: 0;
+}
+.container p {
+  color: #7a7a7a;
+
+  line-height: 30px;
+  text-align: center;
+  margin: 0;
+}
+.baochi__nhanhang {
+  display: flex;
+  justify-content: center;
+  height: 120px;
+  margin-top: 20px;
+  gap: 10px;
+}
+.baochi__nhanhang .imgs {
+  /* background-image: url(./img/logo1.png); */
+  width: 190px;
+  height: 100px;
+  background-size: contain;
+  background-position: 50% 50%;
+  line-height: 30px;
+  opacity: 1;
+  background-repeat: no-repeat;
+}
+.baochi__nhanhang .img1 {
+  background-image: url("../image/logo1.png");
+}
+.baochi__nhanhang .img2 {
+  background-image: url("../image/logo2.jpg");
+}
+.baochi__nhanhang .img3 {
+  background-image: url("../image/logo3.jpg");
+}
+.baochi__nhanhang .img4 {
+  background-image: url("../image/logo4.jpg");
+}
+.baochi__nhanhang .img5 {
+  background-image: url("../image/logo5.jpg");
+}
+.baochi__nhanhang .imgs,
+.bapchi__dieukhoang :hover {
+  cursor: pointer;
+}
+
+.bapchi__dieukhoang {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+  line-height: 30px;
+  gap: 8px;
+}
+.bapchi__dieukhoang span {
+  color: #555;
+  line-height: 30px;
+  text-align: center;
+  font-size: 16px;
+}
+/* ===============================================phần đánh giá (sao)=========================================== */
+.danhgia {
+  margin-top: 20px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 30px;
+  margin-bottom: 100px;
+}

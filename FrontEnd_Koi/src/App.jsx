@@ -1,6 +1,6 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "./App.css";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import Trangchu from "./pages/Trangchu/Trangchu.jsx";
 import UserManage from "./pages/admin/UserManage.jsx";
@@ -17,40 +17,79 @@ import BlogCategory from "./pages/Blog/Blog_category.jsx";
 import Dichvu from "./pages/Dichvu/Dichvu.jsx";
 import DichvuDetail from "./pages/Dichvu/DichvuDetail.jsx";
 import OrderForm from "./pages/Dathang/OrderForm.jsx";
-
-
+import GioiThieu from "./pages/gioithieu/gioithieu.jsx";
+import DesignStaffPage from "./pages/nhanvienthietke/DesignStaffPage.jsx";
+import Csbm from "./pages/csbm/csbm.jsx";
 
 function App() {
-    return (
-        <div className="App">
-            <ToastContainer />
-            <Router>
-                <Routes>
-                    {/*Phần route dành cho user*/}
-                    <Route path="/" element={<UserRoute element={Trangchu} />} />
-                    <Route path="/Home" element={<UserRoute element={Trangchu} />} />
-                    <Route path="/Project" element={<UserRoute element={ProjectPage} />}/>
-                    <Route path="/project/:projectName" element={<UserRoute element={ProjectDetail} />} />
-                    <Route path={"/VerifyOTP"} element={<VerifyOTP />} />
+  return (
+    <div className="App">
+      <ToastContainer />
+      <Router>
+        <Routes>
+          {/*Phần route dành cho user*/}
+          <Route path="/" element={<UserRoute element={Trangchu} />} />
+          <Route path="/Home" element={<UserRoute element={Trangchu} />} />
+          <Route
+            path="/Project"
+            element={<UserRoute element={ProjectPage} />}
+          />
+          <Route
+            path="/project/:projectName"
+            element={<UserRoute element={ProjectDetail} />}
+          />
+          {/* Route cho GioiThieu */}
+          <Route
+            path="/GioiThieu"
+            element={<UserRoute element={GioiThieu} />}
+          />
+          <Route path="/nhanvien" element={<DesignStaffPage />} />
+          <Route path="/csbm" element={<UserRoute element={Csbm} />} />
 
-                    <Route path="/Blog" element={<UserRoute element={BlogPage}/>} />
-                    <Route path="/blog/:blogName" element={<UserRoute element={BlogDetail} />}/>
-                    <Route path="/category/:categoryName" element={<UserRoute element={BlogCategory} />} />
+          <Route path={"/VerifyOTP"} element={<VerifyOTP />} />
 
-                    <Route path="/Dichvu" element={<UserRoute element={Dichvu} />} />
-                    <Route path="/dichvu/:id" element={<UserRoute element={DichvuDetail} />} />
+          <Route path="/Blog" element={<UserRoute element={BlogPage} />} />
+          <Route
+            path="/blog/:blogName"
+            element={<UserRoute element={BlogDetail} />}
+          />
+          <Route
+            path="/category/:categoryName"
+            element={<UserRoute element={BlogCategory} />}
+          />
 
-                    <Route path="/OrderForm" element={<UserRoute element={OrderForm} />} />
+          <Route path="/Dichvu" element={<UserRoute element={Dichvu} />} />
+          <Route
+            path="/dichvu/:id"
+            element={<UserRoute element={DichvuDetail} />}
+          />
 
-                    {/*Phần route dành cho admin*/}
-                    <Route path="/Admin/dashboard" element={<AdminRoute element={Dashboard} />} />
-                    <Route path="/Admin/user" element={<AdminRoute element={UserManage} />}/>
-                    <Route path="/Admin/orders" element={<AdminRoute element={OrdersManage} />}/>
-                    <Route path="/Admin/ProjectManage" element={<AdminRoute element={ProjectManage} />}/>
-                </Routes>
-            </Router>
-        </div>
-    )
+          <Route
+            path="/OrderForm"
+            element={<UserRoute element={OrderForm} />}
+          />
+
+          {/*Phần route dành cho admin*/}
+          <Route
+            path="/Admin/dashboard"
+            element={<AdminRoute element={Dashboard} />}
+          />
+          <Route
+            path="/Admin/user"
+            element={<AdminRoute element={UserManage} />}
+          />
+          <Route
+            path="/Admin/orders"
+            element={<AdminRoute element={OrdersManage} />}
+          />
+          <Route
+            path="/Admin/ProjectManage"
+            element={<AdminRoute element={ProjectManage} />}
+          />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
