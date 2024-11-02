@@ -1,6 +1,6 @@
 import '../assets/css/header.css'; // Import CSS từ thư mục local
 import logo from '../assets/image/logo.png'; // Import ảnh từ thư mục local
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {ModalSignupForm} from "./form/modalSignupForm.jsx";
 import {ModalLoginForm} from "./form/modalLoginForm.jsx";
 import {Link} from "react-router-dom";
@@ -23,7 +23,8 @@ const Header = () => {
         setIsSignInModalOpen(false);
     }
     const handleLogout  = () => {
-        localStorage.removeItem('token');
+        localStorage.clear();
+        sessionStorage.clear();
         window.location.reload();
     }
 

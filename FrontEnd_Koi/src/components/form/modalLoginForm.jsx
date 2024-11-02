@@ -2,7 +2,6 @@ import {useEffect, useRef,} from 'react'
 import Modal from 'react-modal'
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import PropTypes from "prop-types";
 import {useNavigate} from "react-router-dom";
 import {Login} from "../../service/Auth.jsx";
@@ -10,7 +9,6 @@ import {jwtDecode} from "jwt-decode";
 
 Modal.setAppElement('#root');
 export const ModalLoginForm = ({isOpen, onRequestClose}) => {
-    if (!isOpen) return null;
     const modalRef = useRef(null);
     const navigate = useNavigate();
 
@@ -40,15 +38,17 @@ export const ModalLoginForm = ({isOpen, onRequestClose}) => {
         onSubmit: async (values) => {
             try {
                 const response = await Login(values);
-                const {token, id} = response.data;
+                console.log(response)
+                const {token, id} = response;
                 localStorage.setItem('token', token);
                 localStorage.setItem('userId', id);
+                console.log(localStorage);
                 const decodedToken = jwtDecode(token);
                 localStorage.setItem('email', decodedToken.sub);
                 const userRole = decodedToken.role;
                 if (userRole === 'ROLE_USER') {
                     navigate("/Home");
-                } else if (userRole === 'ROLE_ADMIN') {
+                } else if (userRole === 'ROLE_MANAGER') {
                     navigate("/Admin/Dashboard");
                 } else {
                     navigate("/");
@@ -60,6 +60,7 @@ export const ModalLoginForm = ({isOpen, onRequestClose}) => {
             }
         },
     });
+    if (!isOpen) return null;
     return (
         <Modal isOpen={isOpen} onRequestClose={onRequestClose}
                className={`w-full h-full flex flex-col items-center justify-center`}

@@ -13,7 +13,7 @@ const UserManage = () => {
         const getUser = async () => {
             try{
                 const UserList = await fetchUserApi();
-                setUser(UserList);
+                setUser(UserList.data);
             }catch (error) {
                 setError(error.message);
             }finally {
@@ -118,15 +118,15 @@ const UserManage = () => {
                         </td>
 
                         <td className="px-6 py-4 whitespace-nowrap">
-                            {user.role === "manager" ? (
+                            {user.roleName === "ROLE_MANAGER" || user.roleName === "ROLE_ADMIN" ? (
                                 <span
                                     className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                 </span>
 
                             ) : (
                                 <span
-                                    className="px-2 inline-flex text-xs text-center leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    {user.role}
+                                    className=" px-2 inline-flex text-xs text-center leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    {user.roleName.replace("ROLE_", "")}
                                 </span>
                             )
                             }
@@ -136,13 +136,13 @@ const UserManage = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                             <button onClick={() => handleResetPassword(user.id)}
-                                    className="ml-2 text-red-600 hover:text-red-900">Reset password
+                                    className={`ml-2 text-red-600 ${user.roleName !== "ROLE_MANAGER" || user.roleName !== "ROLE_ADMIN" ? "hover:text-red-900":""}`}>Reset password
                             </button>
 
                             <button
                                 onClick={() => handleDeleteUser(user.id)}
-                                className={`ml-2 hover:text-red-900 ${user.role === "manager" ? "text-gray-400 hover:text-gray-400" : "text-red-600"}`}
-                                disabled={user.role === "manager"}
+                                className={`ml-2 hover:text-red-900 ${user.roleName === "ROLE_MANAGER" || user.roleName === "ROLE_ADMIN" ? "text-gray-400 hover:text-gray-400" : "text-red-600"}`}
+                                disabled={user.roleName === "ROLE_MANAGER" || user.roleName === "ROLE_ADMIN"}
                             >
                                 Delete
                             </button>

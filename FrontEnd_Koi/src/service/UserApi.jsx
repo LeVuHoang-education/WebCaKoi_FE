@@ -1,11 +1,16 @@
 import axiosInstance from "./axiosConfig.jsx";
 import axios from "axios";
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/users`;
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/manager/users`;
 
 //Lấy dữ liệu User
 export const fetchUserApi = async () => {
     try {
-        const response = await axiosInstance.get(API_BASE_URL);
+        const token = sessionStorage.getItem('token');
+        const response = await axiosInstance.get(API_BASE_URL,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
         return response.data;
     } catch (error) {
         console.error(error);

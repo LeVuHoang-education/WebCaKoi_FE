@@ -1,10 +1,10 @@
 import Layout from '../pages/layoutUser/Layout.jsx';
 import PropTypes from "prop-types";
 
-const UserRoute = ({ element: Component }) => {
+const UserRoute = ({ element }) => {
     return (
         <Layout>
-            <Component />
+            {element}
         </Layout>
     );
 }
