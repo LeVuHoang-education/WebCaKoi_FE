@@ -89,3 +89,19 @@ export const deleteUser = async (idUser) => {
         throw error;
     }
 };
+
+export const setRole = async (userId, roleId) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await axiosInstance.patch(`${API_BASE_URL}/setrole/${userId}`, { roleId }, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error setting role:', error);
+        throw error;
+    }
+};
