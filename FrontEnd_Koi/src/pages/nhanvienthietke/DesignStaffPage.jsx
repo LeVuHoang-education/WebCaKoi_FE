@@ -11,6 +11,8 @@ const DesignStaffPage = () => {
     designFile: null,
   });
   const [isAddingOrder, setIsAddingOrder] = useState(false);
+  const [editingOrderId, setEditingOrderId] = useState(null);
+  const [editingOrder, setEditingOrder] = useState({});
 
   const handleAddOrderClick = () => {
     setIsAddingOrder(true);
@@ -41,9 +43,33 @@ const DesignStaffPage = () => {
       designFile: null,
     });
     setIsAddingOrder(false);
-
-    console.log("New Order with Document:", newOrderWithId);
     alert("Đơn hàng và tài liệu đã được thêm thành công!");
+  };
+
+  const handleEditClick = (order) => {
+    setEditingOrderId(order.id);
+    setEditingOrder({ ...order });
+  };
+
+  const handleEditOrderChange = (e) => {
+    const { name, value } = e.target;
+    setEditingOrder((prevOrder) => ({ ...prevOrder, [name]: value }));
+  };
+
+  const handleFileEditChange = (e) => {
+    setEditingOrder((prevOrder) => ({
+      ...prevOrder,
+      designFile: e.target.files[0],
+    }));
+  };
+
+  const handleSaveEdit = () => {
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.id === editingOrderId ? { ...editingOrder } : order
+      )
+    );
+    setEditingOrderId(null);
   };
 
   return (
@@ -69,14 +95,69 @@ const DesignStaffPage = () => {
               <ul>
                 {orders.map((order) => (
                   <li key={order.id}>
-                    <strong>Khách hàng:</strong> {order.customer} <br />
-                    <strong>Mô tả:</strong> {order.description} <br />
-                    <strong>Trạng thái:</strong> {order.status} <br />
-                    {order.designFile && (
-                      <p>
-                        <strong>Tài liệu thiết kế:</strong>{" "}
-                        {order.designFile.name}
-                      </p>
+                    {editingOrderId === order.id ? (
+                      <>
+                        <label>
+                          Khách hàng:
+                          <input
+                            type="text"
+                            name="customer"
+                            value={editingOrder.customer}
+                            onChange={handleEditOrderChange}
+                          />
+                        </label>
+                        <br />
+                        <label>
+                          Mô tả:
+                          <input
+                            type="text"
+                            name="description"
+                            value={editingOrder.description}
+                            onChange={handleEditOrderChange}
+                          />
+                        </label>
+                        <br />
+                        <label>
+                          Trạng thái:
+                          <input
+                            type="text"
+                            name="status"
+                            value={editingOrder.status}
+                            onChange={handleEditOrderChange}
+                          />
+                        </label>
+                        <br />
+                        <label>
+                          Tài liệu thiết kế:
+                          <input
+                            type="file"
+                            name="designFile"
+                            onChange={handleFileEditChange}
+                          />
+                        </label>
+                        <br />
+                        <button onClick={handleSaveEdit} className="btn-save">
+                          Lưu
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <strong>Khách hàng:</strong> {order.customer} <br />
+                        <strong>Mô tả:</strong> {order.description} <br />
+                        <strong>Trạng thái:</strong> {order.status} <br />
+                        {order.designFile && (
+                          <p>
+                            <strong>Tài liệu thiết kế:</strong>{" "}
+                            {order.designFile.name}
+                          </p>
+                        )}
+                        <button
+                          onClick={() => handleEditClick(order)}
+                          className="btn-update"
+                        >
+                          Cập nhật
+                        </button>
+                      </>
                     )}
                   </li>
                 ))}
