@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("../font/SVN-Avo.woff2") format("woff2"),
+    url("../font/SVN-Avo.woff") format("woff"),
+    url("../font/SVN-Avo.ttf") format("truetype"),
+    url("../font/SVN-Avo.svg#SVN-Avo") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "SVN-Avo", sans-serif;
+  box-sizing: border-box;
+}
+
+/* ==============================================phần đầu tiên==================================== */
+.gioithieu_dau {
+  height: 605px;
+
+  background-image: url("/src/assets/image/anhdautien.png");
+
+  color: white;
+  background-size: cover;
+  padding: 0 0 70px;
+}
+.noidung p {
+  display: inline-block;
+}
+span {
+  font-size: 15px;
+}
+.noidung a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+.noidung {
+  position: relative;
+  top: 250px;
+  left: 100px;
+  display: inline-block;
+}
+.noidung h1 {
+  font-size: 48px;
+  box-sizing: border-box;
+  line-height: 30px;
+  font-weight: 700;
+}
+.noidung .test {
+  padding-top: 20px;
+}
+.wapper {
+  margin: 0 auto;
+}
+/* =============================================phần nội dung==================================================== */
+.csbm {
+  width: 1200px;
+  height: 3500px;
+  margin: 80px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 15px;
+}
+
+.csbm .container {
+  width: 1170px;
+  height: 3500px;
+  margin: 0 auto;
+  background-color: #ffffff02;
+  line-height: 30px;
+}
+.csbm .container p {
+  text-align: left;
+  color: #1a1a1a;
+}
+.csbm .container > * {
+  margin-bottom: 20px;
+}
+.csbm__camket strong {
+  font-weight: 700;
+}
+.content strong {
+  color: #1a1a1a;
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 56px;
+}
+.bieumau {
+  padding: 0 0 0 40px;
+}
+.csbm .container em {
+  font-style: italic;
+}
+.csbm .container p {
+  font-size: 16px;
+}
+.khac {
+  padding: 0 0 0 40px;
+}
+/* ====================================phần đánh giá================================================================ */
+.csbm__danhgia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 2px;
+  margin-bottom: 100px;
+}
+.csbm__danhgia i {
+  color: yellow;
+  font-size: 20px;
+}
+
+.csbm__danhgia strong {
+  color: #1a1a1a;
+
+  font-weight: 700;
+  line-height: 56px;
+}

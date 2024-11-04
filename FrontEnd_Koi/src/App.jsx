@@ -21,7 +21,9 @@ import OrderForm from "./pages/Dathang/OrderForm.jsx";
 import {useEffect} from "react";
 import {jwtDecode} from "jwt-decode";
 import {useNavigate} from "react-router-dom";
-
+import GioiThieu from "./pages/gioithieu/gioithieu.jsx";
+import DesignStaffPage from "./pages/nhanvienthietke/DesignStaffPage.jsx";
+import Csbm from "./pages/csbm/csbm.jsx";
 
 function App() {
     const navigate = useNavigate();
@@ -59,6 +61,13 @@ function App() {
                         <Route path="/Home" element={<UserRoute element={<Trangchu/>}/>}/>
                         <Route path="/Project" element={<UserRoute element={<ProjectPage/>}/>}/>
                         <Route path="/project/:projectName" element={<UserRoute element={<ProjectDetail/>}/>}/>
+                        <Route
+                            path="/GioiThieu"
+                            element={<UserRoute element={<GioiThieu/>} />}
+                        />
+                        <Route path="/nhanvien" element={<DesignStaffPage />} />
+                        <Route path="/csbm" element={<UserRoute element={<Csbm/>} />} />
+
                         <Route path={"/VerifyOTP"} element={<VerifyOTP/>}/>
 
                         <Route path="/Blog" element={<UserRoute element={<BlogPage/>}/>}/>
@@ -80,4 +89,4 @@ function App() {
         )
     }
 
-    export default App;
+export default App;

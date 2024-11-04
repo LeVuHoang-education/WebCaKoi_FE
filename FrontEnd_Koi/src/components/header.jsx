@@ -6,10 +6,8 @@ import {ModalLoginForm} from "./form/modalLoginForm.jsx";
 import {Link} from "react-router-dom";
 
 const Header = () => {
-
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
     const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-
     const openSignUpModal = () => {
         setIsSignUpModalOpen(true);
     }
@@ -22,7 +20,7 @@ const Header = () => {
     const closeSignInModal = () => {
         setIsSignInModalOpen(false);
     }
-    const handleLogout  = () => {
+    const handleLogout = () => {
         localStorage.clear();
         sessionStorage.clear();
         window.location.reload();
@@ -40,7 +38,9 @@ const Header = () => {
                     <li>
                         <Link to={`/Home`}>Trang chủ</Link>
                     </li>
-                    <li><a href="#">Giới Thiệu</a></li>
+                    <li>
+                        <Link to={`/GioiThieu`}>Giới Thiệu</Link>
+                    </li>
                     <li>
                         <Link to={`/Project`}>Dự án</Link>
                     </li>
