@@ -46,6 +46,11 @@
   text-align: center; /* Căn giữa tiêu đề */
 }
 
+.btn-update {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
 .order-list ul {
   list-style-type: none;
   padding: 0;

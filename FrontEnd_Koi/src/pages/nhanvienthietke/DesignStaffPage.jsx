@@ -72,6 +72,10 @@ const DesignStaffPage = () => {
     setEditingOrderId(null);
   };
 
+  const handleDeleteOrder = (id) => {
+    setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
+  };
+
   return (
     <div className="design-staff-page">
       <div className="sidebar">
@@ -156,6 +160,12 @@ const DesignStaffPage = () => {
                           className="btn-update"
                         >
                           Cập nhật
+                        </button>
+                        <button
+                          onClick={() => handleDeleteOrder(order.id)}
+                          className="btn-update"
+                        >
+                          Xóa
                         </button>
                       </>
                     )}
