@@ -1,79 +1,61 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./DesignStaffPage.css";
 
 const DesignStaffPage = () => {
-  const [currentTab, setCurrentTab] = useState("orders");
-  const [orders, setOrders] = useState([]);
-  const [newOrder, setNewOrder] = useState({
+  const [currentTab, setCurrentTab] = useState("viewOrders");
+  const [isFormVisible, setIsFormVisible] = useState(false); // Form không hiển thị mặc định
+
+  const [orders, setOrders] = useState([
+    {
+      id: 1,
+      customerId: "KH001",
+      customer: "Khách hàng A",
+      description: "Thiết kế mẫu nhà 2 tầng",
+    },
+    {
+      id: 2,
+      customerId: "KH002",
+      customer: "Khách hàng B",
+      description: "Thiết kế nội thất văn phòng",
+    },
+    {
+      id: 3,
+      customerId: "KH003",
+      customer: "Khách hàng C",
+      description: "Thiết kế bản vẽ quán cafe",
+    },
+  ]);
+
+  const [newRecord, setNewRecord] = useState({
+    customerId: "",
     customer: "",
     description: "",
-    status: "",
-    designFile: null,
+    image: null,
   });
-  const [isAddingOrder, setIsAddingOrder] = useState(false);
-  const [editingOrderId, setEditingOrderId] = useState(null);
-  const [editingOrder, setEditingOrder] = useState({});
 
-  const handleAddOrderClick = () => {
-    setIsAddingOrder(true);
+  // Hàm gửi thiết kế và hiển thị thông báo
+  const handleSubmitDesign = () => {
+    alert("Đã gửi bản thiết kế cho khách hàng");
+    setIsFormVisible(false); // Ẩn form sau khi gửi thiết kế
   };
 
-  const handleNewOrderChange = (e) => {
-    const { name, value } = e.target;
-    setNewOrder((prevOrder) => ({ ...prevOrder, [name]: value }));
+  // Hàm thay đổi ảnh
+  const handleImageChange = (e) => {
+    setNewRecord({
+      ...newRecord,
+      image: e.target.files[0],
+    });
   };
 
-  const handleFileChange = (e) => {
-    setNewOrder((prevOrder) => ({
-      ...prevOrder,
-      designFile: e.target.files[0],
-    }));
-  };
-
-  const handleSaveNewOrder = () => {
-    const newOrderWithId = {
-      ...newOrder,
-      id: orders.length + 1,
-    };
-    setOrders((prevOrders) => [...prevOrders, newOrderWithId]);
-    setNewOrder({
+  // Hàm mở form khi nhấn "Tạo mới"
+  const handleNewDesign = () => {
+    setNewRecord({
+      customerId: "",
       customer: "",
       description: "",
-      status: "",
-      designFile: null,
+      image: null,
     });
-    setIsAddingOrder(false);
-    alert("Đơn hàng và tài liệu đã được thêm thành công!");
-  };
-
-  const handleEditClick = (order) => {
-    setEditingOrderId(order.id);
-    setEditingOrder({ ...order });
-  };
-
-  const handleEditOrderChange = (e) => {
-    const { name, value } = e.target;
-    setEditingOrder((prevOrder) => ({ ...prevOrder, [name]: value }));
-  };
-
-  const handleFileEditChange = (e) => {
-    setEditingOrder((prevOrder) => ({
-      ...prevOrder,
-      designFile: e.target.files[0],
-    }));
-  };
-
-  const handleSaveEdit = () => {
-    setOrders((prevOrders) =>
-      prevOrders.map((order) =>
-        order.id === editingOrderId ? { ...editingOrder } : order
-      )
-    );
-    setEditingOrderId(null);
-  };
-
-  const handleDeleteOrder = (id) => {
-    setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
+    setIsFormVisible(true); // Hiển thị form tạo mới
   };
 
   return (
@@ -82,161 +64,110 @@ const DesignStaffPage = () => {
         <h2>Quản lý thiết kế</h2>
         <ul>
           <li
-            className={currentTab === "orders" ? "active" : ""}
-            onClick={() => setCurrentTab("orders")}
+            className={currentTab === "viewOrders" ? "active" : ""}
+            onClick={() => setCurrentTab("viewOrders")}
           >
-            Thông tin đơn hàng
+            Xem tất cả đơn hàng cần thiết kế bản vẽ
+          </li>
+          <li
+            className={currentTab === "createRecord" ? "active" : ""}
+            onClick={() => setCurrentTab("createRecord")}
+          >
+            Tạo hồ sơ thiết kế bản vẽ
           </li>
         </ul>
       </div>
 
       <div className="main-content">
-        {currentTab === "orders" && (
+        {/* View Orders Tab */}
+        {currentTab === "viewOrders" && (
           <section className="order-list">
-            <h2>Đơn hàng chờ thiết kế</h2>
-
+            <h3>Danh sách đơn hàng chờ thiết kế</h3>
             {orders.length > 0 ? (
               <ul>
                 {orders.map((order) => (
                   <li key={order.id}>
-                    {editingOrderId === order.id ? (
-                      <>
-                        <label>
-                          Khách hàng:
-                          <input
-                            type="text"
-                            name="customer"
-                            value={editingOrder.customer}
-                            onChange={handleEditOrderChange}
-                          />
-                        </label>
-                        <br />
-                        <label>
-                          Mô tả:
-                          <input
-                            type="text"
-                            name="description"
-                            value={editingOrder.description}
-                            onChange={handleEditOrderChange}
-                          />
-                        </label>
-                        <br />
-                        <label>
-                          Trạng thái:
-                          <input
-                            type="text"
-                            name="status"
-                            value={editingOrder.status}
-                            onChange={handleEditOrderChange}
-                          />
-                        </label>
-                        <br />
-                        <label>
-                          Tài liệu thiết kế:
-                          <input
-                            type="file"
-                            name="designFile"
-                            onChange={handleFileEditChange}
-                          />
-                        </label>
-                        <br />
-                        <button onClick={handleSaveEdit} className="btn-save">
-                          Lưu
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <strong>Khách hàng:</strong> {order.customer} <br />
-                        <strong>Mô tả:</strong> {order.description} <br />
-                        <strong>Trạng thái:</strong> {order.status} <br />
-                        {order.designFile && (
-                          <p>
-                            <strong>Tài liệu thiết kế:</strong>{" "}
-                            {order.designFile.name}
-                          </p>
-                        )}
-                        <button
-                          onClick={() => handleEditClick(order)}
-                          className="btn-update"
-                        >
-                          Cập nhật
-                        </button>
-                        <button
-                          onClick={() => handleDeleteOrder(order.id)}
-                          className="btn-update"
-                        >
-                          Xóa
-                        </button>
-                      </>
-                    )}
+                    <strong>ID Khách hàng:</strong> {order.customerId} <br />
+                    <strong>Khách hàng:</strong> {order.customer} <br />
+                    <strong>Mô tả:</strong> {order.description} <br />
                   </li>
                 ))}
               </ul>
             ) : (
-              <p>Chưa có đơn hàng nào. Nhấn Thêm đơn hàng mới để bắt đầu.</p>
+              <p>Không có đơn hàng nào.</p>
             )}
+          </section>
+        )}
 
-            <button onClick={handleAddOrderClick} className="btn-add-order">
-              Thêm đơn hàng mới
+        {/* Create Design Record Tab */}
+        {currentTab === "createRecord" && (
+          <section className="create-record-form">
+            <h3>Tạo Hồ Sơ Thiết Kế Bản Vẽ</h3>
+
+            {/* Nút "Tạo mới" */}
+            <button
+              onClick={handleNewDesign}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                backgroundColor: "#007bff", // Màu nền nút
+                color: "white", // Màu chữ
+                padding: "15px 30px", // Làm nút lớn hơn
+                fontSize: "1em", // Tăng kích thước chữ
+                border: "none",
+                borderRadius: "5px", // Bo tròn các góc
+                cursor: "pointer", // Con trỏ chuột khi hover
+                transition: "background-color 0.3s, box-shadow 0.3s", // Hiệu ứng chuyển màu và đổ bóng
+              }}
+              className="new-design-btn"
+            >
+              Tạo mới
             </button>
 
-            {isAddingOrder && (
-              <div className="new-order-form">
-                <h4>Thêm đơn hàng mới</h4>
+            {/* Form sẽ hiển thị khi nhấn "Tạo mới" */}
+            {isFormVisible && (
+              <>
+                <input
+                  type="text"
+                  name="customerId"
+                  placeholder="ID Khách hàng"
+                  value={newRecord.customerId}
+                  onChange={(e) =>
+                    setNewRecord({ ...newRecord, customerId: e.target.value })
+                  }
+                  required
+                />
                 <input
                   type="text"
                   name="customer"
                   placeholder="Tên khách hàng"
-                  value={newOrder.customer}
-                  onChange={handleNewOrderChange}
-                  style={{
-                    padding: "8px",
-                    width: "100%",
-                    marginBottom: "10px",
-                  }}
+                  value={newRecord.customer}
+                  onChange={(e) =>
+                    setNewRecord({ ...newRecord, customer: e.target.value })
+                  }
+                  required
                 />
                 <input
                   type="text"
                   name="description"
-                  placeholder="Mô tả đơn hàng"
-                  value={newOrder.description}
-                  onChange={handleNewOrderChange}
-                  style={{
-                    padding: "8px",
-                    width: "100%",
-                    marginBottom: "10px",
-                  }}
+                  placeholder="Mô tả"
+                  value={newRecord.description}
+                  onChange={(e) =>
+                    setNewRecord({ ...newRecord, description: e.target.value })
+                  }
+                  required
                 />
                 <input
-                  type="text"
-                  name="status"
-                  placeholder="Trạng thái"
-                  value={newOrder.status}
-                  onChange={handleNewOrderChange}
-                  style={{
-                    padding: "8px",
-                    width: "100%",
-                    marginBottom: "10px",
-                  }}
+                  type="file"
+                  name="image"
+                  accept="image/*"
+                  onChange={handleImageChange}
                 />
-                <div className="form-group">
-                  <label>Tải lên file thiết kế:</label>
-                  <input
-                    type="file"
-                    name="designFile"
-                    onChange={handleFileChange}
-                    style={{
-                      padding: "8px",
-                      width: "100%",
-                      marginBottom: "10px",
-                    }}
-                    required
-                  />
-                </div>
-                <button onClick={handleSaveNewOrder} className="btn-save">
-                  Lưu đơn hàng và tài liệu
-                </button>
-              </div>
+
+                {/* Nút gửi thiết kế */}
+                <button onClick={handleSubmitDesign}>Gửi thiết kế</button>
+              </>
             )}
           </section>
         )}
