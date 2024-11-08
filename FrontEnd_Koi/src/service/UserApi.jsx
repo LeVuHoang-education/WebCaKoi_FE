@@ -1,11 +1,17 @@
 import axiosInstance from "./axiosConfig.jsx";
 import axios from "axios";
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/users`;
-
+import {useRef} from "react";
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/manager/users`;
+const token = localStorage.getItem('token');
 //Lấy dữ liệu User
 export const fetchUserApi = async () => {
     try {
-        const response = await axiosInstance.get(API_BASE_URL);
+        const token = localStorage.getItem('token');
+        const response = await axiosInstance.get(API_BASE_URL,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
         return response.data;
     } catch (error) {
         console.error(error);
@@ -36,36 +42,39 @@ export const addUser = async (newUser) => {
 
 export const updateUser = async (idUser,newInfor) => {
     try{
-        const response = await axiosInstance.put(`${API_BASE_URL}/${idUser}`, newInfor);
+        const token = localStorage.getItem('token');
+        const response = await axiosInstance.put(`${API_BASE_URL}/update/${idUser}`, newInfor,
+            {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
         return response.data;
     }catch (error) {
         console.error(error);
         throw error;
     }
 }
-
-export const updatePassword = async (userId, newPassword) => {
-    if (!userId) {
-        throw new Error('User ID is required.');
-    }
-    if (!newPassword) {
-        throw new Error('New password is required.');
-    }
+export const resetPassword = async (idUser) => {
     try {
-        const response = await axiosInstance.patch(`${API_BASE_URL}/${userId}`, {
-            password: newPassword,
+        const response = await axiosInstance.patch(`${API_BASE_URL}/resetpassword/${idUser}`,{},{
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
         });
-        console.log('Password updated successfully');
         return response.data;
     } catch (error) {
-        console.error('Failed to update password:', error);
+        console.error(error);
         throw error;
     }
-};
-
+}
 export const deleteUser = async (idUser) => {
     try {
-        const response = await axiosInstance.delete(`${API_BASE_URL}/${idUser}`);
+        const response = await axiosInstance.delete(`${API_BASE_URL}/delete/${idUser}`,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
         if (response.status === 204 || response.status === 200) {
             console.log('User deleted successfully.');
             return true;
