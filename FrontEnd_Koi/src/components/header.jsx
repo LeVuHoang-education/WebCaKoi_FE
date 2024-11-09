@@ -61,7 +61,7 @@ const Header = () => {
 
                         </ul>
                     </li>
-                    <li><a href="#">Báo Giá</a></li>
+                    <li><a href="/orderform">Báo Giá</a></li>
                     <li>
                         <Link to={`/Blog`}>Blog</Link>
                     </li>
