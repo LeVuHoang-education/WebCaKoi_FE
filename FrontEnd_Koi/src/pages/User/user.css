@@ -1,0 +1,338 @@
+.container-user-dashboard {
+    display: flex;
+    width: 100%;
+    padding: 10px 13rem;
+}
+
+.content{
+    margin: 0;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background-color: #1A1A1A;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: #d0cabe 1px 1px 1px;
+}
+
+.sidebar ul li{
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.sidebar ul li:hover {
+    background-color: #1A1A1A;
+}
+
+.menu li a {
+    text-decoration: none;
+    padding: 10px 0;
+    cursor: pointer;
+    margin-top: auto;
+    font-size: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+.logout button {
+    background-color: #DBAD4D;
+    color: #FFFFFF;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: auto;
+    font-size: 18px;
+    display: inline-block;
+    border: 3px solid black;
+    position: relative;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+.logout button:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    background-color: black;
+    z-index: -1;
+}
+
+.logout button:hover, button:focus {
+    color: white;
+}
+
+.logout button:hover:before, .logout button:focus:before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+.logout button:active {
+    transform: scale(0.9);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffff;
+}
+
+header input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    width: 50%;
+}
+
+/*Personal Information Form Section*/
+.personal-info{
+    position: relative;
+    width: 100%;
+    background: #FFFFFF;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.personal-info-header{
+    font-size: 2rem;
+    color: #000;
+    font-weight: 600;
+    text-align: center;
+}
+
+.personal-info .form {
+    margin-top: 15px;
+}
+
+form .form-user{
+    box-shadow: none;
+}
+
+.form-user .input-box {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.input-box label {
+    color: #000;
+}
+
+.form-user :where(.input-box input, .select-box) {
+    position: relative;
+    height: 35px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #808080;
+    margin-top: 5px;
+    border: 1px solid #EE4E34;
+    border-radius: 6px;
+    padding: 0 15px;
+    background: #FFFFFF;
+}
+
+.input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-user .column {
+    display: flex;
+    column-gap: 15px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+    padding: 0 10px;
+    background-color: #FFFFFF;
+    margin-top: 5px;
+}
+
+.input-container:focus-within {
+    outline: none;
+    border-color: #007dab;
+    box-shadow: 0 0 0 1px #007dab, 0 0 0 4px rgba(0, 125, 171, 0.25);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.input-container i {
+    color: #ADADAD;
+    margin-right: 8px;
+}
+
+form input[type="text"]{
+    background-color: transparent;
+    border: none;
+    color: black;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+}
+
+.form-group-user-dashboard .input{
+    border: 1px solid #dddddd;
+    background-color: #F0F0F0;
+    color: #5E5E5E;
+}
+
+.input-container input{
+    background-color: transparent;
+    border: none;
+    color: black;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+}
+
+.input-container input::placeholder{
+    color: #ADADAD;
+}
+
+.form-user button {
+    height: 40px;
+    width: 100%;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #EE4E34;
+}
+
+.form-user button:hover {
+    background: #EE3E34;
+}
+
+.form-user button:before {
+    background-color: #EE3E34;
+    border-radius: 5px;
+}
+
+/*Projects table Section*/
+.projects-title{
+    margin-bottom: 10px;
+}
+
+.projects-table {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.projects-table-header{
+    font-size: 2rem;
+    color: #000;
+    font-weight: 600;
+    text-align: center;
+}
+
+.projects-table table {
+    border-collapse: collapse;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.projects-table thead th{
+    background-color: #C26D08;
+    color: #ffffff;
+    text-align: left;
+}
+
+.projects-table th,
+.projects-table td {
+    padding: 12px 15px;
+}
+
+.projects-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.projects-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.projects-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.projects-detail{
+    cursor: pointer;
+}
+
+/*Project detail Section*/
+.project-detail-form form {
+    max-width: 100%;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.projects-detail-header{
+    font-size: 2rem;
+    color: #000;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-group-user-dashboard {
+    margin-bottom: 15px;
+}
+
+.form-group-user-dashboard label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group-user-dashboard input,
+.form-group-user-dashboard textarea  {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    color: #555;
+    max-height: fit-content;
+}
+
+.form-group-user-dashboard select[disabled] {
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+.project-detail-column {
+    display: flex;
+    gap: 10px;
+}
+
+.half-width {
+    flex: 1;
+}

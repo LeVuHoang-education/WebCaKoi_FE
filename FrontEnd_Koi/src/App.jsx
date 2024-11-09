@@ -24,6 +24,11 @@ import {useNavigate} from "react-router-dom";
 import GioiThieu from "./pages/gioithieu/gioithieu.jsx";
 import DesignStaffPage from "./pages/nhanvienthietke/DesignStaffPage.jsx";
 import Csbm from "./pages/csbm/csbm.jsx";
+import Profile from "./pages/User/profilePage.jsx";
+import MyOrders from "./pages/User/MyOrderPage.jsx";
+import OrderDetail from "./pages/User/projectDetail.jsx";
+
+
 
 function App() {
     const navigate = useNavigate();
@@ -79,14 +84,18 @@ function App() {
 
                         <Route path="/OrderForm" element={<UserRoute element={<OrderForm/>}/>}/>
 
+                        <Route path="/Profile" element={<UserRoute element={<Profile/>} />} />
+                        <Route path="/MyOrders" element={<UserRoute element={<MyOrders/>} />} />
+                        <Route path="/MyOrders/:orderId" element={<UserRoute element={<OrderDetail/>} />} />
+
                         {/*Phần route dành cho admin*/}
-                        <Route path="/Admin/dashboard" element={<AdminRoute element={<Dashboard />}/>}/>
-                        <Route path="/Admin/user" element={<AdminRoute element={ <UserManage />}/>}/>
-                        <Route path="/Admin/orders" element={<AdminRoute element={<OrdersManage/>}/>}/>
-                        <Route path="/Admin/ProjectManage" element={<AdminRoute element={<ProjectManage/>}/>}/>
+                        <Route path="/Admin/dashboard" element={<AdminRoute element={Dashboard} />} />
+                        <Route path="/Admin/user" element={<AdminRoute element={UserManage} />}/>
+                        <Route path="/Admin/orders" element={<AdminRoute element={OrdersManage} />}/>
+                        <Route path="/Admin/ProjectManage" element={<AdminRoute element={ProjectManage} />}/>
                     </Routes>
             </div>
-        )
-    }
+    )
+}
 
 export default App;
