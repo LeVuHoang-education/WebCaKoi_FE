@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidebar from "./sidebar.jsx";
-import './user.css';
+import Sidebar from "../sidebar.jsx";
+import '../user.css';
 import Orders from "./projects.jsx";
 
 const MyOrderPage = () => {

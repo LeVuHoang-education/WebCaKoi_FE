@@ -12,9 +12,11 @@ function Sidebar({ showSection }) {
             <ul>
                 <li><Link to="/Profile">Thông tin cá nhân</Link></li>
                 <li><Link to="/MyOrders">Đơn đặt hàng</Link></li>
+                <li><Link to="/Quotations">Xem báo giá</Link></li>
+                <li><Link to="/Designs">Xem thiết kế</Link></li>
             </ul>
             <div className="logout">
-                <button href="#" onClick={(e) => {
+            <button href="#" onClick={(e) => {
                     e.preventDefault();
                     handleLogout()
                 }}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axiosInstance from "./API/axiosConfig.jsx";
+import axiosInstance from "../axiosConfig.jsx";
 import { Link } from 'react-router-dom';
 
 const BASE_API_URL = `${import.meta.env.VITE_API_URL}/users/orders`;
@@ -56,7 +56,7 @@ function Projects() {
                         <th>Title</th>
                         <th>Tên KH</th>
                         <th>Mã đơn</th>
-                        <th>Địa chỉ</th>
+                        <th>Dịch vụ</th>
                         <th>Trạng thái</th>
                         <th>Xem</th>
                     </tr>
@@ -67,9 +67,9 @@ function Projects() {
                             <tr key={order.orderId}>
                                 <td>{index + 1}</td>
                                 <td>{order.title || "N/A"}</td>
-                                <td>{order.username || "N/A"}</td>
+                                <td>{order.userName || "N/A"}</td>
                                 <td>{order.orderNumber}</td>
-                                <td>{order.address || "N/A"}</td>
+                                <td>{order.serviceType || "N/A"}</td>
                                 <td>{order.status || "N/A"}</td>
                                 <td>
                                     <Link

@@ -336,3 +336,248 @@ form input[type="text"]{
 .half-width {
     flex: 1;
 }
+
+/*Quotations*/
+.quotation-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.customer-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+.customer-info p {
+    padding-bottom: 5px;
+}
+
+.customer-info p strong{
+    font-size: 25px;
+    line-height: 30px;
+}
+
+.quotation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quotation-table th{
+    background-color: #333;
+    color: #fff;
+    padding: 12px 8px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.quotation-table td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.quotation-table tbody tr:nth-child(odd) {
+    background-color: #f7f1e8;
+}
+
+.quotation-table tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+.quotation-table td strong{
+    font-size: 20px;
+    line-height: 0;
+}
+
+.quotation-table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.quotation-table tfoot td {
+    font-weight: bold;
+}
+
+.footer {
+    font-size: 14px;
+}
+
+.footer strong{
+    font-size: 30px;
+}
+
+.confirmation {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    border-top: 2px solid #666;
+    padding-top: 10px;
+}
+.accept{
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #2B3044;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    position: relative;
+    line-height: 24px;
+    border-radius: 9px;
+    box-shadow: 0px 1px 2px #2B3044,
+    0px 4px 16px #2B3044;
+    transform-style: preserve-3d;
+    transform: scale(var(--s, 1)) perspective(600px)
+    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    perspective: 600px;
+    transition: transform 0.1s;
+}
+
+.sp {
+       color: #62ABF9;
+        display: block;
+    }
+
+.accept:active{
+    transition: 0.3s;
+    transform: scale(0.93);
+}
+
+.reject{
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #2B3044;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    position: relative;
+    line-height: 24px;
+    border-radius: 9px;
+    box-shadow: 0px 1px 2px #2B3044,
+    0px 4px 16px #2B3044;
+    transform-style: preserve-3d;
+    transform: scale(var(--s, 1)) perspective(600px)
+    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    perspective: 600px;
+    transition: transform 0.1s;
+}
+
+.reject:active{
+    transition: 0.3s;
+    transform: scale(0.93);
+}
+
+.reject .sp{
+    color: #FF3856;
+}
+
+/*Design Page*/
+.design-forms {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f8f4ed;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #ffff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.info-section p {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #333;
+    text-align: left;
+}
+
+.image-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.image-section img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.feedback-section {
+    padding: 10px;
+    font-size: 1.1em;
+    color: #333;
+    background-color: #ffff;
+    border-radius: 10px;
+}
+
+.feedback-section p{
+    color: #333;
+    text-align: left;
+    font-size: 1em;
+}
+
+.feedback-section input {
+    border: none;
+}
+
+.feedback-section input:focus{
+    outline: none;
+}
+
+.feedback-submit{
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #2B3044;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    position: relative;
+    line-height: 24px;
+    border-radius: 9px;
+    box-shadow: 0px 1px 2px #2B3044,
+    0px 4px 16px #2B3044;
+    transform-style: preserve-3d;
+    transform: scale(var(--s, 1)) perspective(600px)
+    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    perspective: 600px;
+    transition: transform 0.1s;
+}
+
+.sp {
+    color: #62ABF9;
+    display: block;
+}
+
+.feedback-submit:active{
+    transition: 0.3s;
+    transform: scale(0.93);
+}

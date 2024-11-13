@@ -94,6 +94,12 @@ const Header = () => {
                                     <Link to={`/MyOrders`}>Đơn hàng</Link>
                                 </li>
                                 <li>
+                                    <Link to={`/Quotations`}>Xem báo giá</Link>
+                                </li>
+                                <li>
+                                    <Link to={`/Designs`}>Xem thiết kế</Link>
+                                </li>
+                                <li>
                                     <a href="#" onClick={(e) => {
                                         e.preventDefault();
                                         handleLogout()

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axiosInstance from "./API/axiosConfig.jsx";
+import axiosInstance from "../axiosConfig.jsx";
 import { format } from 'date-fns';
 
 const BASE_API_URL = `${import.meta.env.VITE_API_URL}/users`;
@@ -13,6 +13,7 @@ function PersonalInfo() {
     });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [emailError, setEmailError] = useState(null); // Thêm state để lưu lỗi email
     const [success, setSuccess] = useState(null);
 
     useEffect(() => {
@@ -73,6 +74,16 @@ function PersonalInfo() {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
+        // Kiểm tra định dạng email
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if (!emailPattern.test(userData.email)) {
+            setEmailError("Email phải có định dạng @gmail.com"); // Thiết lập lỗi nếu email sai định dạng
+            setSuccess(null);
+            return;
+        } else {
+            setEmailError(null); // Xóa lỗi nếu email đúng định dạng
+        }
+
         try {
             const updatedUserData = { ...userData };
 
@@ -80,24 +91,21 @@ function PersonalInfo() {
                 updatedUserData.dob = format(new Date(updatedUserData.dob), 'dd-MM-yyyy');
             }
 
-            console.log("Data to be sent:", updatedUserData);
-
             const response = await updateUser(updatedUserData);
 
             if (response && response.status === 200) {
-                setSuccess("Profile updated successfully!");
+                setSuccess("Cập nhật thông tin thành công!");
                 setError(null);
             }
         } catch (error) {
             console.error("Failed to update user data:", error);
-            setError('Failed to update user data');
+            setError('Không thể cập nhật thông tin');
             setSuccess(null);
         }
     };
 
-
     if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    if (error) return <div style={{color: 'red'}}>{error}</div>;
 
     return (
         <section className="personal-info">
@@ -155,8 +163,10 @@ function PersonalInfo() {
                             type="email"
                         />
                     </div>
+                    {emailError && <div style={{color: 'red', marginTop: '5px'}}>{emailError}</div>} {/* Hiển thị lỗi email */}
                 </div>
-                <button type="submit">Update</button>
+                <button type="submit" onClick={() => {
+                    window.confirm("Bạn có chắc muốn cập nhật!")}}>Cập nhật</button>
             </form>
 
             {success && <div style={{color: 'green', marginTop: '10px'}}>{success}</div>}

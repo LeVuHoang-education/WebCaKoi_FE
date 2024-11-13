@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axiosInstance from "./API/axiosConfig.jsx";
-import Sidebar from "./sidebar.jsx";
+import axiosInstance from "../axiosConfig.jsx";
+import Sidebar from "../sidebar.jsx";
 
 const BASE_API_URL = `${import.meta.env.VITE_API_URL}/users/orders`;
 
@@ -75,7 +75,7 @@ function ProjectDetail() {
                                 <div className="projects-detail-header">Chi Tiết Dự Án</div>
                                 <div className="form-group-user-dashboard">
                                     <label htmlFor="name">Họ Tên KH:</label>
-                                    <input className="input" type="text" id="name" value={projectDetail?.username || ''} readOnly/>
+                                    <input className="input" type="text" id="name" value={projectDetail?.userName || ''} readOnly/>
                                 </div>
                                 <div className="form-group-user-dashboard">
                                     <label htmlFor="address">Địa Chỉ KH:</label>
