@@ -85,7 +85,7 @@ const DesignStaffPage = () => {
             className={currentTab === "orders" ? "active" : ""}
             onClick={() => setCurrentTab("orders")}
           >
-            Thông tin đơn hàng
+            Danh sách đơn hàng
           </li>
           <li
             className={currentTab === "upload" ? "active" : ""}

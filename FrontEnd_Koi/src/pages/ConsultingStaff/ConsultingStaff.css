@@ -1,0 +1,247 @@
+.management-page {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #2c3e50;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background-color: #34495e;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
+
+/* Quản lý đơn hàng */
+.order-management {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.order-header {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #e7e9eb;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.order-header h3 {
+  font-size: 1.8em;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.order-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.order-item {
+  flex: 1 1 200px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order-item:hover {
+  background-color: #f0f0f0;
+}
+
+.order-detail {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-detail h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.status-container {
+  margin-top: 10px;
+}
+
+.status-container div {
+  margin-bottom: 10px;
+}
+
+.status-container input {
+  margin-right: 10px;
+}
+
+.status-container label {
+  font-size: 1em;
+  color: #555;
+}
+
+.btn-save,
+.btn-quote {
+  padding: 10px 15px;
+  margin-top: 20px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-quote {
+  margin-left: 20px;
+  background-color: #007bff;
+}
+
+.btn-save:hover {
+  background-color: #218838;
+}
+
+.btn-quote:hover {
+  background-color: #0056b3;
+}
+
+/* Quản lý bảo trì */
+.maintenance-management {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.maintenance-header {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #e7e9eb;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.maintenance-header h3 {
+  font-size: 1.8em;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.maintenance-search {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.maintenance-search input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.maintenance-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.maintenance-item {
+  flex: 1 1 200px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.maintenance-item:hover {
+  background-color: #f0f0f0;
+}
+
+.maintenance-detail {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.maintenance-detail h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.maintenance-status-container {
+  margin-top: 10px;
+}
+
+.maintenance-status-container div {
+  margin-bottom: 10px;
+}
+
+.maintenance-status-container input {
+  margin-right: 10px;
+}
+
+.maintenance-status-container label {
+  font-size: 1em;
+  color: #555;
+}
+
+.btn-save-maintenance,
+.btn-generate-report {
+  padding: 10px 15px;
+  margin-top: 20px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-save-maintenance {
+  background-color: #28a745;
+}
+
+.btn-generate-report {
+  background-color: #007bff;
+  margin-left: 20px;
+}
+
+.btn-save-maintenance:hover {
+  background-color: #218838;
+}
+
+.btn-generate-report:hover {
+  background-color: #0056b3;
+}
