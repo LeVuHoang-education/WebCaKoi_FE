@@ -1,43 +1,34 @@
 import axiosInstance from "./axiosConfig.jsx";
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/users/orders`;
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/users`;
 
 
 export const addOrder = async (newOrder) => {
     try {
-        const response = await axiosInstance.post(`${API_BASE_URL}/place`, newOrder);
+        const response = await axiosInstance.post(`${API_BASE_URL}/orders/place`, newOrder);
         return response.data;
     }catch (error) {
         console.error(error);
         throw error;
     }
 }
-
-export const updateOrder = async (id, newOrder) => {
+export const addMaintenance = async (orderId, maintenanceForm) => {
     try {
-        const response = await axiosInstance.put(`${API_BASE_URL}/${id}`, newOrder);
+        const response = await axiosInstance.post(`${API_BASE_URL}/create-maintenance/${orderId}`, maintenanceForm);
         return response.data;
-    }catch (error) {
+    } catch (error) {
         console.error(error);
         throw error;
     }
 }
-
-
-export const deleteOrder = async (id) => {
+export const fetchOrders = async () => {
     try {
-        const response = await axiosInstance.delete(`${API_BASE_URL}/${id}`);
-        if(response.status === 204 ||response.status === 200) {
-            console.log('Order deleted successfully');
-            return true;
-        }
-    }catch (error) {
-        if (error.response && error.response.status === 404) {
-            console.error('Order is not found');
-            return false;
-        } else {
-            console.error('Error deleting order:', error);
-            throw error;
-        }
+        const response = await axiosInstance.get(`${API_BASE_URL}/orders`);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
-}
+};
+
+
 
