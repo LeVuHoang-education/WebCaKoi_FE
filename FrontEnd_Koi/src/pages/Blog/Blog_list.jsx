@@ -9,14 +9,11 @@ export default function Blog_list() {
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 6;
 
-    // Logic để hiển thị các thẻ hiện tại
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
 
-    //để cắt dữ liệu
     const currentCards = blogData.slice(indexOfFirstCard, indexOfLastCard);
 
-    // Tạo các số trang cho pagination
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(blogData.length / cardsPerPage); i++) {
         pageNumbers.push(i);

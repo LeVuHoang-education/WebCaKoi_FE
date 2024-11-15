@@ -1,12 +1,11 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import blogContent from "./Blog_data.jsx";
 import './Blog_category.css';
 
 export default function Blog_category() {
-    const { categoryName } = useParams(); // Lấy tên category từ URL
+    const { categoryName } = useParams();
 
-    // Lọc các bài viết theo category
     const filteredBlogs = blogContent.filter(blog =>
         blog.category.toLowerCase().replace(/ /g, '-') === categoryName
     );
@@ -21,22 +20,22 @@ export default function Blog_category() {
                 <div className="blog-grid">
                     {filteredBlogs.map((blog, index) => (
                         <div key={index} className="blog-card-category">
-                            <a href={`/blog/${blog.name.toLowerCase().replace(/ /g, '-')}`}>
+                            <Link to={`/blog/${blog.name.toLowerCase().replace(/ /g, '-')}`}>
                             <div className="blog-image-container">
                                 <img src={blog.image} alt={blog.title} className="blog-image-category"/>
                                 <div className="blog-tag">{blog.category}</div>
                             </div>
-                            </a>
+                            </Link>
                             <div className="blog-content-category">
-                                <a href={`/blog/${blog.name.toLowerCase().replace(/ /g, '-')}`}>
+                                <Link to={`/blog/${blog.name.toLowerCase().replace(/ /g, '-')}`}>
                                     <p className="blog-date-category">{blog.date}</p>
-                                </a>
-                                <a href={`/blog/${blog.name.toLowerCase().replace(/ /g, '-')}`}>
+                                </Link>
+                                <Link to={`/blog/${blog.name.toLowerCase().replace(/ /g, '-')}`}>
                                     <h2 className="blog-title-category">{blog.title}</h2>
-                                </a>
+                                </Link>
                                 <p className="blog-snippet-category">{blog.description}</p>
-                                <a href={`/blog/${blog.name.toLowerCase().replace(/ /g, '-')}`}
-                                   className="blog-read-more-category">Xem thêm</a>
+                                <Link to={`/blog/${blog.name.toLowerCase().replace(/ /g, '-')}`}
+                                   className="blog-read-more-category">Xem thêm</Link>
                             </div>
                         </div>
                     ))}
