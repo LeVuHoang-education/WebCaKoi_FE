@@ -56,19 +56,20 @@ const Header = () => {
                             ></i>
                         </Link>
                         <ul className="submenu">
-                            <li><Link to={"/dichvu/1"}>Thiết Kế Và Thi Công Hồ Cá Koi</Link></li>
-                            <li><Link to={"/dichvu/2"}>Thiết Kế Và Thi Công Cảnh Quan</Link></li>
-                            <li><Link to={"/dichvu/3"}>Thiết Kế Và Thi Công Nhà Vườn</Link></li>
-                            <li><Link to={"/dichvu/4"}>Thiết Kế Và Thi Công Sân Vườn</Link></li>
-                            <li><Link to={"/dichvu/5"}>Thiết Kế Và Thi Công Kiến Trúc</Link></li>
-
+                            <li><Link to={`/dichvu/1`}>Thiết Kế Và Thi Công Hồ Cá Koi</Link></li>
+                            <li><Link to={`/dichvu/2`}>Thiết Kế Và Thi Công Cảnh Quan</Link></li>
+                            <li><Link to={`/dichvu/3`}>Thiết Kế Và Thi Công Nhà Vườn</Link></li>
+                            <li><Link to={`/dichvu/4`}>Thiết Kế Và Thi Công Sân Vườn</Link></li>
+                            <li><Link to={`/dichvu/5`}>Thiết Kế Và Thi Công Kiến Trúc</Link></li>
                         </ul>
                     </li>
-                    <li><a href="#">Báo Giá</a></li>
+                    <li>
+                        <Link to="/orderform">Báo Giá</Link>
+                    </li>
                     <li>
                         <Link to={`/Blog`}>Blog</Link>
                     </li>
-                    <li><a href="#">Liên Hệ</a></li>
+                    <li><Link to="/Contact">Liên Hệ</Link></li>
                     <li className="has-submenu">
                         <a href="#">
                             TÀI KHOẢN
@@ -78,7 +79,7 @@ const Header = () => {
                             ></i>
                         </a>
                         {!token ? (
-                            <ul className="submenu hover:">
+                            <ul className="submenu">
                                 <li><a href="#" onClick={(e) => {
                                     e.preventDefault()
                                     openSignInModal()
@@ -100,6 +101,12 @@ const Header = () => {
                                 </li>
                                 <li>
                                     <Link to={`/MyOrders`}>Đơn hàng</Link>
+                                </li>
+                                <li>
+                                    <Link to={`/Quotations`}>Xem báo giá</Link>
+                                </li>
+                                <li>
+                                    <Link to={`/Designs`}>Xem thiết kế</Link>
                                 </li>
                                 <li>
                                     <a href="#" onClick={(e) => {

@@ -24,13 +24,19 @@ import {useNavigate} from "react-router-dom";
 import GioiThieu from "./pages/gioithieu/gioithieu.jsx";
 import DesignStaffPage from "./pages/nhanvienthietke/DesignStaffPage.jsx";
 import Csbm from "./pages/csbm/csbm.jsx";
+import Profile from "./pages/User/profile/profilePage.jsx";
+import MyOrders from "./pages/User/MyOrder/MyOrderPage.jsx";
+import OrderDetail from "./pages/User/MyOrder/projectDetail.jsx";
+import Quotations from "./pages/User/Quotations/quotationsPage.jsx";
+import QuotationDetail from "./pages/User/Quotations/quotationDetail.jsx";
+import Designs from "./pages/User/Designs/designPage.jsx";
+import {useState} from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
-
 function App() {
     const navigate = useNavigate();
-
+    const [isFirstLoad, setIsFirstLoad] = useState(true);
     useEffect(() => {
         const FirstLoad = sessionStorage.getItem('FirstLoad');
 
@@ -55,8 +61,13 @@ function App() {
             }
 
             sessionStorage.setItem('FirstLoad', 'true');
+            const currentPath = window.location.pathname;
+            if(currentPath === '/blog/:blogName') {
+                navigate('/blog/:blogName');
+            }
+            setIsFirstLoad(false);
         }
-    }, [navigate]);
+    }, [navigate, isFirstLoad]);
         return (
             <div className="App">
                 <ToastContainer/>
@@ -85,6 +96,12 @@ function App() {
 
                         <Route path="/OrderForm" element={<UserRoute element={<OrderForm/>}/>}/>
 
+                        <Route path="/Profile" element={<UserRoute element={<Profile/>} />} />
+                        <Route path="/MyOrders" element={<UserRoute element={<MyOrders/>} />} />
+                        <Route path="/MyOrders/:orderId" element={<UserRoute element={<OrderDetail/>} />} />
+                        <Route path="/Quotations" element={<UserRoute element={<Quotations/>} />} />
+                        <Route path="/Quotations/:quotationId" element={<UserRoute element={<QuotationDetail/>} />}/>
+                        <Route path="/Designs" element={<UserRoute element={<Designs/>} />}/>
                         {/*Phần route dành cho admin*/}
                         <Route path="/Admin/dashboard" element={<AdminRoute element={<Dashboard />}/>}/>
                         <Route path="/Admin/user" element={<AdminRoute element={ <UserManage />}/>}/>
@@ -93,7 +110,7 @@ function App() {
                         <Route path="/Admin/RatingManage" element={<AdminRoute element={<RatingManage/>}/>}/>
                     </Routes>
             </div>
-        )
-    }
+    )
+}
 
 export default App;

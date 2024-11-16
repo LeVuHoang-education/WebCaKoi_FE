@@ -45,7 +45,7 @@ const Footer = () => {
                 <div className="footer-content">
                     <h3>Yêu Cầu Báo Giá</h3>
                     <h3>Hotline: 0903 957 033</h3>
-                    <button>Gửi yêu cầu báo giá</button>
+                    <button><a href="/orderform">Gửi yêu cầu báo giá</a></button>
                     <p>Chứng chỉ Năng lực Hoạt động Xây dựng Cấp III. Số: HCM-00046954, cấp ngày 19/10/2020 tại Sở Kế
                         hoạch
                         và Đầu tư thành phố Hồ Chí Minh.</p>
