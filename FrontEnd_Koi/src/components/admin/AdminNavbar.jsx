@@ -1,10 +1,11 @@
-import React from 'react';
 import {Link} from "react-router-dom";
 
 const AdminNavbar = () => {
     return (
             <div className={`w-auto flex justify-between mx-8 p-4`}>
-            <div></div>
+            <div className={`items-center flex p-4 shadow-2xl rounded-2xl`}>
+                <Link to="/Home" className="flex items-center justify-evenly "> Trang chủ</Link>
+            </div>
             <div className="flex items-center justify-evenly w-auto h-auto">
                 <Link to="/admin/Dashboard" className={`mx-2`}>
                     <img src="/img/icons8-bell-100.png" alt="" className="w-6 h-6"/>

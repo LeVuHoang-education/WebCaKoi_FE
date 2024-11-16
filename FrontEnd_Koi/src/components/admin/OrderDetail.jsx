@@ -1,25 +1,22 @@
 import Modal from 'react-modal';
 import PropTypes from "prop-types";
-import {getOrderDetail} from "../../service/OrderDetailApi.jsx";
 import {useEffect, useRef, useState} from "react";
+import {fetchOrdersById} from "../../service/OrdersApi.jsx";
 
 Modal.setAppElement('#root');
 
 const OrderDetailModal = ({ isOpen, onRequestClose, order }) => {
     const [dataOrders, setDataOrders] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const modalRef = useRef(null);
     useEffect(()=>{
         if(order && isOpen) {
             const getOrder = async () => {
                 try {
-                    const data = await getOrderDetail(order.id);
-                    setDataOrders(data);
+                    const data = await fetchOrdersById(order.orderId);
+                    setDataOrders(data.data);
                 }catch (error) {
                     setError(error.message);
-                }finally {
-                    setLoading(false);
                 }
             };
             getOrder();
@@ -42,9 +39,6 @@ const OrderDetailModal = ({ isOpen, onRequestClose, order }) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen, onRequestClose]);
-    if(loading) return (
-        <div>Loading....</div>
-    )
     if(error) return (
         <div>Error: {error.message}</div>
     )
@@ -67,26 +61,26 @@ const OrderDetailModal = ({ isOpen, onRequestClose, order }) => {
 
                 <div className={`grid grid-cols-2 overflow-auto gap-5 `}>
                     <div className={`text-gray-700 font-semibold`}>Order ID: <span
-                        className={`font-light`}> {dataOrders.id}</span></div>
-                    <div className={`text-gray-700 font-semibold`}>Name: <span
-                        className={` font-light`}>{dataOrders.name}</span></div>
+                        className={`font-light`}> {dataOrders.orderNumber}</span></div>
+                    <div className={`text-gray-700 font-semibold`}>Title: <span
+                        className={` font-light`}>{dataOrders.title}</span></div>
 
-                    <div className={`text-gray-700 font-semibold`}>Customer: <span
-                        className={`font-light`}>{dataOrders.customer}</span></div>
-                    <div className={`text-gray-700 font-semibold`}>Category: <span
-                        className={`font-light`}>{dataOrders.category}</span></div>
+                    <div className={`text-gray-700 font-semibold`}>Phone: <span
+                        className={`font-light`}>{dataOrders.userPhone}</span></div>
+                    <div className={`text-gray-700 font-semibold`}>Service type: <span
+                        className={`font-light`}>{dataOrders.serviceType}</span></div>
 
 
-                    <div className={`text-gray-700 font-semibold`}>Location: <span
-                        className={`font-light`}>{dataOrders.location}</span></div>
-                    <div className={`text-gray-700 font-semibold`}>Area: <span
-                        className={`font-light`}>{dataOrders.area}</span></div>
+                    <div className={`text-gray-700 font-semibold`}>Start date: <span
+                        className={`font-light`}>{dataOrders.startDate}</span></div>
+                    <div className={`text-gray-700 font-semibold`}>End date: <span
+                        className={`font-light`}>{dataOrders.endDate}</span></div>
 
                     <div className={`col-span-2`}>
                         <img src={dataOrders.image} alt="" className="w-full h-auto"/>
                     </div>
 
-                    <div className={`col-span-2`}>Description: <span>{dataOrders.description}</span></div>
+                    <div className={`col-span-2 font-semibold`}>Description: <span className={`font-light`}>{dataOrders.designDetails}</span></div>
                 </div>
             </div>
         </Modal>
@@ -98,14 +92,14 @@ OrderDetailModal.propTypes = {
     isOpen: PropTypes.bool,
     onRequestClose: PropTypes.func,
     order: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        category: PropTypes.string.isRequired,
-        area: PropTypes.number.isRequired,
-        location: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        customer: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
+        orderId: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        orderNumber: PropTypes.string.isRequired,
+        userPhone: PropTypes.string.isRequired,
+        designDetails: PropTypes.string.isRequired,
+        serviceType: PropTypes.string.isRequired,
+        startDate: PropTypes.string.isRequired,
+        endDate: PropTypes.string.isRequired,
     })
 };
 

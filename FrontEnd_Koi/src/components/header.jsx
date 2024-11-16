@@ -4,6 +4,8 @@ import {useState} from 'react'
 import {ModalSignupForm} from "./form/modalSignupForm.jsx";
 import {ModalLoginForm} from "./form/modalLoginForm.jsx";
 import {Link} from "react-router-dom";
+import {Logout} from "../service/Auth.jsx";
+import {jwtDecode} from "jwt-decode";
 
 const Header = () => {
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
@@ -20,9 +22,10 @@ const Header = () => {
     const closeSignInModal = () => {
         setIsSignInModalOpen(false);
     }
-    const handleLogout = () => {
+    const handleLogout = async () => {
         localStorage.clear();
         sessionStorage.clear();
+        await Logout();
         window.location.reload();
     }
 
@@ -45,19 +48,19 @@ const Header = () => {
                         <Link to={`/Project`}>Dự án</Link>
                     </li>
                     <li className="has-submenu">
-                        <a href="/Dichvu">
+                        <Link  to={`/Dichvu`}>
                             Dịch Vụ
                             <i
                                 className="fa-solid fa-chevron-down"
                                 style={{fontSize: '0.75em', marginLeft: '5px'}}
                             ></i>
-                        </a>
+                        </Link>
                         <ul className="submenu">
-                            <li><a href="/dichvu/1">Thiết Kế Và Thi Công Hồ Cá Koi</a></li>
-                            <li><a href="/dichvu/2">Thiết Kế Và Thi Công Cảnh Quan</a></li>
-                            <li><a href="/dichvu/3">Thiết Kế Và Thi Công Nhà Vườn</a></li>
-                            <li><a href="/dichvu/4">Thiết Kế Và Thi Công Sân Vườn</a></li>
-                            <li><a href="/dichvu/5">Thiết Kế Và Thi Công Kiến Trúc</a></li>
+                            <li><Link to={"/dichvu/1"}>Thiết Kế Và Thi Công Hồ Cá Koi</Link></li>
+                            <li><Link to={"/dichvu/2"}>Thiết Kế Và Thi Công Cảnh Quan</Link></li>
+                            <li><Link to={"/dichvu/3"}>Thiết Kế Và Thi Công Nhà Vườn</Link></li>
+                            <li><Link to={"/dichvu/4"}>Thiết Kế Và Thi Công Sân Vườn</Link></li>
+                            <li><Link to={"/dichvu/5"}>Thiết Kế Và Thi Công Kiến Trúc</Link></li>
 
                         </ul>
                     </li>
@@ -75,7 +78,7 @@ const Header = () => {
                             ></i>
                         </a>
                         {!token ? (
-                            <ul className="submenu">
+                            <ul className="submenu hover:">
                                 <li><a href="#" onClick={(e) => {
                                     e.preventDefault()
                                     openSignInModal()
@@ -87,6 +90,11 @@ const Header = () => {
                             </ul>
                         ) : (
                             <ul className="submenu">
+                                {jwtDecode(localStorage.getItem('token')).role === 'ROLE_MANAGER' || jwtDecode(localStorage.getItem('token')).role === 'ROLE_ADMIN' ? (
+                                    <li>
+                                        <Link to={`/Admin/dashboard`}>Quản lí</Link>
+                                    </li>
+                                ): null}
                                 <li>
                                     <Link to={`/Profile`}>Thông tin cá nhân</Link>
                                 </li>

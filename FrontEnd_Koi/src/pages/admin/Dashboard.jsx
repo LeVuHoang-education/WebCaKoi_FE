@@ -1,176 +1,191 @@
-import  {useState } from 'react';
+import {useEffect, useState} from 'react';
 import VisitorsAnalytics from "../../components/admin/ChartBoard";
 import ChartComponent from "../../components/admin/ReneuveChart";
-import {Link} from "react-router-dom";
+import {fetchUserApi} from "../../service/UserApi.jsx";
+import {fetchRatings} from "../../service/RatingApi.jsx";
+import OrderDetailModal from "../../components/admin/OrderDetail.jsx";
+import {fetchOrders} from "../../service/OrdersApi.jsx";
 
 const Dashboard = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
 
+    const openModal = (order) => {
+        setSelectedOrder(order);
+        setIsModalOpen(true);
+    }
+    const closeModal = () => {
+        setSelectedOrder(null);
+        setIsModalOpen(false);
+    }
     const [openMenuIndex, setOpenMenuIndex] = useState(null);
     const toggleMenu = (index) => {
         setOpenMenuIndex(openMenuIndex === index ? null : index);
     };
+    const [data, setData] = useState([0, 0, 0, 0]);
+    const sumAllUser = async () => {
+        try {
+            const userList = await fetchUserApi();
+            const userWithRoleUser = userList.data.filter(user => user.roleName === 'ROLE_USER');
+            const totalUser = userWithRoleUser.length;
+            setData((prevData) => {
+                const newData = [...prevData];
+                newData[0] = totalUser;
+                return newData;
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+    const [ordersThisMonth1, setOrdersThisMonth1] = useState([]);
+    const sumAllOrder = async () => {
+        try {
+            const ordersList = await fetchOrders();
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            const ordersThisMonth = ordersList.data.filter(order => {
+                const startDateStr = order.startDate.split('-').reverse().join('-');
+                const startDate = new Date(startDateStr);
+                return startDate.getMonth() === currentMonth && startDate.getFullYear() === currentYear;
+            });
+            const totalOrder = ordersThisMonth.length > 0 ? ordersThisMonth.length : 0;
+            setOrdersThisMonth1(ordersThisMonth);
+            setData((prevData) => {
+                const newData = [...prevData];
+                newData[1] = totalOrder;
+                return newData;
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+    const sumAllRatings = async () => {
+        try {
+            const response = await fetchRatings();
+            const RatingsList = response.data;
+            const totalRating = RatingsList.length > 0 ? RatingsList.length : 0;
+            setData((prevData) => {
+                const newData = [...prevData];
+                newData[2] = totalRating;
+                return newData;
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
-    // const [data, setData] = useState(initialData);
-    // const [items,setItems] = React.useState([]);
-    // const [loading, setLoading] = React.useState(true);
-    // const [error, setError] = React.useState(null);
-    //
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try{
-    //             const respone = await fetch('http://localhost:8000/data');
-    //             if(!respone.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             const data = await respone.json();
-    //             setItems(data);
-    //         }catch(error) {
-    //             setError(error);
-    //         }finally{
-    //             setLoading(false);
-    //         }
-    //     fetchData();
-    //     }
-    // },[]);
-    // // gia su data gom co ID, Name, Price, OrderDate, Status
-    //
-    //
-    // if(error){
-    //     return <div>Error: {error}</div>
-    // }
-    // if(loading) {
-    //     // return <div className="">Loading...</div>
-    // }
-    // const handleDeleteOrders = async (id) => {
-    //     if(window.confirm("Are you sure you want to delete this order?")) {
-    //         try{
-    //
-    //             //Định nghĩa hàm DELETE trong API
-    //             await DeleteUserByID(id);
-    //             const updateData = data.filter(Orders => Orders.id !== id);
-    //             setData(updateData);
-    //         }catch (error) {
-    //             console.error('Error deleting user:', error);
-    //             alert('Failed to delete user. Please try again later.');
-    //         }
-    //     }
-    //
-    // };
+    useEffect(() => {
+        sumAllUser();
+        sumAllOrder();
+        sumAllRatings();
+    }, []);
+
     return (
         <div>
 
-        <section className="grid grid-cols-2 gap-6 my-6">
-            <div className="bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-gray-700">Customer</h2>
+            <section className="grid grid-cols-2 gap-6 my-6">
+                <div className="bg-white p-4 rounded-lg shadow-lg">
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-gray-700">Customer</h2>
+                    </div>
+                    <div className="text-3xl font-bold text-gray-800 mb-2">{data[0]} person</div>
+                    <div className="h-2 bg-blue-200 rounded-full">
+                        <div className="h-full bg-blue-500 rounded-full" style={{width: '95%'}}></div>
+                    </div>
                 </div>
-                <div className="text-3xl font-bold text-gray-800 mb-2">35 000 person</div>
-                <div className="h-2 bg-blue-200 rounded-full">
-                    <div className="h-full bg-blue-500 rounded-full" style={{width: '95%'}}></div>
+                <div className="bg-white p-4 rounded-lg shadow-lg">
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-gray-700">Orders</h2>
+                        <span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">This month</span>
+                    </div>
+                    <div className="text-3xl font-bold text-gray-800 mb-2">{data[1]} orders</div>
+                    <div className="h-2 bg-yellow-200 rounded-full">
+                        <div className="h-full bg-yellow-500 rounded-full" style={{width: '65%'}}></div>
+                    </div>
                 </div>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-gray-700">Orders</h2>
-                    <span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">This month</span>
+                <div className="bg-white p-4 rounded-lg shadow-lg">
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-gray-700">Revenue</h2>
+                        <span className="bg-green-100 text-green-700 px-2 py-1 rounded">This Month</span>
+                    </div>
+                    <div className="text-3xl font-bold text-gray-800 mb-2">50.000.000đ</div>
+                    <div className="h-2 bg-green-200 rounded-full">
+                        <div className="h-full bg-green-500 rounded-full" style={{width: '75%'}}></div>
+                    </div>
                 </div>
-                <div className="text-3xl font-bold text-gray-800 mb-2">34 orders</div>
-                <div className="h-2 bg-yellow-200 rounded-full">
-                    <div className="h-full bg-yellow-500 rounded-full" style={{width: '65%'}}></div>
+                <div className="bg-white p-4 rounded-lg shadow-lg">
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-gray-700">Ratings</h2>
+                    </div>
+                    <div className="text-3xl font-bold text-gray-800 mb-2">{data[2]}</div>
+                    <div className="h-2 bg-purple-200 rounded-full">
+                        <div className="h-full bg-purple-500 rounded-full" style={{width: '85%'}}></div>
+                    </div>
                 </div>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-gray-700">Revenue</h2>
-                    <span className="bg-green-100 text-green-700 px-2 py-1 rounded">This Month</span>
-                </div>
-                <div className="text-3xl font-bold text-gray-800 mb-2">50.000.000đ</div>
-                <div className="h-2 bg-green-200 rounded-full">
-                    <div className="h-full bg-green-500 rounded-full" style={{width: '75%'}}></div>
-                </div>
-            </div>
-            <div className="bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-gray-700">Projects</h2>
-                </div>
-                <div className="text-3xl font-bold text-gray-800 mb-2">100</div>
-                <div className="h-2 bg-purple-200 rounded-full">
-                    <div className="h-full bg-purple-500 rounded-full" style={{width: '85%'}}></div>
-                </div>
-            </div>
-        </section>
+            </section>
             <div className="w-full flex justify-end mt-4 space-x-2">
                 <div className="bg-white p-4 rounded-lg shadow-lg w-1/3 h-1/3">
-                    <VisitorsAnalytics />
+                    <VisitorsAnalytics/>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-lg w-2/3 h-2/3">
-                    <ChartComponent />
+                    <ChartComponent/>
                 </div>
             </div>
 
             <div className="bg-white p-4 rounded-lg shadow-lg w-full h-auto my-2 overflow-x-auto">
                 <table className="min-w-full border border-gray-300">
                     <thead className="bg-gray-300">
-                        <tr>
-                            <th className="py-2 px-4 border-b text-left text-gray-600">ID</th>
-                            <th className="py-2 px-4 border-b text-left text-gray-600">Name</th>
-                            <th className="py-2 px-4 border-b text-left text-gray-600">Order Date</th>
-                            <th className="py-2 px-4 border-b text-left text-gray-600">Price</th>
-                            <th className="py-2 px-4 border-b text-left text-gray-600">Status</th>
-                            <th className="py-2 px-4 border-b text-left text-gray-600">Action</th>
-                        </tr>
+                    <tr>
+                        <th className="py-2 px-4 border-b text-left text-gray-600">ID</th>
+                        <th className="py-2 px-4 border-b text-left text-gray-600">Phone</th>
+                        <th className="py-2 px-4 border-b text-left text-gray-600">Start date</th>
+                        <th className="py-2 px-4 border-b text-left text-gray-600">Status</th>
+                        <th className="py-2 px-4 border-b text-left text-gray-600">Action</th>
+                    </tr>
                     </thead>
 
                     <tbody>
-                    {/*{item.map((item) => (*/}
-                    {/*    <tr className="hover:bg-gray-50" key={item.id}>*/}
-                    {/*        <td className="py-2 px-4 border-b text-left text-gray-600">{item.ID}</td>*/}
-                    {/*        <td className="py-2 px-4 border-b text-left text-gray-600">{item.Name}</td>*/}
-                    {/*        <td className="py-2 px-4 border-b text-left text-gray-600">{item.OrderDate}</td>*/}
-                    {/*        <td className="py-2 px-4 border-b text-left text-gray-600">{item.Price}</td>*/}
-                    {/*        <td className="py-2 px-4 border-b text-left text-gray-600">{item.Status}</td>*/}
-                    {/*        <td className="py-2 px-4 border-b text-left text-gray-600">*/}
-                    {/*            <button onClick={toggle} className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm*/}
-                    {/*             font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">*/}
-                    {/*                <img src="/img/icons8-dot-100.png" alt=""/>*/}
-                    {/*            </button>*/}
-                    {/*        </td>*/}
-                    {/*    </tr>*/}
-                    {/*))}*/}
-                    {Array.from({ length: 3 }, (_, index) => (
+                    {ordersThisMonth1.map((item, index) => (
                         <tr className="" key={index}>
-                            <td className="py-2 px-4 border-b text-left text-gray-600">1</td>
-                            <td className="py-2 px-4 border-b text-left text-gray-600">Hoang</td>
-                            <td className="py-2 px-4 border-b text-left text-gray-600"> 12/9/2024</td>
-                            <td className="py-2 px-4 border-b text-left text-gray-600">150.000.000</td>
-                            <td className="py-2 px-4 border-b text-left text-gray-600">Complete</td>
-                                <td className="py-2 px-4 border-b text-left text-gray-600 relative">
-
-                                            <button onClick={() => toggleMenu(index)} className="inline-flex justify-center px-4 py-2 bg-white  text-gray-700 focus:outline-none w-12 h-auto">
-                                                <img className="w-full h-full" src="/img/icons8-dot-100.png" alt=""/>
+                            <td className="py-2 px-4 border-b text-left text-gray-600">{item.orderNumber}</td>
+                            <td className="py-2 px-4 border-b text-left text-gray-600">{item.userPhone}</td>
+                            <td className="py-2 px-4 border-b text-left text-gray-600">{item.startDate}</td>
+                            <td className="py-2 px-4 border-b text-left text-gray-600">{item.status}</td>
+                            <td className="py-2 px-4 border-b text-left text-gray-600 relative">
+                                <button onClick={() => toggleMenu(index)}
+                                        className="inline-flex justify-center px-4 py-2 bg-white  text-gray-700 focus:outline-none w-12 h-auto">
+                                    <img className="w-full h-full" src="/img/icons8-dot-100.png" alt=""/>
+                                </button>
+                                {openMenuIndex === index && (
+                                    <div
+                                        className="absolute right-[130px] top-[-3em] z-10 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                                        <div className="py-1" role="menu" aria-orientation="vertical"
+                                             aria-labelledby="options-menu">
+                                            <button
+                                                className="flex items-center px-4 py-2 h-full text-center text-sm text-gray-700 hover:bg-gray-100 hover:text-yellow-500 w-full"
+                                                onClick={() => {
+                                                    toggleMenu(index);
+                                                    openModal(item);
+                                                }}>
+                                                <img
+                                                    src="/img/icons8-eye-100.png" className="w-3 h-auto mx-1"
+                                                    alt=""/>
+                                                View
                                             </button>
-                            {openMenuIndex === index && (
-                                <div className="absolute right-[120px] top-7 z-10 mt-2 w-48 rounded-md shadow-lg w-[100px] bg-white ring-1 ring-black ring-opacity-5">
-                                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                                    {/*Đường link của edit khi có db `/user/${item.ID}` */}
-                                    <Link to={`/`} className="block flex items-center px-4 py-2 h-full text-center text-sm text-gray-700 hover:bg-gray-100"><img
-                                        src="/img/icons8-eye-100.png" className="w-3 h-auto mx-1" alt=""/>view</Link>
-
-                                    <Link to="/" className="block px-4 py-2 h-full flex items-center text-center text-sm text-gray-700 hover:bg-gray-100"><img
-                                        src="/img/icons8-delete-100.png" className="w-3 h-auto mx-1" alt=""/>delete</Link>
-
-                                    {/*<Button onClick={() => handleDeleteOrders(item.id)} className = "block px-4 py-2 h-full flex items-center text-center text-sm text-gray-700 hover:bg-gray-100">
-                                    src="/img/icons8-delete-100.png" className="w-3 h-auto mx-1" alt=""/>delete</Button>*/}
-                                </div>
-                                </div>
+                                        </div>
+                                    </div>
                                 )}
-                                </td>
+                            </td>
                         </tr>
-                        ))}
+                    ))}
                     </tbody>
                 </table>
+                <OrderDetailModal isOpen={isModalOpen}
+                                  onRequestClose={closeModal}
+                                  order={selectedOrder}
+                />
             </div>
-    </div>
+        </div>
     );
 };
 export default Dashboard;

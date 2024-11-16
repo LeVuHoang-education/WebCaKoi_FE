@@ -364,6 +364,10 @@ body {
     background-image: url('../image/b2.jpg');
     background-size: cover;
     transition: background-image 0.6s ease, transform 0.6s ease;
+    color: white;
+}
+#process-list .process-item:hover h3 {
+    color: white;
 }
 
 #experience {

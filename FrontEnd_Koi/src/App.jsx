@@ -1,12 +1,12 @@
 import {Routes, Route} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
-import {useState} from 'react';
 import './App.css'
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import Trangchu from "./pages/Trangchu/Trangchu.jsx";
 import UserManage from "./pages/admin/UserManage.jsx";
 import OrdersManage from "./pages/admin/OrdersManage.jsx";
 import AdminRoute from "./components/admin/AdminRoute.jsx";
+import RatingManage from "./pages/admin/RatingManage.jsx";
 import ProjectManage from "./pages/admin/ProjectManage.jsx";
 import UserRoute from "./components/UserRoute.jsx";
 import VerifyOTP from "./pages/Confirm/VerifyOTP.jsx";
@@ -24,12 +24,17 @@ import {useNavigate} from "react-router-dom";
 import GioiThieu from "./pages/gioithieu/gioithieu.jsx";
 import DesignStaffPage from "./pages/nhanvienthietke/DesignStaffPage.jsx";
 import Csbm from "./pages/csbm/csbm.jsx";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function App() {
     const navigate = useNavigate();
-    const [isFirstLoad, setIsFirstLoad] = useState(true);
+
     useEffect(() => {
-        if (isFirstLoad) {
+        const FirstLoad = sessionStorage.getItem('FirstLoad');
+
+        if (!FirstLoad) {
             const token = localStorage.getItem('token');
             if (token) {
                 try {
@@ -48,9 +53,10 @@ function App() {
             } else {
                 navigate('/Home');
             }
-            setIsFirstLoad(false);
+
+            sessionStorage.setItem('FirstLoad', 'true');
         }
-    }, [navigate, isFirstLoad]);
+    }, [navigate]);
         return (
             <div className="App">
                 <ToastContainer/>
@@ -84,6 +90,7 @@ function App() {
                         <Route path="/Admin/user" element={<AdminRoute element={ <UserManage />}/>}/>
                         <Route path="/Admin/orders" element={<AdminRoute element={<OrdersManage/>}/>}/>
                         <Route path="/Admin/ProjectManage" element={<AdminRoute element={<ProjectManage/>}/>}/>
+                        <Route path="/Admin/RatingManage" element={<AdminRoute element={<RatingManage/>}/>}/>
                     </Routes>
             </div>
         )

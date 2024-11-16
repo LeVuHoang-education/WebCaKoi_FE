@@ -28,12 +28,6 @@
 }
 
 
-.service-card:hover {
-    background-image: url("../../assets/image/bg-iconbox3-hover.jpg");
-
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
 
 /* Service icon */
 .service-icon {
@@ -49,7 +43,6 @@
     margin-bottom: 10px;
     color: #333;
 }
-
 /* Service description */
 .service-card p {
     font-size: 0.9rem;
@@ -57,7 +50,15 @@
     margin-bottom: 15px;
     line-height: 1.5;
 }
+.service-card:hover {
+    background-image: url("../../assets/image/bg-iconbox3-hover.jpg");
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
 
+.service-card:hover h3,.service-card:hover p {
+    color: white;
+}
 /* View more button */
 .view-more {
     display: inline-block;

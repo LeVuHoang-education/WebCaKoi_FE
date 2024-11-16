@@ -1,4 +1,3 @@
-import axios from "axios";
 import axiosInstance from "./axiosConfig.jsx";
 
 const BASE_API_URL = `${import.meta.env.VITE_API_URL}/auth`;
@@ -32,5 +31,15 @@ export const ConfirmAccount = async (userID, otp) => {
     } catch (e) {
         console.error('Verify OTP failed: ', e);
         throw new Error('Xác nhận OTP không thành công. Vui lòng kiểm tra lại mã OTP!');
+    }
+}
+
+export const Logout = async () => {
+    try {
+        const response = await axiosInstance.post(`${BASE_API_URL}/logout`);
+        return response.data;
+    } catch (e) {
+        console.error('Logout failed: ', e);
+        throw new Error('Đăng xuất không thành công. Vui lòng thử lại!');
     }
 }

@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
+import {Logout} from "../../service/Auth.jsx";
 
 const AdminSidebar = () => {
+    const handleLogout = async () => {
+        localStorage.clear();
+        sessionStorage.clear();
+        await Logout();
+        window.location.reload();
+    }
     return (
         <div className="flex">
             <aside className=" bg-white h-screen w-full p-4 shadow-lg">
@@ -21,8 +28,20 @@ const AdminSidebar = () => {
                         <li className="my-4 text-xl">
                             <Link to="/Admin/Orders" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Order</Link>
                         </li>
+                        {/*<li className="my-4 text-xl">*/}
+                        {/*    <Link to="/Admin/ProjectManage" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Project</Link>*/}
+                        {/*</li>*/}
                         <li className="my-4 text-xl">
-                            <Link to="/Admin/ProjectManage" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Project</Link>
+                            <Link to="/Admin/RatingManage" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Rating</Link>
+                        </li>
+                        <li className="my-4 text-xl">
+                            <a href="#" onClick={(e) => {
+                                e.preventDefault();
+                                handleLogout()
+                            }}
+                            className={`flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white`}>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                 </nav>

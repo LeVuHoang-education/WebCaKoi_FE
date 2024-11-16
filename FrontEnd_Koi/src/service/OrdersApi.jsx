@@ -1,10 +1,15 @@
 import axiosInstance from "./axiosConfig.jsx";
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/orders`;
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/manager/orders`;
 
+const token = localStorage.getItem('token');
 export const fetchOrders = async () =>
 {
     try {
-    const response =  await axiosInstance.get(`${API_BASE_URL}`);
+    const response =  await axiosInstance.get(`${API_BASE_URL}`,{
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     return response.data;
     } catch (error) {
         console.error(error);
@@ -14,34 +19,17 @@ export const fetchOrders = async () =>
 
 export const fetchOrdersById = async (id) => {
     try {
-        const response = await axiosInstance.get(`${API_BASE_URL}/${id}`);
+        const response = await axiosInstance.get(`${API_BASE_URL}/${id}`,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
         return response.data;
     } catch (error) {
         console.error(error);
         throw error;
     }
 }
-
-export const addOrder = async (newOrder) => {
-    try {
-        const response = await axiosInstance.post(`${API_BASE_URL}`, newOrder);
-        return response.data;
-    }catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
-
-export const updateOrder = async (id, newOrder) => {
-    try {
-        const response = await axiosInstance.put(`${API_BASE_URL}/${id}`, newOrder);
-        return response.data;
-    }catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
-
 
 export const deleteOrder = async (id) => {
     try {
@@ -61,9 +49,14 @@ export const deleteOrder = async (id) => {
     }
 }
 
-export const patchOrder = async (id, updates) => {
+export const patchOrder = async (id, value) => {
     try {
-        const response = await axiosInstance.patch(`${API_BASE_URL}/${id}`, updates);
+        const response = await axiosInstance.patch(`${API_BASE_URL}/change-status/${id}`, value,{
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        });
         return response.data;
     } catch (error) {
         console.error(error);
