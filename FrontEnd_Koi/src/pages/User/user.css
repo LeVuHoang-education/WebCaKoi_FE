@@ -177,7 +177,7 @@ form .form-user{
     margin-right: 8px;
 }
 
-form input[type="text"]{
+.input-container input[type="text"]{
     background-color: transparent;
     border: none;
     color: black;

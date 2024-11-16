@@ -11,15 +11,7 @@ export const addOrder = async (newOrder) => {
         throw error;
     }
 }
-export const addMaintenance = async (orderId, maintenanceForm) => {
-    try {
-        const response = await axiosInstance.post(`${API_BASE_URL}/create-maintenance/${orderId}`, maintenanceForm);
-        return response.data;
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
+
 export const fetchOrders = async () => {
     try {
         const response = await axiosInstance.get(`${API_BASE_URL}/orders`);
