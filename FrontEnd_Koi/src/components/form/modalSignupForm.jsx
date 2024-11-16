@@ -70,7 +70,7 @@ export const ModalSignupForm = ({isOpen, onRequestClose}) => {
 
     return (
         <Modal isOpen={isOpen} onRequestClose={onRequestClose}
-               className={`w-full h-full flex flex-col items-center justify-center`}
+               className={`w-full h-full flex flex-col items-center justify-center z-[1000]`}
                overlayClassName={`fixed inset-0 bg-black bg-opacity-50`}
         >
             <style>

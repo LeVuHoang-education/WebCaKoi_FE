@@ -20,6 +20,7 @@
     "chart.js": "^4.4.4",
     "cloudinary": "^2.5.1",
     "cloudinary-core": "^2.13.1",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
     "formik": "^2.4.6",
     "jwt-decode": "^4.0.0",

@@ -73,7 +73,7 @@ export const ModalLoginForm = ({isOpen, onRequestClose}) => {
                 </div>
                 <div className={`w-1/2 h-full flex flex-col justify-center ml-12`}>
                     <h2 className={`text-black text-4xl mb-8 font-semibold`}>Sign In</h2>
-                    <form onSubmit={formik.handleSubmit} className="flex flex-col">
+                    <form onSubmit={formik.handleSubmit} className="flex flex-col z-[1000]">
                         <div className="mb-4">
                             <div className="flex items-center justify-center border-b border-gray-700">
                                 <img src="/img/icons8-user-100.png" className={`w-4 h-4`} alt=""/>
