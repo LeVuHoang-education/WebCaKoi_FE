@@ -271,6 +271,7 @@ const DesignStaffPage = () => {
   const [openDelete, setOpenDelete] = useState(false);
   const [designs, setDesigns] = useState([]); // Lưu dữ liệu từ API dữ liệu bảng vẽ
   const [sortOrder, setSortOrder] = useState("asc"); // "asc" hoặc "desc"
+  const [openUpdate, setOpenUpdate] = useState(false);
   // Lấy token từ localStorage (hoặc sessionStorage nếu bạn lưu nó ở đó)
   const token = localStorage.getItem("token"); // Điều chỉnh cách lấy token tùy thuộc vào cách bạn lưu nó.
 
@@ -406,7 +407,7 @@ const DesignStaffPage = () => {
         <div className="main-content">
           {currentTab === "orders" && (
             <section className="order-list">
-              <h3>Danh sách đơn hàng</h3>
+              <h3 className="tieude">Danh sách đơn hàng</h3>
 
               {/* Hiển thị lỗi nếu có */}
               {error && <p style={{ color: "red" }}>{error}</p>}
@@ -460,7 +461,7 @@ const DesignStaffPage = () => {
           )}
           {currentTab === "upload" && (
             <section className="upload-form">
-              <h3>Danh sách bản vẽ đã gửi</h3>
+              <h3 className="tieude">Danh sách bản vẽ đã gửi</h3>
               {/* Hiển thị lỗi nếu có */}
               {error && <p style={{ color: "red" }}>{error}</p>}
 
@@ -513,7 +514,7 @@ const DesignStaffPage = () => {
                               disabled={design.customerFeedback === null} // Kiểm tra nếu customerFeedback là null
                               onClick={() => {
                                 setRecordId(design.recordId);
-                                setOpen(true);
+                                setOpenUpdate(true);
                               }}
                             >
                               Update Design
@@ -552,10 +553,10 @@ const DesignStaffPage = () => {
 
       <FormUpdate
         recordId={recordId}
-        open={open}
+        open={openUpdate}
         handleClose={() => {
           setRecordId(undefined);
-          setOpen(false);
+          setOpenUpdate(false);
         }}
       />
 

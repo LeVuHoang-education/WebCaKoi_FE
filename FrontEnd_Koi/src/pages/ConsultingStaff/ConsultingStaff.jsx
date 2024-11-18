@@ -4,6 +4,10 @@ import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import OrderDetailsModal from "./OrderDetailsModal";
 import QuoForm from "./QuoForm";
+import UpdateStatus from "./UpdateStatus";
+import QuoDetail from "./QuoDetail";
+import CreateMan from "./CreateMan";
+import ManDetail from "./ManDetail";
 
 const ConsultingStaff = () => {
   const [currentTab, setCurrentTab] = useState("orders");
@@ -12,16 +16,20 @@ const ConsultingStaff = () => {
   const [error, setError] = useState("");
   const [userId, setUserId] = useState();
   const [orderId, setOrderId] = useState();
-  const [selectedOrderId, setSelectedOrderId] = useState(null);
+  const [quoId, setQuoId] = useState();
+  const [designs, setDesigns] = useState();
   console.log("🚀 ~ DesignStaffPage ~ userId:", userId);
   const [recordId, setRecordId] = useState();
   const [open, setOpen] = useState(false);
   const [openQuo, setOpenQuo] = useState(false);
-  const [designs, setDesigns] = useState([]); // Lưu dữ liệu từ API dữ liệu bảng vẽ
-  const [sortOrder, setSortOrder] = useState("asc"); // "asc" hoặc "desc"
+  const [openMan, setOpenMan] = useState(false);
+  const [openManDetail, setOpenManDetail] = useState(false);
+  const [openQuoDetail, setOpenQuoDetail] = useState(false);
+  const [openUpdate, setOpenUpdate] = useState(false);
+  const [maintances, setMaintances] = useState([]);
+  const [maintanceID, setMaintanceID] = useState([]);
+  // Lưu dữ liệu từ API dữ liệu bảng vẽđơn bảo trì
   // Lấy token từ localStorage (hoặc sessionStorage nếu bạn lưu nó ở đó)
-
-  const navigate = useNavigate(); // Hook để điều hướng
   const token = localStorage.getItem("token");
   if (token) console.log(123);
 
@@ -82,61 +90,53 @@ const ConsultingStaff = () => {
     fetchOrders();
   }, []);
 
-  // ========================================lấy dữ liệu bản vẽ đã được post====================================================
-  useEffect(() => {
-    const fetchDesigns = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8081/api/v1/consulting-staff/maintenance",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+  // =========================================LẤY API THÔNG tin  đơn bảo trì============1===============================
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+  const fetchMaintances = async () => {
+    setLoading(true);
+    setError(""); // Reset lỗi cũ
+
+    if (!token) {
+      setError("Token không hợp lệ hoặc không tồn tại.");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "http://localhost:8081/api/v1/consulting-staff/maintenance",
+        {
+          method: "GET", // HTTP method GET
+          headers: {
+            "Content-Type": "application/json", // Định dạng dữ liệu là JSON
+            Authorization: `Bearer ${token}`, // Thêm token vào header
+          },
         }
+      );
 
-        const data = await response.json(); // Lấy dữ liệu JSON từ phản hồi
-        console.log("🚀 ~ fetchDesigns ~ data:", data);
-        setDesigns(data.data.content); // Lưu dữ liệu vào state
-      } catch (err) {
-        setError(err.message); // Lưu thông báo lỗi
-      } finally {
-        setLoading(false); // Tắt trạng thái loading
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.log("Error status:", response.status);
+        console.log("Error details:", errorData);
+        setError("Không thể tải dữ liệu");
+        return;
       }
-    };
 
-    fetchDesigns();
+      const data = await response.json();
+      setMaintances(data.data); // Cập nhật dữ liệu đơn hàng
+    } catch (error) {
+      setError("Lỗi kết nối API");
+    } finally {
+      setLoading(false);
+    }
+    console.log("🚀 ~ fetchMaintances ~ Maintances:", maintances);
+  };
+  useEffect(() => {
+    fetchMaintances();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>; // Hiển thị trạng thái đang tải
-  }
+  // Fetch dữ liệu khi component được mount
 
-  if (error) {
-    return <div>Error: {error}</div>; // Hiển thị lỗi nếu có
-  }
-
-  // ==========================sort recoder ID==================================
-
-  const handleSort = () => {
-    const sortedDesigns = [...designs].sort((a, b) => {
-      if (sortOrder === "asc") {
-        return a.recordId - b.recordId;
-      } else {
-        return b.recordId - a.recordId;
-      }
-    });
-    setDesigns(sortedDesigns);
-    setSortOrder(sortOrder === "asc" ? "desc" : "asc"); // Đổi trạng thái sắp xếp
-  };
-
-  // =========================================LẤY API THÔNG TIN CHI TIẾT ĐƠN HÀNG============1===============================
+  //============================================================== phương thức get để lấy maintanceID.
 
   // ========================================= nội dung trang=================================
   return (
@@ -163,7 +163,7 @@ const ConsultingStaff = () => {
         <div className="main-content">
           {currentTab === "orders" && (
             <section className="order-list">
-              <h3>Danh sách đơn hàng</h3>
+              <h3 className="tieude">Danh sách đơn hàng</h3>
 
               {/* Hiển thị lỗi nếu có */}
               {error && <p style={{ color: "red" }}>{error}</p>}
@@ -183,6 +183,7 @@ const ConsultingStaff = () => {
                       <th>Status</th>
                       <th>ChiTiet</th>
                       <th>Action</th>
+                      <th>Update Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -215,6 +216,17 @@ const ConsultingStaff = () => {
                             >
                               lập bảng báo giá
                             </Button>
+                            <br />
+                          </td>
+                          <td>
+                            <Button
+                              onClick={() => {
+                                setOrderId(order.orderId);
+                                setOpenUpdate(true);
+                              }}
+                            >
+                              cập nhật trạng thái
+                            </Button>
                           </td>
                         </tr>
                       ))
@@ -231,7 +243,7 @@ const ConsultingStaff = () => {
 
           {currentTab === "baotri" && (
             <section className="upload-form">
-              <h3>Danh sách bản vẽ đã gửi</h3>
+              <h3 className="tieude">Danh sách đơn bảo trì</h3>
               {/* Hiển thị lỗi nếu có */}
               {error && <p style={{ color: "red" }}>{error}</p>}
 
@@ -242,67 +254,41 @@ const ConsultingStaff = () => {
                 <table>
                   <thead>
                     <tr>
-                      <th onClick={handleSort} style={{ cursor: "pointer" }}>
-                        Record ID {sortOrder === "asc" ? "↑" : "↓"}
-                      </th>
-                      <th>Engineer Name</th>
-                      <th>Customer Name</th>
-                      <th>Drawing File</th>
-                      <th>Customer Feedback</th>
-                      <th>Creation Date</th>
+                      <th>OrderId</th>
+                      <th>UserId</th>
+                      <th>UserName</th>
+                      <th>serviceType</th>
+                      <th>startDate</th>
+                      <th>endDate</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {Array.isArray(designs) && designs.length > 0 ? (
-                      designs.map((design) => (
-                        <tr key={design.recordId}>
-                          <td>{design.recordId}</td>
-                          <td>{design.engineerName}</td>
-                          <td>{design.customerName}</td>
+                    {Array.isArray(maintances) && maintances.length > 0 ? (
+                      maintances.map((maintance) => (
+                        <tr key={maintance.orderId}>
+                          <td>{maintance.orderId}</td>
+                          <td>{maintance.userId}</td>
+                          <td>{maintance.userName}</td>
+                          <td>{maintance.serviceType}</td>
+                          <td>{maintance.startDate}</td>
+                          <td>{maintance.endDate}</td>
+
                           <td>
-                            <a
-                              href={design.drawingFile}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              View File
-                            </a>
-                          </td>
-                          <td>{design.customerFeedback}</td>
-                          <td>{design.creationDate}</td>
-                          <td>
-                            {/* <Button
-                            // onClick={() => {
-                            //   setUserId(design.recordId);
-                            //   setOpen(true);
-                            // }}
-                            >
-                              Update Design
-                            </Button> */}
-                            <Button
-                              disabled={design.customerFeedback === null} // Kiểm tra nếu customerFeedback là null
-                              onClick={() => {
-                                setRecordId(design.recordId);
-                                setOpen(true);
-                              }}
-                            >
-                              Update Design
-                            </Button>
                             <Button
                               onClick={() => {
-                                setRecordId(design.recordId);
-                                setOpen(true);
+                                setOrderId(maintance.orderId);
+                                setOpenMan(true);
                               }}
                             >
-                              xóa bản vẽ
+                              Phân công nhân viên
                             </Button>
                           </td>
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="7">No designs available.</td>
+                        <td colSpan="7">No maintance available.</td>
                       </tr>
                     )}
                   </tbody>
@@ -326,6 +312,32 @@ const ConsultingStaff = () => {
         handleClose={() => {
           setOrderId(undefined);
           setOpenQuo(false);
+        }}
+      />
+
+      <UpdateStatus
+        orderId={orderId}
+        open={openUpdate}
+        handleClose={() => {
+          setOrderId(undefined);
+          setOpenUpdate(false);
+        }}
+      />
+
+      <QuoDetail
+        quoId={quoId}
+        open={openQuoDetail}
+        handleClose={() => {
+          setQuoId(undefined);
+          setOpenQuoDetail(false);
+        }}
+      />
+      <CreateMan
+        orderId={orderId}
+        open={openMan}
+        handleClose={() => {
+          setOrderId(undefined);
+          setOpenMan(false);
         }}
       />
     </>
