@@ -7,6 +7,7 @@ import UpdateStatus from "./UpdateStatus";
 import QuoDetail from "./QuoDetail";
 import CreateMan from "./CreateMan";
 import ManDetail from "./ManDetail";
+import "./ConsultingStaff.css";
 
 const ConsultingStaff = () => {
   const [currentTab, setCurrentTab] = useState("orders");
@@ -250,7 +251,7 @@ const ConsultingStaff = () => {
               {loading ? (
                 <p>Đang tải...</p>
               ) : (
-                <table>
+                <table className="tableConsultingStaff">
                   <thead>
                     <tr>
                       <th>OrderId</th>
