@@ -143,15 +143,53 @@ form input[type="file"] {
 .tableConsultingStaff {
   width: 100%;
   border-collapse: collapse;
-}
-
-.tableConsultingStaff th,
-.tableConsultingStaff td {
-  border: 1px solid #ccc;
-  padding: 10px;
+  margin: 20px 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
   text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.tableConsultingStaff th {
-  background-color: #f4f4f4;
+.tableConsultingStaff thead th {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 15px;
+  border: 1px solid #dddddd; /* Đường viền cột dọc */
+}
+
+.tableConsultingStaff tbody td {
+  padding: 10px 15px;
+  border: 1px solid #dddddd; /* Đường viền cột dọc */
+}
+
+/* Dòng chẵn có màu nền khác */
+.tableConsultingStaff tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hiệu ứng khi rê chuột */
+.tableConsultingStaff tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Nút hành động */
+.tableConsultingStaff tbody td button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.tableConsultingStaff tbody td button:hover {
+  background-color: #45a049;
+}
+
+/* Khi không có đơn hàng */
+.tableConsultingStaff tbody td[colspan="5"] {
+  text-align: center;
+  color: #888;
+  font-style: italic;
 }

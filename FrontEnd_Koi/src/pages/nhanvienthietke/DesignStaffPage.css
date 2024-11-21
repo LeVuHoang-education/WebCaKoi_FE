@@ -140,7 +140,7 @@ form input[type="file"] {
 }
 
 /* ================================== */
-.tableDesign {
+/* .tableDesign {
   width: 100%;
   border-collapse: collapse;
 }
@@ -154,4 +154,66 @@ form input[type="file"] {
 
 .tableDesign th {
   background-color: #f4f4f4;
+} */
+
+.tableDesign {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tableDesign thead {
+  background-color: #4caf50;
+  color: white;
+}
+
+.tableDesign thead th {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 15px;
+  border: 1px solid #dddddd; /* Đường viền cột dọc */
+}
+.tableDesign tbody td {
+  padding: 10px 15px;
+  border: 1px solid #dddddd; /* Đường viền cột dọc */
+}
+
+.tableDesign tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.tableDesign tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tableDesign tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.tableDesign tbody td {
+  padding: 10px 15px;
+}
+
+.tableDesign tbody td button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.tableDesign tbody td button:hover {
+  background-color: #45a049;
+}
+
+.tableDesign tbody td[colspan="5"] {
+  text-align: center;
+  color: #888;
+  font-style: italic;
 }
