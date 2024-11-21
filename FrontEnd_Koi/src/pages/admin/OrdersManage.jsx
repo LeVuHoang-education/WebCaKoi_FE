@@ -108,20 +108,19 @@ const OrdersManage = () => {
                             <thead>
                             <tr className="bg-gray-50">
                                 <th scope="col"
-                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize">Order number
+                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize">Mã đơn hàng
                                 </th>
                                 <th scope="col"
-                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"> Start
-                                    Date
+                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"> Ngày bắt đầu
                                 </th>
                                 <th scope="col"
-                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"> Status
+                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize"> Trạng thái
                                 </th>
                                 <th scope="col"
-                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize rounded-t-xl"> Service Type
+                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize rounded-t-xl"> Loại dịch vụ
                                 </th>
                                 <th scope="col"
-                                    className="p-5 text-left         text-sm leading-6 font-semibold text-gray-900 capitalize rounded-t-xl"></th>
+                                    className="p-5 text-left text-sm leading-6 font-semibold text-gray-900 capitalize rounded-t-xl"></th>
                             </tr>
                             </thead>
 
@@ -153,8 +152,7 @@ const OrdersManage = () => {
                                                                     closeAllMenu()
                                                                     openUpdateStatusModal(order)
                                                                 }
-                                                                }>Update
-                                                                Status
+                                                                }>Cập nhật trạng thái
                                                             </button>
                                                         </li>
                                                     </ul>
@@ -178,7 +176,7 @@ const OrdersManage = () => {
                                                                     toggleMenu(order.orderId, 'menu2')
                                                                     openDetailModal(order)
                                                                 }
-                                                                }>Detail
+                                                                }>Chi tiết
                                                             </button>
                                                         </li>
                                                     </ul>

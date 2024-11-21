@@ -75,7 +75,7 @@ const VisitorsAnalytics = () => {
     return (
         <div className="text-center">
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold">Revenue Analytics</h2>
+                <h2 className="text-xl font-bold">Phân tích doanh thu</h2>
             </div>
             <canvas ref={canvasRef} width={400} height={400} className="w-full h-full"></canvas>
             <div className="mt-4">

@@ -78,14 +78,14 @@ function ChartComponent() {
                 <div className="flex items-center space-x-4">
                     <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                        <span className="text-blue-600 font-semibold">Total Revenue</span>
+                        <span className="text-blue-600 font-semibold">Tổng doanh thu</span>
                     </div>
                     <div className="text-gray-500">12.04.2022 - 12.05.2022</div>
                 </div>
                 <div className="flex items-center space-x-4">
                     <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-teal-400 rounded-full"></div>
-                        <span className="text-teal-400 font-semibold">Total Sales</span>
+                        <span className="text-teal-400 font-semibold">Tổng đơn hàng</span>
                     </div>
                     <div className="text-gray-500">12.04.2022 - 12.05.2022</div>
                 </div>

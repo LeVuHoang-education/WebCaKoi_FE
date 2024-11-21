@@ -86,27 +86,27 @@ const Dashboard = () => {
             <section className="grid grid-cols-2 gap-6 my-6">
                 <div className="bg-white p-4 rounded-lg shadow-lg">
                     <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-gray-700">Customer</h2>
+                        <h2 className="text-gray-700">Khách hàng</h2>
                     </div>
-                    <div className="text-3xl font-bold text-gray-800 mb-2">{data[0]} person</div>
+                    <div className="text-3xl font-bold text-gray-800 mb-2">{data[0]} người</div>
                     <div className="h-2 bg-blue-200 rounded-full">
                         <div className="h-full bg-blue-500 rounded-full" style={{width: '95%'}}></div>
                     </div>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-lg">
                     <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-gray-700">Orders</h2>
-                        <span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">This month</span>
+                        <h2 className="text-gray-700">Đơn hàng</h2>
+                        <span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">Tháng này</span>
                     </div>
-                    <div className="text-3xl font-bold text-gray-800 mb-2">{data[1]} orders</div>
+                    <div className="text-3xl font-bold text-gray-800 mb-2">{data[1]} đơn</div>
                     <div className="h-2 bg-yellow-200 rounded-full">
                         <div className="h-full bg-yellow-500 rounded-full" style={{width: '65%'}}></div>
                     </div>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-lg">
                     <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-gray-700">Revenue</h2>
-                        <span className="bg-green-100 text-green-700 px-2 py-1 rounded">This Month</span>
+                        <h2 className="text-gray-700">Doanh số</h2>
+                        <span className="bg-green-100 text-green-700 px-2 py-1 rounded">Tháng này</span>
                     </div>
                     <div className="text-3xl font-bold text-gray-800 mb-2">50.000.000đ</div>
                     <div className="h-2 bg-green-200 rounded-full">
@@ -115,7 +115,7 @@ const Dashboard = () => {
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-lg">
                     <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-gray-700">Ratings</h2>
+                        <h2 className="text-gray-700">Đánh giá</h2>
                     </div>
                     <div className="text-3xl font-bold text-gray-800 mb-2">{data[2]}</div>
                     <div className="h-2 bg-purple-200 rounded-full">
@@ -137,10 +137,10 @@ const Dashboard = () => {
                     <thead className="bg-gray-300">
                     <tr>
                         <th className="py-2 px-4 border-b text-left text-gray-600">ID</th>
-                        <th className="py-2 px-4 border-b text-left text-gray-600">Phone</th>
-                        <th className="py-2 px-4 border-b text-left text-gray-600">Start date</th>
-                        <th className="py-2 px-4 border-b text-left text-gray-600">Status</th>
-                        <th className="py-2 px-4 border-b text-left text-gray-600">Action</th>
+                        <th className="py-2 px-4 border-b text-left text-gray-600">Số điện thoại</th>
+                        <th className="py-2 px-4 border-b text-left text-gray-600">Ngày bắt đầu</th>
+                        <th className="py-2 px-4 border-b text-left text-gray-600">Trạng thái</th>
+                        <th className="py-2 px-4 border-b text-left text-gray-600"></th>
                     </tr>
                     </thead>
 
@@ -170,7 +170,7 @@ const Dashboard = () => {
                                                 <img
                                                     src="/img/icons8-eye-100.png" className="w-3 h-auto mx-1"
                                                     alt=""/>
-                                                View
+                                                Chi tiết
                                             </button>
                                         </div>
                                     </div>

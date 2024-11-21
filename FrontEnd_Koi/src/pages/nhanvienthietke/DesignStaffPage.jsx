@@ -416,7 +416,7 @@ const DesignStaffPage = () => {
               {loading ? (
                 <p>Đang tải...</p>
               ) : (
-                <table>
+                <table className="tableDesign">
                   <thead>
                     <tr>
                       <th>Order ID</th>

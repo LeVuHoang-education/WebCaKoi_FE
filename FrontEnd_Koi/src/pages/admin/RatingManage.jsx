@@ -24,6 +24,7 @@ const RatingManage = () => {
         const getRating = async () => {
             try {
                 const ratingList = await fetchRatings();
+                console.log(ratingList.data);
                 setRating(ratingList.data);
             } catch (error) {
                 setError(error.message);
@@ -63,22 +64,22 @@ const RatingManage = () => {
         <div className={`rating-manage`}>
             <div className={`grid grid-cols-2 gap-4`}>
                 {currentRating.map((item) => (
-                    <div key={item.id} className={`text-black shadow p-4 w-full h-auto rounded-3xl`}>
+                    <div key={item.ratingId} className={`text-black shadow p-4 w-full h-auto rounded-3xl`}>
                         <div className={`flex flex-col items-center`}>
                             <div className={`flex justify-evenly items-center w-full`}>
                                 <div className={`font-bold w-full text-left text-xl`}>ID: {item.ratingId}</div>
                                 <img src="/img/icons8-delete-100.png"
                                      className={`w-5 h-5 hover:cursor-pointer`} onClick={()=>{
-                                    if (window.confirm("Are you sure you want to delete this rating?")) {
+                                    if (window.confirm("Bạn có chắc muốn xóa đánh giá này?")) {
                                         handdleDeleteRating(item.ratingId);
                                     }
                                 }} alt=""/>
                             </div>
-                            <div className={`font-bold w-full text-left text-xl `}>email: {item.userEmail}</div>
+                            <div className={`font-bold w-full text-left text-xl `}>Email: {item.userEmail}</div>
                         </div>
                         <div className={`font-bold flex py-2 justify-between`}>
                             <label className={`text-xl`}>
-                                Feedback
+                                Đánh giá
                             </label>
                             <div className={`font-bold`}>{renderRating(item.rating)}</div>
                         </div>

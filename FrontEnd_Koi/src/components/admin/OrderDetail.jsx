@@ -5,7 +5,7 @@ import {fetchOrdersById} from "../../service/OrdersApi.jsx";
 
 Modal.setAppElement('#root');
 
-const OrderDetailModal = ({ isOpen, onRequestClose, order }) => {
+const   OrderDetailModal = ({ isOpen, onRequestClose, order }) => {
     const [dataOrders, setDataOrders] = useState(null);
     const [error, setError] = useState(null);
     const modalRef = useRef(null);
@@ -60,27 +60,27 @@ const OrderDetailModal = ({ isOpen, onRequestClose, order }) => {
                 </button>
 
                 <div className={`grid grid-cols-2 overflow-auto gap-5 `}>
-                    <div className={`text-gray-700 font-semibold`}>Order ID: <span
+                    <div className={`text-gray-700 font-semibold`}>Mã đơn hàng: <span
                         className={`font-light`}> {dataOrders.orderNumber}</span></div>
-                    <div className={`text-gray-700 font-semibold`}>Title: <span
+                    <div className={`text-gray-700 font-semibold`}>Tiêu đề: <span
                         className={` font-light`}>{dataOrders.title}</span></div>
 
-                    <div className={`text-gray-700 font-semibold`}>Phone: <span
+                    <div className={`text-gray-700 font-semibold`}>Số điện thoại: <span
                         className={`font-light`}>{dataOrders.userPhone}</span></div>
-                    <div className={`text-gray-700 font-semibold`}>Service type: <span
+                    <div className={`text-gray-700 font-semibold`}>Loại dịch vụ: <span
                         className={`font-light`}>{dataOrders.serviceType}</span></div>
 
 
-                    <div className={`text-gray-700 font-semibold`}>Start date: <span
+                    <div className={`text-gray-700 font-semibold`}>Ngày bắt đầu: <span
                         className={`font-light`}>{dataOrders.startDate}</span></div>
-                    <div className={`text-gray-700 font-semibold`}>End date: <span
+                    <div className={`text-gray-700 font-semibold`}>Ngày kết thúc: <span
                         className={`font-light`}>{dataOrders.endDate}</span></div>
 
                     <div className={`col-span-2`}>
                         <img src={dataOrders.image} alt="" className="w-full h-auto"/>
                     </div>
 
-                    <div className={`col-span-2 font-semibold`}>Description: <span className={`font-light`}>{dataOrders.designDetails}</span></div>
+                    <div className={`col-span-2 font-semibold`}>Mô tả: <span className={`font-light`}>{dataOrders.designDetails}</span></div>
                 </div>
             </div>
         </Modal>

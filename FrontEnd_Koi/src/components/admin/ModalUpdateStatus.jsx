@@ -47,20 +47,20 @@ const UpdateStatus = ({isOpen, onRequestClose, order,onUpdateSuccess}) => {
                overlayClassName={`fixed inset-0 bg-black bg-opacity-50`}
         >
             <div ref={modalRef} className={`w-1/4 h-auto bg-white rounded-lg p-6 shadow-2xl text-gray-700`}>
-                <h2 className={`w-full h-auto text-2xl text-center mb-4`}>Update Order Status</h2>
+                <h2 className={`w-full h-auto text-2xl text-center mb-4`}>Cập nhật trạng thái đơn hàng</h2>
                 <h3 className={`w-full h-auto text-xl text-left mx-2 mb-4`}>ID: {order.orderNumber}</h3>
                 <form onSubmit={formik.handleSubmit}>
                     <div className={`flex items-center justify-center mb-4 p-2 rounded-lg`}>
-                        <label htmlFor="status" className={`mx-2 `}>Status: </label>
+                        <label htmlFor="status" className={`mx-2 `}>Trạng thái: </label>
                         <select
                             id="status"
                             name="status"
                             onChange={formik.handleChange}
                             value={formik.values.status}
                             required
-                            className={`border-none rounded p-2  w-full focus:outline-none`}
+                            className={`border-none rounded p-2  w-auto focus:outline-none`}
                         >
-                            <option value="" disabled>Select Status</option>
+                            <option value="" disabled>Chọn</option>
                             <option value="INPROGRESS">INPROGRESS</option>
                             <option value="COMPLETED">COMPLETED</option>
                         </select>
@@ -68,11 +68,11 @@ const UpdateStatus = ({isOpen, onRequestClose, order,onUpdateSuccess}) => {
                     <div className={`flex items-center justify-evenly mb-4 pb-4`}>
                         <button
                             className={`bg-blue-400 text-white rounded px-4 py-2 transform duration-500 hover:bg-blue-700`}
-                            type="submit">Update Status
+                            type="submit">Cập nhật
                         </button>
                         <button
                             className={`bg-blue-400 text-white rounded px-4 py-2 transform duration-500 hover:bg-blue-700`}
-                            type="button" onClick={onRequestClose}>Cancel
+                            type="button" onClick={onRequestClose}>Hủy bỏ
                         </button>
                     </div>
                 </form>

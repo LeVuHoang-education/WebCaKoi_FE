@@ -5,10 +5,8 @@ import * as Yup from "yup";
 import PropTypes from "prop-types";
 import {Register} from "../../service/Auth.jsx";
 import {useNavigate} from "react-router-dom";
-import {cat} from "@cloudinary/url-gen/qualifiers/focusOn";
 
 Modal.setAppElement('#root');
-const API_BASE_URL = 'http://localhost:8080/api/v1/auth/register';
 export const ModalSignupForm = ({isOpen, onRequestClose}) => {
     const modalRef = useRef(null);
 
@@ -83,12 +81,12 @@ export const ModalSignupForm = ({isOpen, onRequestClose}) => {
                             transform: translateY(-5px);
                         }
                     }
-                    .hover\\:move-up-down:hover {
+                    .hover:move-up-down:hover {
                         animation: move-up-down 0.6s ease-in-out infinite;
                     }
                 `}
             </style>
-            <div ref={modalRef} className={`w-3/5 h-4/5 bg-white rounded-lg p-6 shadow-2xl text-gray-700 flex`}>
+            <div ref={modalRef} className={`w-3/5 h-4/5 bg-white rounded-lg p-6 shadow-2xl z-10 text-gray-700 flex`}>
                 <div className={`w-1/2 h-2/3 flex flex-col justify-center ml-12 mt-12`}>
                     <h2 className={`text-black text-4xl mb-2 font-semibold`}>Sign Up</h2>
                     <form onSubmit={formik.handleSubmit} className="flex flex-col w-full h-full">

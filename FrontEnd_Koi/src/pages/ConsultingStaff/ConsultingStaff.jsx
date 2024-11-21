@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./ConsultingStaff.css";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import OrderDetailsModal from "./OrderDetailsModal";
@@ -172,7 +171,7 @@ const ConsultingStaff = () => {
               {loading ? (
                 <p>Đang tải...</p>
               ) : (
-                <table>
+                <table className="tableConsultingStaff">
                   <thead>
                     <tr>
                       <th>OrderID</th>

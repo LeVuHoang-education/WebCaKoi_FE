@@ -64,20 +64,20 @@ const SetRoleModal = ({isOpen, onRequestClose, user ,onUpdateSuccess}) => {
                overlayClassName={`fixed inset-0 bg-black bg-opacity-50`}
         >
             <div ref={modalRef} className={`w-1/4 h-auto bg-white rounded-lg p-6 shadow-2xl text-gray-700`}>
-                <h2 className={`w-full h-auto text-2xl text-center mb-4`}>Set User Role</h2>
+                <h2 className={`w-full h-auto text-2xl text-center mb-4`}>Phân quyền người dùng</h2>
                 <h3 className={`w-full h-auto text-xl text-left mx-2 mb-4`}>ID: {user.id}</h3>
                 <form onSubmit={formik.handleSubmit}>
                     <div className={`flex items-center justify-center mb-4`}>
-                        <label htmlFor="role" className={`mx-2 `}>Role</label>
+                        <label htmlFor="role" className={`mx-2 `}>Vai trò</label>
                         <select
                             id="role"
                             name="role"
                             onChange={formik.handleChange}
                             value={formik.values.role}
                             required
-                            className={`border border-gray-300 rounded p-2 w-full focus:outline-none`}
+                            className={`border border-gray-300 rounded p-2 w-auto focus:outline-none`}
                         >
-                            <option value="">Select a role</option>
+                            <option value="">Vui lòng chọn quyền</option>
                             <option value="2">User</option>
                             <option value="3">Consulting staff</option>
                             <option value="4">Design staff</option>
@@ -85,7 +85,7 @@ const SetRoleModal = ({isOpen, onRequestClose, user ,onUpdateSuccess}) => {
                         </select>
                     </div>
                     <div className={`flex items-center justify-center`}>
-                        <button type="submit" className={`bg-blue-500 text-white px-4 py-2 rounded`}>Set Role</button>
+                        <button type="submit" className={`bg-blue-500 text-white px-4 py-2 rounded`}>Lưu</button>
                     </div>
                 </form>
             </div>

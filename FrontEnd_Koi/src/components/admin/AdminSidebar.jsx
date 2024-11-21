@@ -20,19 +20,19 @@ const AdminSidebar = () => {
                 <nav>
                     <ul className="bg-gray-100 rounded-md p-2 my-2 opacity-90 items-center justify-center">
                         <li className="my-4 text-xl">
-                            <Link to="/Admin/Dashboard" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Dashboard</Link>
+                            <Link to="/Admin/Dashboard" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Tổng quan</Link>
                         </li>
                         <li className="my-4 text-xl">
-                            <Link to="/Admin/User" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">User</Link>
+                            <Link to="/Admin/User" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Người dùng</Link>
                         </li>
                         <li className="my-4 text-xl">
-                            <Link to="/Admin/Orders" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Order</Link>
+                            <Link to="/Admin/Orders" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Đơn hàng</Link>
                         </li>
                         {/*<li className="my-4 text-xl">*/}
                         {/*    <Link to="/Admin/ProjectManage" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Project</Link>*/}
                         {/*</li>*/}
                         <li className="my-4 text-xl">
-                            <Link to="/Admin/RatingManage" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Rating</Link>
+                            <Link to="/Admin/RatingManage" className="flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white">Đánh giá</Link>
                         </li>
                         <li className="my-4 text-xl">
                             <a href="#" onClick={(e) => {
@@ -40,7 +40,7 @@ const AdminSidebar = () => {
                                 handleLogout()
                             }}
                             className={`flex items-center rounded-full p-2 text-gray-700 hover:bg-blue-300 hover:text-white`}>
-                                Logout
+                                Đăng xuất
                             </a>
                         </li>
                     </ul>

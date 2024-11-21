@@ -60,7 +60,7 @@ const UserManage = () => {
     }
 
     const handleDeleteUser = async (id) => {
-        const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+        const confirmDelete = window.confirm("Bạn có chắc muốn vô hiệu tài khoản này?");
         if (confirmDelete) {
             try {
                 await deleteUser(id);
@@ -90,14 +90,13 @@ const UserManage = () => {
                 <thead className="bg-gray-50">
                 <tr>
                     <th scope="col"
-                        className="px-6 py-3 w-1/5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"> Name
+                        className="px-6 py-3 w-1/5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"> Tên
                     </th>
                     <th scope="col"
-                        className="px-6 py-3 w-1/5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"> Phone
-                        Number
+                        className="px-6 py-3 w-1/5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"> Số điện thoại
                     </th>
                     <th scope="col"
-                        className="px-6 py-3 w-1/5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"> Role
+                        className="px-6 py-3 w-1/5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"> Vai trò
                     </th>
                     <th scope="col"
                         className="px-6 py-3 w-1/5 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"> Email
@@ -110,18 +109,18 @@ const UserManage = () => {
                 {currentData.map(user => (
                     user.status === "ACTIVE" ? (
                         <tr key={user.id}>
-                            <td className="px-6 py-2 w-1/5 whitespace-nowrap flex items-center">
+                            <td className="px-6 py-2 w-1/5 whitespace-nowrap flex items-center ">
                                 <div className="flex-shrink-0 h-10 w-10">
-                                    <img className="h-10 w-10 rounded-full" src="/img/icons8-user-100-colorful.png"
+                                    <img className="h-10 w-10 rounded-full mt-3" src="/img/icons8-user-100-colorful.png"
                                          alt=""/>
                                 </div>
                                 <div className="ml-4">
-                                    <div className="text-sm font-medium text-gray-900">{user.username}</div>
+                                    <div className="text-sm font-medium mt-8 text-gray-900">{user.username}</div>
                                 </div>
                             </td>
-                            <td className="px-3 py-2 w-1/5 whitespace-nowrap">
+                            <td className="px-3  w-1/5 whitespace-nowrap">
                                 <div
-                                    className={`flex items-center w-full  text-center text-sm font-medium text-gray-900 h-full justify-between`}>
+                                    className={`flex w-full text-sm items-center font-medium text-gray-900 justify-center`}>
                                     {user.phone}
                                 </div>
                             </td>
@@ -150,7 +149,7 @@ const UserManage = () => {
                                                 handleDeleteUser(user.id)
                                             }}
                                                     className={`${user.roleName === "ROLE_MANAGER" || user.roleName === "ROLE_ADMIN" ? "text-gray-400" : "text-red-600 hover:text-white hover:bg-violet-500 w-full p-2 rounded-full"}`}
-                                                    disabled={user.roleName === "ROLE_MANAGER" || user.roleName === "ROLE_ADMIN"}>Delete
+                                                    disabled={user.roleName === "ROLE_MANAGER" || user.roleName === "ROLE_ADMIN"}>Vô hiệu hóa
                                             </button>
                                         </li>
                                         <li>
@@ -159,7 +158,7 @@ const UserManage = () => {
                                                 openModalSetRole(user)
                                             }}
                                                     className={`text-red-500 hover:text-white hover:bg-violet-500 w-full p-2 rounded-full`}
-                                            >Set Role
+                                            >Phân quyền
                                             </button>
                                         </li>
                                     </ul>
